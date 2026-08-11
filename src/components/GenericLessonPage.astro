@@ -1,0 +1,99 @@
+---
+import { z } from "astro/zod";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { ruleCatalog } from "../lib/content/catalog";
+import { lessonFrontmatterSchema } from "../lib/content/lesson-schema";
+import {
+  assertLessonNavigationMatch,
+  getLessonNavigationItem,
+  lessonNavigation,
+} from "../lib/content/lesson-navigation";
+import LearningShell from "./LearningShell.astro";
+import LessonRail from "./LessonRail.astro";
+import LessonVisuals from "./LessonVisuals.astro";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const lesson = lessonFrontmatterSchema.parse(Astro.props.lesson);
+if (lesson.locale !== locale || lesson.reviewStatus !== "approved") {
+  throw new Error(`${lesson.id} route requires matching approved lesson metadata`);
+}
+assertLessonNavigationMatch(lesson);
+const item = getLessonNavigationItem(lesson.id);
+const index = lessonNavigation.findIndex((candidate) => candidate.id === lesson.id);
+const previous = lessonNavigation[index - 1];
+const next = lessonNavigation[index + 1];
+const rules = lesson.ruleIds.map((ruleId) => {
+  const rule = ruleCatalog.find((candidate) => candidate.id === ruleId);
+  if (!rule || rule.reviewStatus !== "approved") {
+    throw new Error(`${lesson.id} references missing or unapproved Rule ${ruleId}`);
+  }
+  return rule;
+});
+const isEnglish = locale === "en";
+const copy = isEnglish
+  ? {
+      description: `${lesson.title}, part of the reviewed Japan driving safety guide.`,
+      skipLabel: "Skip to main content",
+      railLabel: "Learn modules",
+      lessonLabel: `Lesson ${String(item.order + 1).padStart(2, "0")}`,
+      reviewedLabel: "Reviewed curriculum",
+      previous: "Previous lesson",
+      next: "Next lesson",
+      index: "All lessons",
+      footer: "Recheck current official guidance before driving.",
+    }
+  : {
+      description: `${lesson.title}｜日本自駕新手攻略`,
+      skipLabel: "跳到主要內容",
+      railLabel: "16 課攻略",
+      lessonLabel: `第 ${String(item.order + 1).padStart(2, "0")} 課`,
+      reviewedLabel: "規則已查核",
+      previous: "上一課",
+      next: "下一課",
+      index: "全部 16 課",
+      footer: "上路前，再看一次現場標誌和日本官方最新公告。",
+    };
+const localeLinks = {
+  "zh-TW": `/zh-TW/learn/${item.slug}/`,
+  en: `/en/learn/${item.slug}/`,
+};
+---
+
+<BaseLayout title={`${lesson.title} | Japan Driving Guide`} description={copy.description} locale={locale} skipLabel={copy.skipLabel}>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.railLabel}>
+    <LessonRail slot="rail" locale={locale} currentId={lesson.id} label={copy.railLabel} />
+
+    <article class="lesson-page generic-lesson" id={lesson.id} data-lesson-id={lesson.id}>
+      <header class="lesson-hero">
+        <div class="lesson-meta">
+          <span>{copy.lessonLabel}</span>
+          <span>{copy.reviewedLabel}</span>
+        </div>
+        <p class="eyebrow">{lesson.quizTags.join(" · ")}</p>
+        <h1>{lesson.title}</h1>
+      </header>
+
+      <LessonVisuals lessonId={lesson.id} locale={locale} />
+
+      <section class="lesson-copy generic-lesson__copy">
+        <slot />
+      </section>
+
+      <slot name="supplement" />
+
+      <div class="lesson-rule-strip" aria-label={copy.reviewedLabel}>
+        {rules.map((rule) => <span data-rule-id={rule.id}>{rule.title[locale]}</span>)}
+      </div>
+
+      <nav class="lesson-pagination" aria-label={copy.railLabel}>
+        {previous ? <a rel="prev" href={withBase(`/${locale}/learn/${previous.slug}/`)}>← {copy.previous}: {previous.title[locale]}</a> : <span />}
+        <a href={withBase(`/${locale}/learn/`)}>{copy.index}</a>
+        {next ? <a rel="next" href={withBase(`/${locale}/learn/${next.slug}/`)}>{copy.next}: {next.title[locale]} →</a> : <span />}
+      </nav>
+    </article>
+
+    <div slot="footer"><p>{copy.footer}</p></div>
+  </LearningShell>
+</BaseLayout>

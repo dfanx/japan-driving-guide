@@ -1,0 +1,10 @@
+---
+import SignalLessonPage from "../../../components/SignalLessonPage.astro";
+import LessonContent, {
+  frontmatter,
+} from "../../../content/lessons/M02-signals/en.md";
+---
+
+<SignalLessonPage locale="en" lesson={frontmatter}>
+  <LessonContent />
+</SignalLessonPage>

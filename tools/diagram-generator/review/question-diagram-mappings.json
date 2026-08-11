@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [
+    { "questionId": "Q001", "diagramId": "D001", "reviewStatus": "needs_review" },
+    { "questionId": "Q002", "diagramId": "D002", "reviewStatus": "approved" },
+    { "questionId": "Q004", "diagramId": "D003", "reviewStatus": "needs_review" },
+    { "questionId": "Q005", "diagramId": "D005", "reviewStatus": "needs_review" },
+    { "questionId": "Q006", "diagramId": "D006", "reviewStatus": "needs_review" },
+    { "questionId": "Q008", "diagramId": "D009", "reviewStatus": "needs_review" },
+    { "questionId": "Q010", "diagramId": "D010", "reviewStatus": "needs_review" },
+    { "questionId": "Q013", "diagramId": "D011", "reviewStatus": "needs_review" },
+    { "questionId": "Q014", "diagramId": "D012", "reviewStatus": "needs_review" },
+    { "questionId": "Q017", "diagramId": "D021", "reviewStatus": "needs_review" },
+    { "questionId": "Q018", "diagramId": "D022", "reviewStatus": "needs_review" },
+    { "questionId": "Q023", "diagramId": "D024", "reviewStatus": "needs_review" }
+  ]
+}

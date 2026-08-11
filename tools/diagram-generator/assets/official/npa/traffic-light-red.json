@@ -1,0 +1,20 @@
+{
+  "id": "NPA-S10-TRAFFIC-LIGHT-RED-HORIZONTAL",
+  "kind": "traffic_light",
+  "state": "red",
+  "sourceId": "S10",
+  "authority": "National Police Agency of Japan",
+  "sourceUrl": "https://www.npa.go.jp/english/bureau/traffic/traffic-light_english.pdf",
+  "termsUrl": "https://www.npa.go.jp/rules/",
+  "license": "Public Data License 1.0 under the National Police Agency website terms, unless otherwise indicated",
+  "retrievedAt": "2026-08-10",
+  "sourceDocumentSha256": "sha256:004715cfb1f52955d0397264a2e662e698b82c47063fabaafca5de11b226a064",
+  "sourcePage": 1,
+  "sourceObject": "/Image25",
+  "assetPath": "traffic-light-red.png",
+  "assetSha256": "sha256:45ba1793f980850b94bc7e9c743e38a12e0a66167a15de4a173535d850a46199",
+  "width": 366,
+  "height": 115,
+  "transformation": "Exact embedded image bytes extracted from PDF page 1; no visual modification",
+  "attribution": "Source: Traffic Lights and Road Signs (National Police Agency of Japan), https://www.npa.go.jp/english/bureau/traffic/traffic-light_english.pdf"
+}

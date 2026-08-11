@@ -1,0 +1,293 @@
+import type { Bounds } from "./geometry/canvas";
+import {
+  crosswalk,
+  cyclist,
+  DIAGRAM_PALETTE,
+  directionalArrow,
+  laneBoundary,
+  officialVisual,
+  pedestrian,
+  roadSegment,
+  stopLine,
+  vehicle,
+  type SvgNode,
+} from "./primitives";
+import { svgNode } from "./primitives/svg";
+import { getReferenceAssets } from "./reference-assets";
+import { renderSvgDocument } from "./renderer";
+import type { z } from "astro/zod";
+import { presetDiagramSceneSchema } from "./schema";
+import {
+  renderBicyclePassingTemplate,
+  renderExpresswayLanesTemplate,
+  renderExpresswayMergeTemplate,
+  renderParkingRoadsideTemplate,
+} from "./templates";
+
+export type PresetDiagramScene = z.infer<typeof presetDiagramSceneSchema>;
+
+const compositionTemplateId: Readonly<Record<PresetDiagramScene["composition"], string>> = {
+  left_side_exit: "T03",
+  signal_asset_card: "C01",
+  comparison: "C02",
+  intersection_movement: "T02",
+  crosswalk: "T04",
+  bicycle_passing: "T12",
+  road_comparison: "C02",
+  railway_crossing: "T05",
+  sign_card: "C01",
+  toll_gate: "T08",
+  parking_roadside: "T09",
+  expressway_merge: "T06",
+  expressway_lanes: "T07",
+  fuel_card: "C03",
+  breakdown: "C04",
+};
+
+export function presetTemplateId(scene: PresetDiagramScene): string {
+  return compositionTemplateId[scene.composition];
+}
+
+function background(): SvgNode {
+  return svgNode("rect", { "data-primitive": "canvas", fill: DIAGRAM_PALETTE.canvas, height: 800, width: 1200, x: 0, y: 0 });
+}
+
+function custom(scene: PresetDiagramScene, nodes: readonly SvgNode[]): string {
+  return renderSvgDocument({
+    id: scene.id,
+    title: scene.alt.en,
+    description: scene.alt.en,
+    nodes: [background(), svgNode("g", { "data-composition": scene.composition, "data-template": presetTemplateId(scene) }, { children: nodes })],
+  });
+}
+
+function text(label: string, x: number, y: number, options: { fill?: string; size?: number } = {}): SvgNode {
+  return svgNode("text", {
+    fill: options.fill ?? DIAGRAM_PALETTE.badge,
+    "font-family": "system-ui, sans-serif",
+    "font-size": options.size ?? 40,
+    "font-weight": 800,
+    "text-anchor": "middle",
+    x,
+    y,
+  }, { text: label });
+}
+
+function checkMark(x: number, y: number): SvgNode {
+  return svgNode("path", { d: `M ${x - 30} ${y} L ${x - 8} ${y + 24} L ${x + 38} ${y - 30}`, fill: "none", stroke: DIAGRAM_PALETTE.success, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": 14 });
+}
+
+function errorMark(x: number, y: number): SvgNode {
+  return svgNode("g", { "data-primitive": "error-mark" }, { children: [
+    svgNode("line", { stroke: DIAGRAM_PALETTE.annotation, "stroke-linecap": "round", "stroke-width": 14, x1: x - 30, x2: x + 30, y1: y - 30, y2: y + 30 }),
+    svgNode("line", { stroke: DIAGRAM_PALETTE.annotation, "stroke-linecap": "round", "stroke-width": 14, x1: x - 30, x2: x + 30, y1: y + 30, y2: y - 30 }),
+  ] });
+}
+
+function renderOfficialCard(scene: PresetDiagramScene): string {
+  const assets = getReferenceAssets(scene.assetIds);
+  if (assets.length < 1 || assets.length > 2) throw new Error(`${scene.id} official card requires one or two assets`);
+  const placements: Bounds[] = assets.length === 1
+    ? [{ x: 260, y: 140, width: 680, height: 500 }]
+    : [{ x: 45, y: 150, width: 520, height: 470 }, { x: 635, y: 150, width: 520, height: 470 }];
+  return custom(scene, [
+    ...placements.map((bounds) => svgNode("rect", { fill: "#ffffff", height: bounds.height, rx: 24, stroke: DIAGRAM_PALETTE.roadShoulder, "stroke-width": 5, width: bounds.width, x: bounds.x, y: bounds.y })),
+    ...assets.map((asset, index) => officialVisual({ bounds: placements[index], asset })),
+  ]);
+}
+
+function renderLeftSideExit(scene: PresetDiagramScene): string {
+  return custom(scene, [
+    roadSegment({ x: 0, y: 190, width: 1200, height: 300 }),
+    roadSegment({ x: 470, y: 360, width: 260, height: 440 }),
+    laneBoundary({ start: { x: 6, y: 340 }, end: { x: 464, y: 340 }, width: 7 }),
+    laneBoundary({ start: { x: 736, y: 340 }, end: { x: 1194, y: 340 }, width: 7 }),
+    laneBoundary({ start: { x: 600, y: 496 }, end: { x: 600, y: 794 }, width: 7 }),
+    vehicle({ bounds: { x: 510, y: 610, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+    directionalArrow({ from: { x: 455, y: 420 }, to: { x: 350, y: 420 }, tone: "movement" }),
+    checkMark(260, 420),
+  ]);
+}
+
+function renderStopComparison(scene: PresetDiagramScene): string {
+  return custom(scene, [
+    roadSegment({ x: 120, y: 0, width: 360, height: 800 }),
+    roadSegment({ x: 720, y: 0, width: 360, height: 800 }),
+    stopLine({ x: 120, y: 340, width: 180, height: 12 }),
+    stopLine({ x: 720, y: 340, width: 180, height: 12 }),
+    vehicle({ bounds: { x: 190, y: 490, width: 64, height: 100 }, color: "blue", heading: "north", label: "A" }),
+    vehicle({ bounds: { x: 790, y: 300, width: 64, height: 100 }, color: "yellow", heading: "north", label: "B" }),
+    checkMark(300, 665),
+    errorMark(900, 665),
+  ]);
+}
+
+function intersectionBase(): SvgNode[] {
+  return [
+    roadSegment({ x: 470, y: 0, width: 260, height: 800 }),
+    roadSegment({ x: 0, y: 270, width: 1200, height: 260 }),
+    laneBoundary({ start: { x: 600, y: 6 }, end: { x: 600, y: 264 }, width: 7 }),
+    laneBoundary({ start: { x: 600, y: 536 }, end: { x: 600, y: 794 }, width: 7 }),
+    laneBoundary({ start: { x: 6, y: 400 }, end: { x: 464, y: 400 }, width: 7 }),
+    laneBoundary({ start: { x: 736, y: 400 }, end: { x: 1194, y: 400 }, width: 7 }),
+  ];
+}
+
+function rightTurnPath(): SvgNode {
+  return svgNode(
+    "g",
+    {
+      "data-destination-lane": "eastbound-left",
+      "data-primitive": "right-turn-path",
+    },
+    {
+      children: [
+        svgNode("path", {
+          d: "M 532 610 L 532 470 C 532 390 600 335 740 335",
+          fill: "none",
+          stroke: DIAGRAM_PALETTE.roadMarking,
+          "stroke-linecap": "round",
+          "stroke-linejoin": "round",
+          "stroke-width": 9,
+        }),
+        directionalArrow({
+          from: { x: 740, y: 335 },
+          to: { x: 835, y: 335 },
+          tone: "movement",
+        }),
+      ],
+    },
+  );
+}
+
+function renderIntersection(scene: PresetDiagramScene): string {
+  if (scene.id === "D006") {
+    return custom(scene, [...intersectionBase(),
+      vehicle({ bounds: { x: 500, y: 640, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+      vehicle({ bounds: { x: 636, y: 40, width: 64, height: 100 }, color: "blue", heading: "south", label: "B" }),
+      directionalArrow({ from: { x: 668, y: 170 }, to: { x: 668, y: 585 }, tone: "movement" }),
+      rightTurnPath(),
+    ]);
+  }
+  if (scene.id === "D007") {
+    return custom(scene, [...intersectionBase(),
+      crosswalk({ bounds: { x: 470, y: 535, width: 260, height: 65 }, orientation: "horizontal", stripeCount: 5 }),
+      vehicle({ bounds: { x: 505, y: 655, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+      cyclist({ bounds: { x: 390, y: 475, width: 120, height: 85 }, heading: "north", label: "B" }),
+      pedestrian({ bounds: { x: 770, y: 490, width: 62, height: 115 }, heading: "west", label: "P" }),
+    ]);
+  }
+  return custom(scene, [...intersectionBase(),
+    svgNode("rect", { "data-primitive": "visibility-blocker", fill: DIAGRAM_PALETTE.signalHousing, height: 240, width: 350, x: 0, y: 0 }),
+    svgNode("rect", { "data-primitive": "visibility-blocker", fill: DIAGRAM_PALETTE.signalHousing, height: 240, width: 350, x: 850, y: 560 }),
+    vehicle({ bounds: { x: 505, y: 650, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+    directionalArrow({ from: { x: 537, y: 620 }, to: { x: 537, y: 560 }, tone: "movement" }),
+  ]);
+}
+
+function renderCrosswalk(scene: PresetDiagramScene): string {
+  return custom(scene, [
+    roadSegment({ x: 430, y: 0, width: 340, height: 800 }),
+    laneBoundary({ start: { x: 600, y: 6 }, end: { x: 600, y: 794 }, width: 7 }),
+    crosswalk({ bounds: { x: 430, y: 270, width: 340, height: 95 }, orientation: "horizontal", stripeCount: 6 }),
+    stopLine({ x: 430, y: 420, width: 170, height: 12 }),
+    vehicle({ bounds: { x: 485, y: 545, width: 64, height: 100 }, color: "blue", heading: "north", label: "A" }),
+    pedestrian({ bounds: { x: 350, y: 245, width: 62, height: 115 }, heading: "east", label: "P" }),
+    directionalArrow({ from: { x: 517, y: 515 }, to: { x: 517, y: 465 }, tone: "movement" }),
+  ]);
+}
+
+function renderRoadComparison(scene: PresetDiagramScene): string {
+  return custom(scene, [
+    roadSegment({ x: 120, y: 0, width: 320, height: 800 }),
+    roadSegment({ x: 680, y: 0, width: 400, height: 800 }),
+    laneBoundary({ start: { x: 880, y: 6 }, end: { x: 880, y: 794 }, width: 7 }),
+    vehicle({ bounds: { x: 205, y: 520, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+    vehicle({ bounds: { x: 760, y: 520, width: 64, height: 100 }, color: "blue", heading: "north", label: "B" }),
+  ]);
+}
+
+function renderRailway(scene: PresetDiagramScene): string {
+  const sleepers = Array.from({ length: 16 }, (_, index) => svgNode("rect", { fill: DIAGRAM_PALETTE.signalHousing, height: 64, width: 18, x: 55 + index * 72, y: 338 }));
+  return custom(scene, [
+    roadSegment({ x: 430, y: 0, width: 340, height: 800 }),
+    laneBoundary({ start: { x: 600, y: 6 }, end: { x: 600, y: 794 }, width: 7 }),
+    svgNode("g", { "data-primitive": "rail-crossing" }, { children: sleepers }),
+    laneBoundary({ start: { x: 6, y: 340 }, end: { x: 1194, y: 340 }, width: 10 }),
+    laneBoundary({ start: { x: 6, y: 400 }, end: { x: 1194, y: 400 }, width: 10 }),
+    stopLine({ x: 430, y: 465, width: 170, height: 12 }),
+    vehicle({ bounds: { x: 485, y: 580, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+    vehicle({ bounds: { x: 485, y: 170, width: 64, height: 100 }, color: "red", heading: "north", label: "B" }),
+    errorMark(870, 370),
+  ]);
+}
+
+function tollPanel(x: number, primary: string, secondary: string): SvgNode[] {
+  return [
+    svgNode("rect", { "data-representation": "schematic-not-sign", fill: DIAGRAM_PALETTE.roadShoulder, height: 150, rx: 12, stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 4, width: 245, x, y: 210 }),
+    text(primary, x + 122.5, 275, { size: 38 }),
+    text(secondary, x + 122.5, 325, { size: 32 }),
+  ];
+}
+
+function renderToll(scene: PresetDiagramScene): string {
+  const middlePrimary = scene.id === "D022" ? "ETC／一般" : "一般";
+  const middleSecondary = scene.id === "D022" ? "ETC / GENERAL" : "GENERAL";
+  return custom(scene, [
+    roadSegment({ x: 120, y: 0, width: 960, height: 800 }),
+    laneBoundary({ start: { x: 440, y: 6 }, end: { x: 440, y: 794 }, width: 7, dashed: true }),
+    laneBoundary({ start: { x: 760, y: 6 }, end: { x: 760, y: 794 }, width: 7, dashed: true }),
+    ...tollPanel(158, "ETC 専用", "ETC ONLY"),
+    ...tollPanel(478, middlePrimary, middleSecondary),
+    ...tollPanel(798, "一般", "GENERAL"),
+    errorMark(280, 455),
+    checkMark(scene.id === "D022" ? 920 : 600, 455),
+    vehicle({ bounds: { x: scene.id === "D022" ? 888 : 568, y: 610, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+  ]);
+}
+
+function renderFuel(scene: PresetDiagramScene): string {
+  const cards = [
+    { x: 90, color: "#d64242", label: "レギュラー" },
+    { x: 440, color: "#e7b93f", label: "ハイオク" },
+    { x: 790, color: "#16846f", label: "軽油" },
+  ];
+  return custom(scene, cards.flatMap((card) => [
+    svgNode("rect", { fill: "#ffffff", height: 470, rx: 24, stroke: card.color, "stroke-width": 16, width: 300, x: card.x, y: 150 }),
+    svgNode("circle", { cx: card.x + 150, cy: 320, fill: card.color, r: 86 }),
+    text(card.label, card.x + 150, 520, { size: 42 }),
+  ]));
+}
+
+function renderBreakdown(scene: PresetDiagramScene): string {
+  return custom(scene, [
+    roadSegment({ x: 0, y: 150, width: 1200, height: 430 }),
+    laneBoundary({ start: { x: 6, y: 360 }, end: { x: 1194, y: 360 }, width: 7, dashed: true }),
+    svgNode("rect", { "data-primitive": "shoulder", fill: DIAGRAM_PALETTE.roadShoulder, height: 130, width: 1200, x: 0, y: 580 }),
+    svgNode("line", { "data-primitive": "guardrail", stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 16, x1: 6, x2: 1194, y1: 710, y2: 710 }),
+    vehicle({ bounds: { x: 300, y: 500, width: 100, height: 64 }, color: "red", heading: "east", label: "A" }),
+    pedestrian({ bounds: { x: 735, y: 690, width: 55, height: 100 }, heading: "east", label: "P" }),
+    directionalArrow({ from: { x: 540, y: 635 }, to: { x: 700, y: 735 }, tone: "instruction" }),
+  ]);
+}
+
+export function renderPresetScene(scene: PresetDiagramScene): string {
+  const common = { id: scene.id, title: scene.alt.en, description: scene.alt.en };
+  switch (scene.composition) {
+    case "left_side_exit": return renderLeftSideExit(scene);
+    case "signal_asset_card":
+    case "sign_card": return renderOfficialCard(scene);
+    case "comparison": return renderStopComparison(scene);
+    case "intersection_movement": return renderIntersection(scene);
+    case "crosswalk": return renderCrosswalk(scene);
+    case "bicycle_passing": return renderBicyclePassingTemplate(common);
+    case "road_comparison": return renderRoadComparison(scene);
+    case "railway_crossing": return renderRailway(scene);
+    case "toll_gate": return renderToll(scene);
+    case "parking_roadside": return renderParkingRoadsideTemplate(common);
+    case "expressway_merge": return renderExpresswayMergeTemplate(common);
+    case "expressway_lanes": return renderExpresswayLanesTemplate(common);
+    case "fuel_card": return renderFuel(scene);
+    case "breakdown": return renderBreakdown(scene);
+  }
+}

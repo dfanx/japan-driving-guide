@@ -1,0 +1,148 @@
+---
+import { z } from "astro/zod";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  rulesByClassification,
+  traceabilityDates,
+  traceableSources,
+} from "../lib/content/traceability";
+import LearningShell from "./LearningShell.astro";
+import { CONTENT_CLASSIFICATIONS } from "../lib/content/schema";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const isEnglish = locale === "en";
+const localeLinks = { "zh-TW": "/zh-TW/sources/", en: "/en/sources/" };
+const order = CONTENT_CLASSIFICATIONS;
+const copy = isEnglish
+  ? {
+      title: "Sources and content verification",
+      description: "See what supports this guide, when it was checked, and which statements are law, official guidance, or practical advice.",
+      skip: "Skip to main content",
+      rail: "On this page",
+      sections: ["Verification status", "Statement types", "Official sources"],
+      eyebrow: "Content transparency",
+      warning: "This is a safety-learning guide, not legal advice. Road controls and official instructions at the location take priority.",
+      checked: "Source links checked through",
+      verified: "Rules verified through",
+      sourceCount: "Sources",
+      ruleCount: "Reviewed rules",
+      classifications: "How statements are classified",
+      sources: "Source register",
+      sourceLead: "Every Rule ID resolves to one or more source IDs. External links open the current publisher page; a working link does not by itself prove that content is unchanged.",
+      open: "Open official source",
+      supports: "Supports reviewed rules",
+      noRules: "Reference source; no current standalone rule relies on it.",
+      back: "Back to Learn",
+      classification: {
+        legal_rule: { title: "Legal rule", note: "A binding traffic requirement. Each item must include at least one Tier S government or primary legal source." },
+        official_guidance: { title: "Official guidance", note: "Safety or operating guidance from a public authority or road organization. It is not presented as a universal statutory threshold." },
+        practical_advice: { title: "Practical advice", note: "A conservative trip-risk recommendation. It is explicitly not presented as law." },
+      },
+      tier: { S: "Tier S · government / primary law", A: "Tier A · authoritative organization", B: "Tier B · supporting reference" },
+    }
+  : {
+      title: "資料來源與內容驗證",
+      description: "查看本指南的依據、查核日期，以及哪些陳述屬於法規、官方指引或實務建議。",
+      skip: "跳至主要內容",
+      rail: "本頁內容",
+      sections: ["驗證狀態", "陳述類型", "官方來源"],
+      eyebrow: "內容透明度",
+      warning: "這是安全學習指南，不是法律意見；現場交通管制與日本主管機關指示優先。",
+      checked: "來源連結查核至",
+      verified: "規則內容驗證至",
+      sourceCount: "資料來源",
+      ruleCount: "已審規則",
+      classifications: "本指南如何區分陳述",
+      sources: "來源登錄表",
+      sourceLead: "每個 Rule ID 都連到一個以上 Source ID。外部連結指向發布者目前頁面；連結可開啟不等於內容必然未變更。",
+      open: "開啟發布來源",
+      supports: "支援已審規則",
+      noRules: "參考來源；目前沒有單一規則直接依賴此來源。",
+      back: "返回完整學習",
+      classification: {
+        legal_rule: { title: "法規要求", note: "具約束力的交通要求；每一項至少必須包含一個 S 級政府或一級法律來源。" },
+        official_guidance: { title: "官方指引", note: "主管機關或道路組織的安全／操作指引，不會冒充所有情況通用的法定數字。" },
+        practical_advice: { title: "實務建議", note: "降低旅途風險的保守建議，明確不當作法律要求呈現。" },
+      },
+      tier: { S: "S 級 · 政府／一級法律", A: "A 級 · 權威組織", B: "B 級 · 輔助參考" },
+    };
+---
+
+<BaseLayout title={`${copy.title} | Japan Driving Guide`} description={copy.description} locale={locale} skipLabel={copy.skip}>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.rail}>
+    <nav slot="rail" aria-label={copy.rail}>
+      <p class="rail-label">{copy.rail}</p>
+      <ol class="rail-list">
+        {copy.sections.map((item, index) => (
+          <li aria-current={index === 0 ? "step" : undefined}>
+            <span class="rail-list__marker" data-state={index === 0 ? "current" : undefined}>{String(index + 1).padStart(2, "0")}</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <article class="traceability-page" data-traceability-locale={locale}>
+      <header class="traceability-hero">
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p class="lead">{copy.description}</p>
+        <p class="traceability-warning">{copy.warning}</p>
+      </header>
+
+      <dl class="traceability-stats" aria-label={copy.sections[0]}>
+        <div><dt>{copy.checked}</dt><dd><time datetime={traceabilityDates.sourcesCheckedThrough}>{traceabilityDates.sourcesCheckedThrough}</time></dd></div>
+        <div><dt>{copy.verified}</dt><dd><time datetime={traceabilityDates.rulesVerifiedThrough}>{traceabilityDates.rulesVerifiedThrough}</time></dd></div>
+        <div><dt>{copy.sourceCount}</dt><dd>{traceableSources.length}</dd></div>
+        <div><dt>{copy.ruleCount}</dt><dd>{order.reduce((sum, key) => sum + rulesByClassification[key].length, 0)}</dd></div>
+      </dl>
+
+      <section class="traceability-section" aria-labelledby="classification-title">
+        <h2 id="classification-title">{copy.classifications}</h2>
+        <div class="classification-grid">
+          {order.map((key) => (
+            <article class="classification-card" data-classification={key}>
+              <p class="classification-card__count">{rulesByClassification[key].length}</p>
+              <h3>{copy.classification[key].title}</h3>
+              <p>{copy.classification[key].note}</p>
+              <ul>
+                {rulesByClassification[key].map((rule) => (
+                  <li>
+                    <span>{rule.title[locale]}</span>
+                    <code>{rule.id}</code>
+                    <span>{rule.sourceIds.join(" · ")}</span>
+                    {rule.effectiveFrom && <time datetime={rule.effectiveFrom}>{rule.effectiveFrom}</time>}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="traceability-section" aria-labelledby="source-register-title">
+        <h2 id="source-register-title">{copy.sources}</h2>
+        <p>{copy.sourceLead}</p>
+        <ol class="source-register">
+          {traceableSources.map((source) => (
+            <li id={`source-${source.id}`} class="source-entry">
+              <div class="source-entry__meta">
+                <code>{source.id}</code>
+                <span data-tier={source.tier}>{copy.tier[source.tier]}</span>
+              </div>
+              <h3>{source.title}</h3>
+              <p>{source.authority}</p>
+              <p>{copy.checked}: <time datetime={source.checkedAt}>{source.checkedAt}</time></p>
+              <p>{source.ruleIds.length > 0 ? `${copy.supports}: ${source.ruleIds.length}` : copy.noRules}</p>
+              <a href={source.url} rel="external">{copy.open} ↗</a>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <a class="text-link" href={withBase(`/${locale}/learn/`)}>← {copy.back}</a>
+    </article>
+  </LearningShell>
+</BaseLayout>

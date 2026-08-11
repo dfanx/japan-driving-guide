@@ -1,0 +1,109 @@
+---
+import { z } from "astro/zod";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LearningShell from "./LearningShell.astro";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const isEnglish = locale === "en";
+const localeLinks = { "zh-TW": "/zh-TW/", en: "/en/" };
+const copy = isEnglish
+  ? {
+      title: "Ten things to know before driving in Japan",
+      description:
+        "A ten-minute safety check and a practical sixteen-lesson guide for first-time drivers in Japan.",
+      skipLabel: "Skip to main content",
+      railLabel: "Start options",
+      railEyebrow: "Before you collect the key",
+      railItems: ["Ten-minute check", "Full guide", "Scenario check"],
+      eyebrow: "First time driving in Japan?",
+      lead:
+        "No turn on red, a full stop at 止まれ, and no assuming an empty roadside is legal parking. Learn the mistakes visitors make most often before pickup.",
+      primaryAction: "Start the 10-minute check",
+      secondaryAction: "See all 16 lessons",
+      pathLabel: "Complete beginner guide",
+      pathTitle: "From rental documents to collision response",
+      pathText:
+        "Use the lessons in order or jump straight to parking, ETC, snow, fuel or emergencies. Every legal rule links back to a reviewed Japanese source.",
+      timeLabel: "Time needed",
+      timeValue: "Essentials 10 min · Full guide 30–45 min",
+      note:
+        "Traffic signs use exact Japanese-authority images; road situations use reviewed diagrams.",
+      footer: "Read it before pickup. Keep it for the road.",
+    }
+  : {
+      title: "日本自駕別靠運氣，取車前先看懂這 10 件事",
+      description: "給第一次在日本開車的旅客：10 分鐘看重點，30 分鐘看完整攻略。",
+      skipLabel: "跳至主要內容",
+      railLabel: "開始方式",
+      railEyebrow: "領取租車前",
+      railItems: ["先看 10 分鐘", "按情境補課", "上路前再檢查"],
+      eyebrow: "第一次在日本開車？",
+      lead: "紅燈不能轉、止まれ要停死、路邊空位不等於能停。先把旅客最常踩雷的規則看懂，再上路。",
+      primaryAction: "先看 10 分鐘重點",
+      secondaryAction: "看完整 16 課",
+      pathLabel: "新手完整攻略",
+      pathTitle: "從租車證件一路看到事故處理",
+      pathText:
+        "照順序讀，或直接跳去停車、ETC、雪地、加油和事故處理。每條法規都能回查日本官方來源。",
+      timeLabel: "需要多久",
+      timeValue: "重點 10 分鐘 · 完整 30–45 分鐘",
+      note: "交通標誌放日本官方原圖；道路情境使用已查核圖解。",
+      footer: "先看懂，再上路。",
+    };
+const fastTrackHref = withBase(`/${locale}/fast-track/`);
+const learnHref = withBase(`/${locale}/learn/`);
+---
+
+<BaseLayout
+  title={`Japan Driving Guide | ${copy.eyebrow}`}
+  description={copy.description}
+  locale={locale}
+  skipLabel={copy.skipLabel}
+>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.railLabel}>
+    <nav slot="rail" aria-label={copy.railLabel}>
+      <p class="rail-label">{copy.railEyebrow}</p>
+      <ol class="rail-list">
+        {copy.railItems.map((item, index) => (
+          <li aria-current={index === 0 ? "step" : undefined}>
+            <span class="rail-list__marker" data-state={index === 0 ? "current" : undefined}>
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="home-page" data-home-locale={locale}>
+      <header class="home-hero">
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p class="lead">{copy.lead}</p>
+        <div class="home-actions">
+          <a class="primary-action" href={fastTrackHref}>{copy.primaryAction}</a>
+          <a class="secondary-action" href={learnHref}>{copy.secondaryAction}</a>
+        </div>
+      </header>
+
+      <section class="path-card" aria-labelledby="reviewed-path-title">
+        <div>
+          <p class="status-label">{copy.pathLabel}</p>
+          <h2 id="reviewed-path-title">{copy.pathTitle}</h2>
+          <p>{copy.pathText}</p>
+        </div>
+        <dl class="scope-stat">
+          <dt>{copy.timeLabel}</dt>
+          <dd>{copy.timeValue}</dd>
+        </dl>
+        <p class="scope-note">{copy.note}</p>
+      </section>
+    </div>
+
+    <div slot="footer">
+      <p>{copy.footer}</p>
+    </div>
+  </LearningShell>
+</BaseLayout>

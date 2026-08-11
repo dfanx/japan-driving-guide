@@ -1,0 +1,122 @@
+---
+import { z } from "astro/zod";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LearningShell from "./LearningShell.astro";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const isEnglish = locale === "en";
+const localeLinks = {
+  "zh-TW": "/zh-TW/fast-track/",
+  en: "/en/fast-track/",
+};
+const copy = isEnglish
+  ? {
+      title: "Fast Track",
+      description: "Ten high-risk mistakes to check before collecting a rental car in Japan.",
+      skipLabel: "Skip to main content",
+      railLabel: "Fast Track progress",
+      railEyebrow: "Before pickup",
+      railItems: ["Ten-minute check", "Open a lesson", "Recheck before driving"],
+      eyebrow: "Ten-minute pre-drive check",
+      lead:
+        "Read these ten mistakes once. Open the full lesson for anything that is not already automatic.",
+      mistakeLabel: "Common mistake:",
+      action: "Open lesson",
+      homeAction: "Back to home",
+      note: "No account or app is required. Save the guide for offline use before the trip.",
+    }
+  : {
+      title: "快速必學",
+      description: "取車前 10 分鐘，先排除日本自駕最常見的高風險錯誤。",
+      skipLabel: "跳到主要內容",
+      railLabel: "10 分鐘重點",
+      railEyebrow: "取車前先看",
+      railItems: ["掃過 10 件事", "不熟就開課程", "上路前再看一次"],
+      eyebrow: "取車前 10 分鐘",
+      lead: "先把這 10 個錯誤掃過一次。哪一條還不直覺，就點進完整課程看圖。",
+      mistakeLabel: "常見錯誤：",
+      action: "看完整課程",
+      homeAction: "回首頁",
+      note: "不用登入、不用裝 App。出國前先開過一次，也能離線查看。",
+    };
+const items = isEnglish
+  ? [
+      { title: "Bring the right licence set", mistake: "Arriving with an online ‘international licence’ or a photo instead of accepted originals.", action: "Confirm the document set before flying.", slug: "eligibility" },
+      { title: "Finish every turn on the left", mistake: "Leaving a car park or quiet side road onto the right side.", action: "After turning, check that the driver sits near the road centre.", slug: "left-side-driving" },
+      { title: "Do not turn on red", mistake: "Importing a home-country turn-on-red habit.", action: "Wait for green or the applicable green arrow.", slug: "signals" },
+      { title: "Stop the wheels at 止まれ", mistake: "Rolling slowly through the line.", action: "Stop fully first, then creep forward only if visibility requires it.", slug: "stop-signs" },
+      { title: "Stop for people waiting to cross", mistake: "Waiting until a pedestrian steps into the crossing.", action: "Approach ready to stop and never pass a yielding vehicle.", slug: "pedestrians" },
+      { title: "Stop before a railway crossing", mistake: "Following traffic onto the tracks without clear exit space.", action: "Stop, check, and enter only when the whole car can clear.", slug: "rail-crossings" },
+      { title: "One parking slash is not the same as an X", mistake: "Assuming hazard lights or a two-minute stop makes the roadside legal.", action: "Read the sign and auxiliary plate; use a lawful car park when unsure.", slug: "parking" },
+      { title: "Never reverse after missing an exit", mistake: "Stopping, reversing or turning around at an expressway split.", action: "Continue to the next interchange and follow staff instructions.", slug: "expressways" },
+      { title: "No alcohol, phone handling or unbelted seats", mistake: "Treating rear belts, child seats, a hangover or navigation changes as optional.", action: "Prepare the cabin before moving; cancel if the driver is not fit.", slug: "safety-basics" },
+      { title: "Report every collision", mistake: "Privately settling a minor scrape and leaving without police contact.", action: "Call 119 for injuries, 110 for police, then the rental company.", slug: "emergency" },
+    ]
+  : [
+      { title: "證件要帶對，也要帶正本", mistake: "拿網路買的國際駕照、手機照片，到了櫃台才問能不能用。", action: "台灣旅客先備妥駕照正本、日文譯本和護照。", slug: "eligibility" },
+      { title: "轉完彎，車要回到左側", mistake: "離開停車場或小巷時，下意識開進右側。", action: "轉完立刻確認駕駛座靠道路中央。", slug: "left-side-driving" },
+      { title: "紅燈不能自己決定轉彎", mistake: "把台灣或其他國家的紅燈轉彎習慣帶去日本。", action: "等綠燈，或等你要走的方向亮綠色箭頭。", slug: "signals" },
+      { title: "止まれ要停到車輪不動", mistake: "覺得慢慢滑過停止線也算停。", action: "先在停止線前停死；看不到，再慢慢往前探。", slug: "stop-signs" },
+      { title: "行人還沒踏上斑馬線，也可能要讓", mistake: "等行人走上路面才踩煞車，或繞過正在讓人的前車。", action: "接近斑馬線先收油門，準備停車。", slug: "pedestrians" },
+      { title: "平交道先停，出口塞住就別進", mistake: "柵欄開著就跟前車進去，最後卡在鐵軌上。", action: "停、看、聽，確認整台車過得去再走。", slug: "rail-crossings" },
+      { title: "駐車禁止和駐停車禁止不一樣", mistake: "以為開雙黃燈、只停兩分鐘就不算違停。", action: "看主標誌和附牌；不確定就找合法停車場。", slug: "parking" },
+      { title: "高速公路錯過出口，去下一個", mistake: "停在分流處、倒車或迴轉。", action: "繼續到下一個交流道，照收費站人員指示。", slug: "expressways" },
+      { title: "酒精、手機、安全帶都沒有『一下沒關係』", mistake: "宿醉硬開、行駛中改導航、後座不繫，或沒先租兒童座椅。", action: "車動前全部準備好；狀態不好就不要開。", slug: "safety-basics" },
+      { title: "小擦撞也要打 110", mistake: "覺得沒人受傷，私下講好就直接離開。", action: "有人受傷先 119，再 110，接著通知租車公司。", slug: "emergency" },
+    ];
+const homeHref = withBase(`/${locale}/`);
+---
+
+<BaseLayout
+  title={`${copy.title} | Japan Driving Guide`}
+  description={copy.description}
+  locale={locale}
+  skipLabel={copy.skipLabel}
+>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.railLabel}>
+    <nav slot="rail" aria-label={copy.railLabel}>
+      <p class="rail-label">{copy.railEyebrow}</p>
+      <ol class="rail-list">
+        {copy.railItems.map((item, index) => (
+          <li aria-current={index === 0 ? "step" : undefined}>
+            <span class="rail-list__marker" data-state={index === 0 ? "current" : undefined}>
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="fast-track-page" data-fast-track-locale={locale}>
+      <header class="fast-track-hero">
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p class="lead">{copy.lead}</p>
+      </header>
+
+      <ol class="fast-track-grid" data-fast-track-items>
+        {items.map((item, index) => (
+          <li>
+            <article class="fast-track-card">
+              <p class="status-label">{String(index + 1).padStart(2, "0")}</p>
+              <h2>{item.title}</h2>
+              <p><strong>{copy.mistakeLabel}</strong> {item.mistake}</p>
+              <p>{item.action}</p>
+              <a class="text-link" href={withBase(`/${locale}/learn/${item.slug}/`)}>{copy.action} →</a>
+            </article>
+          </li>
+        ))}
+      </ol>
+
+      <div class="fast-track-footer-actions">
+        <a class="text-link" href={homeHref}>← {copy.homeAction}</a>
+        <p>{copy.note}</p>
+      </div>
+    </div>
+
+    <div slot="footer"><p>{copy.note}</p></div>
+  </LearningShell>
+</BaseLayout>

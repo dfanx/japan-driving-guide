@@ -1,0 +1,38 @@
+---
+import { z } from "astro/zod";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { lessonNavigation } from "../lib/content/lesson-navigation";
+import LearningShell from "./LearningShell.astro";
+import LessonRail from "./LessonRail.astro";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const isEnglish = locale === "en";
+const copy = isEnglish
+  ? { title: "Learn to drive safely in Japan", lead: "Sixteen reviewed modules focus on the decisions overseas visitors are most likely to get wrong.", rail: "Learn modules", start: "Open lesson", home: "Back to home", skip: "Skip to main content" }
+  : { title: "日本自駕新手攻略", lead: "第一次在日本開車，從證件、靠左、號誌、停車到事故處理，16 課按順序看完。", rail: "16 課攻略", start: "看這一課", home: "回首頁", skip: "跳到主要內容" };
+const localeLinks = { "zh-TW": "/zh-TW/learn/", en: "/en/learn/" };
+---
+
+<BaseLayout title={`${copy.title} | Japan Driving Guide`} description={copy.lead} locale={locale} skipLabel={copy.skip}>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.rail}>
+    <LessonRail slot="rail" locale={locale} label={copy.rail} />
+    <div class="learn-index">
+      <header>
+        <p class="eyebrow">{copy.rail}</p>
+        <h1>{copy.title}</h1>
+        <p class="lead">{copy.lead}</p>
+      </header>
+      <ol class="lesson-card-grid">
+        {lessonNavigation.map((item) => (
+          <li>
+            <span>{String(item.order + 1).padStart(2, "0")}</span>
+            <h2>{item.title[locale]}</h2>
+            <a href={withBase(`/${locale}/learn/${item.slug}/`)}>{copy.start}</a>
+          </li>
+        ))}
+      </ol>
+      <a class="text-link" href={withBase(`/${locale}/`)}>← {copy.home}</a>
+    </div>
+  </LearningShell>
+</BaseLayout>

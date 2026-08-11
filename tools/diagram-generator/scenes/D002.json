@@ -1,0 +1,58 @@
+{
+  "id": "D002",
+  "schemaVersion": "1.0.0",
+  "template": "FourWayIntersection",
+  "canvas": {
+    "aspect": "3:2",
+    "viewBox": {
+      "width": 1200,
+      "height": 800
+    }
+  },
+  "ruleIds": [
+    "JP-RULE-SIGNAL-RED-001"
+  ],
+  "roads": {
+    "northSouth": {
+      "lanesPerDirection": 1
+    },
+    "eastWest": {
+      "lanesPerDirection": 1
+    }
+  },
+  "crosswalks": [
+    "south"
+  ],
+  "stopLines": [
+    "south"
+  ],
+  "signals": [
+    {
+      "approach": "south",
+      "state": "red",
+      "greenArrows": []
+    }
+  ],
+  "vehicles": [
+    {
+      "id": "A",
+      "color": "yellow",
+      "from": "south",
+      "maneuver": "straight",
+      "position": "before_stop_line",
+      "label": "A"
+    }
+  ],
+  "annotations": [
+    {
+      "type": "instruction",
+      "kind": "stop_before_line",
+      "vehicleId": "A"
+    }
+  ],
+  "alt": {
+    "zh-TW": "黃色 A 車在紅燈路口停於停止線前，停止線前方設有行人穿越道。",
+    "en": "Yellow vehicle A is stopped before the stop line at a red signal, with a pedestrian crossing beyond the line."
+  },
+  "reviewStatus": "approved"
+}

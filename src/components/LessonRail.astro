@@ -1,0 +1,24 @@
+---
+import { z } from "astro/zod";
+
+import { lessonNavigation } from "../lib/content/lesson-navigation";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const currentId = z.string().optional().parse(Astro.props.currentId);
+const label = z.string().parse(Astro.props.label);
+---
+
+<nav aria-label={label}>
+  <p class="rail-label">{label}</p>
+  <ol class="rail-list module-rail-list">
+    {lessonNavigation.map((item) => (
+      <li aria-current={item.id === currentId ? "step" : undefined}>
+        <span class="rail-list__marker" data-state={item.id === currentId ? "current" : undefined}>
+          {String(item.order + 1).padStart(2, "0")}
+        </span>
+        <a href={withBase(`/${locale}/learn/${item.slug}/`)}>{item.title[locale]}</a>
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -1,0 +1,10 @@
+node_modules/
+.npm-cache/
+dist/
+.astro/
+playwright-report/
+test-results/
+coverage/
+tmp/
+.DS_Store
+*.log
