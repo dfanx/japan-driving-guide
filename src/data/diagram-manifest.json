@@ -1,0 +1,245 @@
+{
+  "schemaVersion": "1.0.0",
+  "items": [
+    {
+      "id": "D001",
+      "templateId": "T03",
+      "candidatePath": "tools/diagram-generator/review/D001.svg",
+      "sceneHash": "sha256:0ba1e82951625a273e91e99dde259e59e4922021338883740b3fa2bd60e248b3",
+      "outputHash": "sha256:4769d4efbb39bc2e6c51736525483f9b65545f267797e304993c745964e0e546",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D002",
+      "templateId": "T02",
+      "candidatePath": "tools/diagram-generator/review/D002.svg",
+      "sceneHash": "sha256:f7a7b99e3f23451ebccf61b1726a2ec7ff0571cab91f79c99769120e81698ad0",
+      "outputHash": "sha256:d76dfc5b49333dcb5d6fd5b8b9955e9834d1159a4b061dcff333f0422aea0046",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-10"
+    },
+    {
+      "id": "D003",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D003.svg",
+      "sceneHash": "sha256:26a1f90f77ef6bd0635c422616fbb15f83e8bd356f416bac1fa17131700e7463",
+      "outputHash": "sha256:3637add5d85360607dfa3f39b8e420d0e80bbaa52bf397e46711de1c4f19b1fa",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D004",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D004.svg",
+      "sceneHash": "sha256:7029a3c04a67ff52a2510df0050d4661a4e5661c858b7164a66863d50524ca47",
+      "outputHash": "sha256:d88be350047004807349f6f683b8555fd17d65015ed4b17c82055a1a0690b955",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D005",
+      "templateId": "C02",
+      "candidatePath": "tools/diagram-generator/review/D005.svg",
+      "sceneHash": "sha256:9a6a4253d56b2c4625ace6da28a2363932cbec8dd33a1ff1a1ae27a0b6263c6d",
+      "outputHash": "sha256:4af14ad3a4cfd37faf4b3dd145000507c9e77ce7f0d7e29e0570d92faae55e7c",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D006",
+      "templateId": "T02",
+      "candidatePath": "tools/diagram-generator/review/D006.svg",
+      "sceneHash": "sha256:ebe9909c24901b87ae7f8365ed1d3c52decdccd4c2e161fe932f8a6178bbd73e",
+      "outputHash": "sha256:37888b2d617001c4f97c9414ffd488cc091660fc9a0624404db06a0f4519faa9",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D007",
+      "templateId": "T02",
+      "candidatePath": "tools/diagram-generator/review/D007.svg",
+      "sceneHash": "sha256:ce850b08220c3f70efb1a957c0c09fa8a5a8c390ee55d16884fb26c26133a98c",
+      "outputHash": "sha256:550da4c2c749e5c2e5a473fd7e8c1e694f789af72d0816429ac87f15815059b9",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D008",
+      "templateId": "T02",
+      "candidatePath": "tools/diagram-generator/review/D008.svg",
+      "sceneHash": "sha256:0d6ce183661fce1d2bcd221574a81e11f9d95d32ff4b1f8f40c0bdb1a72426a2",
+      "outputHash": "sha256:a69b521fd20f78ef7eba48d66180bc0dc12236d3ecb95e09d9100165ab8501f4",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D009",
+      "templateId": "T04",
+      "candidatePath": "tools/diagram-generator/review/D009.svg",
+      "sceneHash": "sha256:4a4d598f840a37e20361297447e7a1fc1f94eb0dd4b9954cde1cefffde99109e",
+      "outputHash": "sha256:1cb81f950ed9603a02f1ba49be5ba0afc1ca7977c16fcc46f237034a764d74f7",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D010",
+      "templateId": "T12",
+      "candidatePath": "tools/diagram-generator/review/D010.svg",
+      "sceneHash": "sha256:0a54c2761a1d5ff3b4b6e692ec351df260651fd88459ef4f76a8af1219ccaaeb",
+      "outputHash": "sha256:c3c23f161d32a4a89228601902beacba0670c4f980111f34a9c40897d60b2029",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D011",
+      "templateId": "C02",
+      "candidatePath": "tools/diagram-generator/review/D011.svg",
+      "sceneHash": "sha256:4c6a023bb5e84a9848ad7811a118139f46f45e5d0faeee4649cefe7a0f824e81",
+      "outputHash": "sha256:d5feeb7ca4bc6db8e994b38eaa95de87546872e1dec98571c051d40de8f9722a",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D012",
+      "templateId": "T05",
+      "candidatePath": "tools/diagram-generator/review/D012.svg",
+      "sceneHash": "sha256:d4ff55a1bc8ad8e9859b32dff3d91ffa4b04d8240f2b0c2463e97bb362fa4162",
+      "outputHash": "sha256:b152518b4f0755602f3094859b4a5e00e44e6b331f5e4361e353f2fc43b6cd75",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D013",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D013.svg",
+      "sceneHash": "sha256:da355418ad7ce3dddb0d400d43d9e972e25e0dfd7d4cd8dfaf16b5a67143486a",
+      "outputHash": "sha256:7595811139cd202da6f3fc96607b602c366ee495e7486982b7d0ba556f4282ff",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D014",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D014.svg",
+      "sceneHash": "sha256:309b793159a0864a587961c4e3cf8888a5c3153bfa9bad6ba118d3faf2b48e22",
+      "outputHash": "sha256:003027db4b326a9097cf59af91f273a536359502e56cd6ac5367c2863668108e",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D015",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D015.svg",
+      "sceneHash": "sha256:3a998c71de0854c0aa8ba1218e9dabc532d70674a159ae937362aaab217b466c",
+      "outputHash": "sha256:f14b435573504e14d2a9e962a6b07c7e28be5efcf58fdf13ce5adb893e8ba73f",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D016",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D016.svg",
+      "sceneHash": "sha256:ee213c6e4d135433394079d0c8d2a6e0d0517a9ed3fc308bf884b5349ade503c",
+      "outputHash": "sha256:8b618e78b6542b3e5ded9ce0f4b6719974be36507969e070c6aff77e22bbe65a",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D017",
+      "templateId": "C01",
+      "candidatePath": "tools/diagram-generator/review/D017.svg",
+      "sceneHash": "sha256:d9adddc82a75093ec973fecad3f882f63eb1489223971f0a42de3830d301e9d0",
+      "outputHash": "sha256:e4d541b75c17351133aa0aa0df49b1c483b9e8a90cc6503712332f1e15fbc4d0",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D018",
+      "templateId": "T08",
+      "candidatePath": "tools/diagram-generator/review/D018.svg",
+      "sceneHash": "sha256:13fca37e07ecd6e55327bbc7fdd2ddbe3fe57a740bb1a8ff8ea378a156fc57c9",
+      "outputHash": "sha256:2e313f9f1d2ecbebce0f8f91dcf8989e6a49f2a2b5ef11699545926f5c869788",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D019",
+      "templateId": "T09",
+      "candidatePath": "tools/diagram-generator/review/D019.svg",
+      "sceneHash": "sha256:0e364e36178c459c62c94d525e83f4c00ad74d632fe4cecbca40f8122a22cc5f",
+      "outputHash": "sha256:f21a945aeae44a26cd1aa3756fcafe9bde65dd8407d2c62ce3d4d0e3d2428630",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D020",
+      "templateId": "T06",
+      "candidatePath": "tools/diagram-generator/review/D020.svg",
+      "sceneHash": "sha256:3696ee3cce3a28fad0ca489ac1128c24b8bfbd9469dabb4b7b5c8f9029038200",
+      "outputHash": "sha256:344e0802515b88c042fce7d60737ee973f6ebe8da1061cbf741da863a36250a1",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D021",
+      "templateId": "T07",
+      "candidatePath": "tools/diagram-generator/review/D021.svg",
+      "sceneHash": "sha256:22b7679c573aa3306d7a33c9f055165e359250de841dff86eb3b0749843067ce",
+      "outputHash": "sha256:d462e58ff5348cc54c8c3af9deaac812888f8fc70f93e3bd5469678c090765ef",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D022",
+      "templateId": "T08",
+      "candidatePath": "tools/diagram-generator/review/D022.svg",
+      "sceneHash": "sha256:f8619c6a12cd847b18da9200d26c830933fa5696027fc3667b778346ca585849",
+      "outputHash": "sha256:83ea7ed2b70186784c14538759399a010d4459affead38711da62b864d676017",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D023",
+      "templateId": "C03",
+      "candidatePath": "tools/diagram-generator/review/D023.svg",
+      "sceneHash": "sha256:98fad1629efc6e4fc11fcdd02c5184f518acc60570b395e5a90be1a227169df0",
+      "outputHash": "sha256:c74b1454d8eabd7890c200aa1c52b63c58ae9c4115d165ffe3520ac04225a2f5",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D024",
+      "templateId": "C04",
+      "candidatePath": "tools/diagram-generator/review/D024.svg",
+      "sceneHash": "sha256:d68c148c30d6ab9b4839becea543691e157a0da6acd418c90a11050cbdf11977",
+      "outputHash": "sha256:247e467b0e8d8989c0934cfc91fe8e898aed084be958f63799e68cd89531544a",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-11"
+    }
+  ]
+}

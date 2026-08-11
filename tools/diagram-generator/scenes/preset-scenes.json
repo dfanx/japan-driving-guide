@@ -1,0 +1,534 @@
+[
+  {
+    "id": "D001",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "left_side_exit",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-LEFT-SIDE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車從停車場駛出，左轉進入雙向道路的左側車道。",
+      "en": "Vehicle A leaves a car park and turns into the left side of a two-way road."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D003",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "signal_asset_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGNAL-ARROW-001"
+    ],
+    "assetIds": [
+      "NPA-S10-TRAFFIC-LIGHT-GREEN-RIGHT-ARROW"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方圖像顯示主燈紅燈且向右綠色箭頭亮起。",
+      "en": "An exact NPA image shows a red main signal with a green right arrow illuminated."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D004",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "signal_asset_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGNAL-FLASHING-001"
+    ],
+    "assetIds": [
+      "NPA-S10-TRAFFIC-LIGHT-FLASHING-RED",
+      "NPA-S10-TRAFFIC-LIGHT-FLASHING-YELLOW"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方閃紅與閃黃號誌圖像並列比較。",
+      "en": "Exact NPA flashing-red and flashing-yellow signal images are shown side by side."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D005",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "comparison",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-STOP-FULL-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車完整停在停止線前；B 車滑過停止線，標示為錯誤。",
+      "en": "Vehicle A is fully stopped before the line; vehicle B rolls beyond it and is marked incorrect."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D006",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "intersection_movement",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-INTERSECTION-RIGHT-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "右轉 A 車等待，讓對向直行 B 車先通過路口。",
+      "en": "Right-turning vehicle A waits while oncoming straight vehicle B proceeds first."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D007",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "intersection_movement",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-INTERSECTION-LEFT-CHECK-001",
+      "JP-RULE-PEDESTRIAN-CROSSING-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "左轉 A 車旁有同側自行車 B，穿越道旁另有行人 P。",
+      "en": "Left-turning vehicle A has cyclist B beside it and pedestrian P at the crossing."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D008",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "intersection_movement",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-INTERSECTION-LEFT-CHECK-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "建物遮蔽狹窄交叉口視線，A 車在進入前降速。",
+      "en": "Buildings block sight lines at a narrow intersection while vehicle A slows before entering."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D009",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "crosswalk",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-PEDESTRIAN-CROSSING-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車接近行人穿越道與停止線，必須準備停車讓行。",
+      "en": "Vehicle A approaches a pedestrian crossing and stop line ready to stop and yield."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D010",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "bicycle_passing",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-CYCLIST-PASSING-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車從自行車 B 右側通過並保留側向安全空間。",
+      "en": "Vehicle A passes cyclist B from the right while leaving lateral safety space."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D011",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "road_comparison",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SPEED-POSTED-001",
+      "JP-RULE-SPEED-LOCAL-2026-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 側為無中央線的狹窄生活道路；B 側為有中央線的道路。",
+      "en": "Side A is a narrow local road without a center line; side B has a center line."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D012",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "railway_crossing",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-RAIL-STOP-CHECK-001",
+      "JP-RULE-RAIL-CLEAR-EXIT-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車停在平交道前，軌道後方有 B 車占用出口空間，因此不得進入。",
+      "en": "Vehicle A waits before the railway while vehicle B blocks the exit space beyond the tracks."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D013",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "sign_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGN-MEANINGS-001",
+      "JP-RULE-STOP-FULL-001"
+    ],
+    "assetIds": [
+      "NPA-SIGN-STOP-BILINGUAL"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方的止まれ / STOP 標誌。",
+      "en": "The exact NPA 止まれ / STOP sign."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D014",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "sign_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGN-MEANINGS-001",
+      "JP-RULE-SIGNS-CURRENT-001"
+    ],
+    "assetIds": [
+      "NPA-SIGN-NO-ENTRY",
+      "NPA-SIGN-ONE-WAY-STRAIGHT"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方的車輛禁止進入與單行道標誌。",
+      "en": "Exact NPA no-entry and one-way signs."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D015",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "sign_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGN-MEANINGS-001"
+    ],
+    "assetIds": [
+      "NPA-SIGN-NO-STOPPING-PARKING",
+      "NPA-SIGN-NO-PARKING"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方的禁止駐停車與禁止停車標誌。",
+      "en": "Exact NPA no-stopping-or-parking and no-parking signs."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D016",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "sign_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGN-MEANINGS-001",
+      "JP-RULE-SPEED-POSTED-001"
+    ],
+    "assetIds": [
+      "NPA-SIGN-MAXIMUM-SPEED-50"
+    ],
+    "alt": {
+      "zh-TW": "日本警察廳官方最高速度 50 km/h 範例標誌；數字僅為範例。",
+      "en": "The exact NPA 50 km/h maximum-speed example; the number is illustrative."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D017",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "sign_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGN-MEANINGS-001",
+      "JP-RULE-SIGN-RAIL-WARNING-001"
+    ],
+    "assetIds": [
+      "NPA-SIGN-PEDESTRIAN-CROSSING",
+      "MLIT-SIGN-RAILWAY-CROSSING-A"
+    ],
+    "alt": {
+      "zh-TW": "官方行人穿越道與前方有平交道標誌。",
+      "en": "Exact official pedestrian-crossing and railway-crossing-ahead signs."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D018",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "toll_gate",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-ETC-ONLY-LANE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "示意收費站中 ETC 與一般車道的分流；文字不是官方標誌重製。",
+      "en": "A schematic toll-gate split between ETC and general lanes; labels are not reproduced official signs."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D019",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "parking_roadside",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-PARKING-DESIGNATED-001",
+      "JP-RULE-PEDESTRIAN-CROSSING-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "路邊停車位置不確定時，應改用指定停車場，不阻擋穿越道。",
+      "en": "When roadside legality is unclear, use designated parking and do not block a crossing."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D020",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "expressway_merge",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-EXPRESSWAY-MERGE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "加速車道與高速公路主線匯合，車輛確認安全後匯入。",
+      "en": "An acceleration lane joins the expressway mainline and the vehicle merges after checking safely."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D021",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "expressway_lanes",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-EXPRESSWAY-LANE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "A 車在主要行車道，B 車使用右側超車道；超車後應回到主要行車道。",
+      "en": "Vehicle A uses the driving lane and B the right passing lane; return after passing."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D022",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "toll_gate",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-ETC-LANE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "一般、ETC 與 ETC 專用收費車道示意；無可用 ETC 時須走一般車道。",
+      "en": "Schematic general, ETC, and ETC-only toll lanes; use general without working ETC."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D023",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "fuel_card",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-FUEL-CONFIRM-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "日本常見油種參考：紅色レギュラー、黃色ハイオク、綠色軽油；仍須依車輛指定油種。",
+      "en": "Common Japan fuel reference: red regular, yellow high-octane, green diesel; confirm the vehicle specification."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D024",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "breakdown",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-BREAKDOWN-EVACUATE-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "高速公路故障車 A 做好警示後，乘員 P 撤離到護欄外。",
+      "en": "After warning traffic around broken-down vehicle A, person P evacuates behind the guardrail."
+    },
+    "reviewStatus": "approved"
+  }
+]

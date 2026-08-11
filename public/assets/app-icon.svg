@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Japan Driving Guide</title>
+  <desc id="desc">A white J-shaped road on a blue-grey circular field.</desc>
+  <rect width="512" height="512" rx="112" fill="#315f78"/>
+  <path d="M326 104v216c0 64-42 104-108 104-53 0-91-28-110-74l63-29c10 24 23 36 47 36 27 0 43-15 43-43V104z" fill="#f7fbfc"/>
+  <path d="M292 135v178c0 44-25 70-69 76" fill="none" stroke="#117b82" stroke-width="14" stroke-linecap="round" stroke-dasharray="30 24"/>
+</svg>

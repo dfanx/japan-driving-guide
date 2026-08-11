@@ -1,0 +1,184 @@
+---
+import { z } from "astro/zod";
+
+import { getOfficialAssetsForSign } from "../lib/content/essential-signs";
+import { getLessonVisualSet } from "../lib/content/lesson-visuals";
+import { withBase } from "../lib/paths";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const lessonId = z.string().regex(/^M\d{2}-[a-z0-9-]+$/).parse(Astro.props.lessonId);
+const excludeDiagramIds = z.array(z.string().regex(/^D\d{3}$/)).parse(
+  Astro.props.excludeDiagramIds ?? [],
+);
+const visualSet = getLessonVisualSet(lessonId);
+const diagramPairs = visualSet.diagramPairs.filter(
+  ({ diagram }) => !excludeDiagramIds.includes(diagram.id),
+);
+const isEnglish = locale === "en";
+const copy = isEnglish
+  ? {
+      eyebrow: "Visual learning",
+      title: "See the driver's view, then break down the decision",
+      intro:
+        "The generated photo builds field awareness. Use the deterministic diagram and exact official visual for the rule and control.",
+      simulation: "Driver's view · generated simulation",
+      simulationNote:
+        "Context only. Do not use this generated image to identify a sign, signal, road marking, fuel grade, or legal requirement.",
+      diagram: "Decision breakdown",
+      officialDiagram: "Includes exact official visual",
+      illustration: "Context illustration · not official evidence",
+      illustrationNote:
+        "Generated only to illustrate context. Do not use it to identify a document, sign, road marking, or legal requirement.",
+      signTitle: "Official signs to recognize in this lesson",
+      meaning: "Meaning",
+      action: "What to do",
+      officialSource: "Open official source",
+      linkOnly: "Official link only",
+    }
+  : {
+      eyebrow: "先看圖",
+      title: "先看現場，再拆解判斷",
+      intro: "生成模擬照先建立臨場感；法規、位置與標誌辨認，以解說圖和日本官方原圖為準。",
+      simulation: "駕駛座視角 · 生成模擬",
+      simulationNote: "只用來看視野與空間；不要拿它辨認標誌、號誌、標線、油品或法規。",
+      diagram: "判斷解說圖",
+      officialDiagram: "含官方標誌原圖",
+      illustration: "情境示意（非官方圖）",
+      illustrationNote: "這張圖只用來看情境，不要拿它辨認證件、標誌、標線或法規。",
+      signTitle: "這一課要認得的標誌",
+      meaning: "代表什麼",
+      action: "看到怎麼做",
+      officialSource: "看日本官方資料",
+      linkOnly: "只放官方連結",
+    };
+const headingId = `${lessonId}-visuals-title`;
+---
+
+<section class="lesson-visuals" aria-labelledby={headingId} data-lesson-visuals data-visuals-for={lessonId}>
+  <header class="section-heading lesson-visuals__heading">
+    <p class="eyebrow">{copy.eyebrow}</p>
+    <h2 id={headingId}>{copy.title}</h2>
+    <p>{copy.intro}</p>
+  </header>
+
+  {(diagramPairs.length > 0 || visualSet.illustrations.length > 0) && (
+    <div class="lesson-visual-flow" data-count={diagramPairs.length + visualSet.illustrations.length}>
+      {visualSet.illustrations.map((illustration) => (
+        <figure
+          class="lesson-visual-card lesson-visual-card--illustration"
+          data-lesson-visual
+          data-visual-kind="generated-context-illustration"
+          data-illustration-id={illustration.id}
+        >
+          <img
+            src={withBase(illustration.assetPath)}
+            width={illustration.width}
+            height={illustration.height}
+            loading="lazy"
+            decoding="async"
+            alt={illustration.alt[locale]}
+          />
+          <figcaption>
+            <span class="visual-badge visual-badge--context">{copy.illustration}</span>
+            <span>{illustration.alt[locale]}</span>
+            <small>{copy.illustrationNote}</small>
+          </figcaption>
+        </figure>
+      ))}
+
+      {diagramPairs.map(({ diagram, simulation }) => (
+        <article class="lesson-scenario-pair" data-scenario-pair data-paired-diagram-id={diagram.id}>
+          <figure
+            class="lesson-visual-card lesson-visual-card--simulation"
+            data-lesson-visual
+            data-visual-kind="generated-driver-simulation"
+            data-simulation-id={simulation.id}
+          >
+            <img
+              src={withBase(simulation.assetPath)}
+              width={simulation.width}
+              height={simulation.height}
+              loading="lazy"
+              decoding="async"
+              alt={simulation.alt[locale]}
+            />
+            <figcaption>
+              <span class="visual-badge visual-badge--context">{copy.simulation}</span>
+              <span>{simulation.alt[locale]}</span>
+              <small>{copy.simulationNote}</small>
+            </figcaption>
+          </figure>
+
+          <figure
+            class="lesson-visual-card lesson-visual-card--diagram"
+            data-lesson-visual
+            data-visual-kind="deterministic-diagram"
+            data-diagram-id={diagram.id}
+          >
+            <img
+              src={withBase(diagram.assetPath)}
+              width="1200"
+              height="800"
+              loading="lazy"
+              decoding="async"
+              alt={diagram.alt[locale]}
+            />
+            <figcaption>
+              <span class="visual-badge">{copy.diagram} · {diagram.id}</span>
+              {diagram.containsOfficialVisual && (
+                <span class="visual-badge visual-badge--official">{copy.officialDiagram}</span>
+              )}
+              <span>{diagram.alt[locale]}</span>
+            </figcaption>
+          </figure>
+        </article>
+      ))}
+    </div>
+  )}
+
+  {visualSet.officialSigns.length > 0 && (
+    <section class="lesson-sign-reference" aria-labelledby={`${lessonId}-official-signs-title`}>
+      <h3 id={`${lessonId}-official-signs-title`}>{copy.signTitle}</h3>
+      <div class="lesson-sign-reference__grid" data-count={visualSet.officialSigns.length}>
+        {visualSet.officialSigns.map((sign) => {
+          const assets = getOfficialAssetsForSign(sign);
+          return (
+            <article class="lesson-sign-card" data-sign-id={sign.id} data-rule-id={sign.ruleId}>
+              <div class="lesson-sign-card__visual" data-count={assets.length || "link-only"}>
+                {assets.map((asset, index) => (
+                  <figure class="lesson-sign-card__asset">
+                    <img
+                      src={withBase(asset.assetPath)}
+                      width={asset.width}
+                      height={asset.height}
+                      loading="lazy"
+                      decoding="async"
+                      alt={sign.assetLabels?.[index]?.[locale] ?? `${sign.title[locale]}${assets.length > 1 ? ` ${index + 1}` : ""}`}
+                      data-asset-id={asset.id}
+                    />
+                    {sign.assetLabels?.[index] && <figcaption>{sign.assetLabels[index][locale]}</figcaption>}
+                  </figure>
+                ))}
+                {assets.length === 0 && (
+                  <div class="lesson-sign-card__link-only">
+                    <strong>{copy.linkOnly}</strong>
+                    <p>{sign.rightsNote?.[locale]}</p>
+                  </div>
+                )}
+              </div>
+              <div class="lesson-sign-card__body">
+                <p class="visual-badge visual-badge--official">{sign.class[locale]}</p>
+                <h4>{sign.title[locale]}</h4>
+                <dl>
+                  <div><dt>{copy.meaning}</dt><dd>{sign.meaning[locale]}</dd></div>
+                  <div><dt>{copy.action}</dt><dd>{sign.action[locale]}</dd></div>
+                </dl>
+                <a href={sign.officialLink}>{copy.officialSource} ↗</a>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  )}
+</section>

@@ -1,0 +1,13 @@
+---
+import EssentialSigns from "../../../components/EssentialSigns.astro";
+import GenericLessonPage from "../../../components/GenericLessonPage.astro";
+import * as markdownModule from "../../../content/lessons/M09-signs/zh-TW.md";
+import { parseLessonMarkdownModule } from "../../../lib/content/markdown-module";
+
+const { default: Content, frontmatter: lesson } = parseLessonMarkdownModule(markdownModule);
+---
+
+<GenericLessonPage locale="zh-TW" lesson={lesson}>
+  <Content />
+  <EssentialSigns slot="supplement" locale="zh-TW" />
+</GenericLessonPage>

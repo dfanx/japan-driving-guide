@@ -1,0 +1,56 @@
+---
+import { withBase } from "../lib/paths";
+
+const { currentLocale = "zh-TW", localeLinks } = Astro.props;
+const isEnglish = currentLocale === "en";
+const homeHref = withBase(`/${currentLocale}/`);
+const copy = isEnglish
+  ? {
+      homeLabel: "Japan Driving Guide home",
+      subtitle: "Safety guide for driving in Japan",
+      languageLabel: "Languages",
+    }
+  : {
+      homeLabel: "Japan Driving Guide 首頁",
+      subtitle: "日本自駕旅客安全指南",
+      languageLabel: "支援語言",
+    };
+---
+
+<header class="app-header" data-testid="app-header">
+  <a class="brand" href={homeHref} aria-label={copy.homeLabel}>
+    <span class="brand__mark" aria-hidden="true">J</span>
+    <span class="brand__copy">
+      <span class="brand__name">Japan Driving Guide</span>
+      <span class="brand__subtitle">{copy.subtitle}</span>
+    </span>
+  </a>
+
+  <div class="locale-status" aria-label={copy.languageLabel}>
+    {
+      localeLinks ? (
+        <>
+          <a
+            href={withBase(localeLinks["zh-TW"])}
+            lang="zh-TW"
+            aria-current={currentLocale === "zh-TW" ? "page" : undefined}
+          >
+            中
+          </a>
+          <a
+            href={withBase(localeLinks.en)}
+            lang="en"
+            aria-current={currentLocale === "en" ? "page" : undefined}
+          >
+            EN
+          </a>
+        </>
+      ) : (
+        <>
+          <span aria-current={currentLocale === "zh-TW" ? "true" : undefined}>中</span>
+          <span aria-current={currentLocale === "en" ? "true" : undefined}>EN</span>
+        </>
+      )
+    }
+  </div>
+</header>

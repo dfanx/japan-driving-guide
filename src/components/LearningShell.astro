@@ -1,0 +1,41 @@
+---
+import AppHeader from "./AppHeader.astro";
+import { withBase } from "../lib/paths";
+
+const explicitLocale = Astro.props.currentLocale === "en" || Astro.props.currentLocale === "zh-TW";
+const { currentLocale = "en", localeLinks, railLabel = "Learning scope" } = Astro.props;
+const sourceHref = withBase(`/${currentLocale}/sources/`);
+const sourceLabel = currentLocale === "en" ? "Sources & verification" : "資料來源與內容驗證";
+---
+
+<div class="app-frame" data-testid="app-frame">
+  <AppHeader currentLocale={currentLocale} localeLinks={localeLinks} />
+
+  <div class="learning-shell" data-testid="learning-shell">
+    <aside class="learning-rail" aria-label={railLabel}>
+      <slot name="rail" />
+    </aside>
+
+    <main class="learning-main" id="main-content" tabindex="-1">
+      <div class="content-column">
+        <slot />
+      </div>
+    </main>
+  </div>
+
+  <footer class="app-footer">
+    <slot name="footer" />
+    <nav class="app-footer__trace" aria-label={currentLocale === "en" ? "Content transparency" : "內容透明度"}>
+      {
+        explicitLocale ? (
+          <a href={sourceHref}>{sourceLabel}</a>
+        ) : (
+          <>
+            <a href={withBase("/zh-TW/sources/")} lang="zh-TW">資料來源與內容驗證</a>
+            <a href={withBase("/en/sources/")} lang="en">Sources &amp; verification</a>
+          </>
+        )
+      }
+    </nav>
+  </footer>
+</div>

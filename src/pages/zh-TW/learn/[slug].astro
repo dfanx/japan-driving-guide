@@ -1,0 +1,27 @@
+---
+import GenericLessonPage from "../../../components/GenericLessonPage.astro";
+import { getLessonNavigationItem } from "../../../lib/content/lesson-navigation";
+import { parseLessonMarkdownModule } from "../../../lib/content/markdown-module";
+
+export function getStaticPaths() {
+  const modules = import.meta.glob(
+    "../../../content/lessons/*/zh-TW.md",
+    { eager: true },
+  );
+  return Object.values(modules).flatMap((value) => {
+    const module = parseLessonMarkdownModule(value);
+    const lesson = module.frontmatter;
+    if (["M02-signals", "M09-signs"].includes(lesson.id)) return [];
+    return [{
+      params: { slug: getLessonNavigationItem(lesson.id).slug },
+      props: { lesson, Content: module.default },
+    }];
+  });
+}
+
+const { lesson, Content } = Astro.props;
+---
+
+<GenericLessonPage locale="zh-TW" lesson={lesson}>
+  <Content />
+</GenericLessonPage>

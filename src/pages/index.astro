@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LearningShell from "../components/LearningShell.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Japan Driving Guide"
+  description="Choose Traditional Chinese or English for the Japan self-drive safety guide."
+  locale="en"
+  skipLabel="Skip to main content"
+>
+  <LearningShell railLabel="Language / 語言">
+    <div slot="rail">
+      <p class="rail-label">Language / 語言</p>
+      <ol class="rail-list">
+        <li aria-current="step">
+          <span class="rail-list__marker" data-state="current">01</span>
+          <span>Choose language</span>
+        </li>
+      </ol>
+    </div>
+
+    <div class="locale-gateway">
+      <p class="eyebrow">Japan self-drive essentials</p>
+      <h1>Japan Driving Guide</h1>
+      <p class="lead">Choose your language to begin the reviewed safety path.</p>
+      <div class="locale-gateway__actions" aria-label="Languages">
+        <a class="locale-card" href={withBase("/zh-TW/")} lang="zh-TW">
+          <strong>繁體中文</strong>
+          <span>開始日本自駕安全指南</span>
+        </a>
+        <a class="locale-card" href={withBase("/en/")} lang="en">
+          <strong>English</strong>
+          <span>Start the Japan driving safety guide</span>
+        </a>
+      </div>
+    </div>
+
+    <div slot="footer"><p>Traditional Chinese · English</p></div>
+  </LearningShell>
+</BaseLayout>
