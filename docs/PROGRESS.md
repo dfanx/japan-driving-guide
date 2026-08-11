@@ -7,7 +7,7 @@
 - Last passing feature: F029 — D006 right-turn lane correction
 - Content imported: 25 Sources, 36 Rules, 24 Questions, 32 lesson documents
 - Diagrams generated/approved: 24 review candidates / 24 approved
-- Deployment: workflow/base path verified; live GitHub Pages blocked by missing remote
+- Deployment: source pushed in PR #1; live GitHub Pages pending merge/deployment
 
 ## Session 2026-08-10
 
@@ -1605,9 +1605,35 @@ authorized GitHub repository and running the verified Pages workflow.
   review remains necessary after any future renderer-wide road-layout change.
 - Rollback is limited to the D006 preset, its focused tests, manifest/public SVG,
   and rebuilt release artifact. No Rule, Source, or lesson copy changed.
-- F022 remains blocked only on an authorized GitHub remote/Pages target.
+- F022 remains blocked only on completing the PR merge and live Pages deployment.
 
 ### Next
 
 No feature is active. The corrected release is ready locally; public deployment
-still requires a user-authorized GitHub repository.
+still requires PR #1 to merge and the Pages workflow to complete.
+
+## Session 2026-08-11 — GitHub source publication
+
+### Completed
+
+- Authenticated GitHub CLI as `dfanx` and connected the local repository to
+  `https://github.com/dfanx/japan-driving-guide.git`.
+- Preserved the existing `main` commit containing the static ZIP, fetched it as
+  the branch base, and avoided force-push.
+- Excluded dependencies, build/test output, caches, and `tmp/` PDF extraction
+  intermediates from source control.
+- Staged 292 project files after a credential-pattern scan returned no matches.
+- Created commit `8ebcb75` (`Publish Japan driving guide`) and pushed
+  `agent/publish-guide`.
+- Opened draft PR #1 against `main`:
+  `https://github.com/dfanx/japan-driving-guide/pull/1`.
+
+### Verification and boundary
+
+- Remote branch push: PASS.
+- Draft PR creation through authenticated GitHub CLI: PASS. The GitHub connector
+  returned 403 for PR creation, so the documented CLI fallback was used.
+- Product release verification remains the recorded F029 `verify:release` PASS;
+  publication changed only Git metadata, `.gitignore`, and handoff text.
+- F022 remains blocked until PR #1 is merged and the Pages workflow produces a
+  reachable public URL.

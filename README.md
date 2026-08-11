@@ -75,9 +75,9 @@ Question bank.
 ## Deployment
 
 `.github/workflows/deploy-pages.yml` verifies and deploys either an owner-site
-root path or repository project path. Live deployment requires a user-owned
-GitHub remote and Pages access; this workspace currently has no remote, so no
-public repository or URL is fabricated.
+root path or repository project path. The source repository is
+`https://github.com/dfanx/japan-driving-guide`; no live Pages URL is claimed
+until the publication PR is merged and deployment completes.
 
 ## Repository map
 

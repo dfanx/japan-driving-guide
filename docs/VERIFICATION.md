@@ -144,6 +144,9 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-11 | F029 | `npm run verify:f029` | PASS | Focused SVG/lane/mobile checks plus lint, typecheck, content, diagram and build gates pass |
 | 2026-08-11 | F029 | `npm run verify:release` | PASS | 21 unit files / 144 tests; 45 root Chromium passes, one expected skip, one separate project-base pass; 108 PWA URLs |
 | 2026-08-11 | Release | Corrected static ZIP integrity check | PASS | 110 entries; size 3,315,580 bytes; SHA-256 `5B2C79CB...C12DF4` |
+| 2026-08-11 | Publish | GitHub scope and credential scan | PASS | 292 project files staged; dependencies, build/test output, caches and `tmp/` excluded; no credential-pattern match |
+| 2026-08-11 | Publish | Branch push | PASS | Commit `8ebcb75` pushed to `dfanx/japan-driving-guide:agent/publish-guide` without rewriting existing `main` |
+| 2026-08-11 | Publish | Draft PR | PASS | PR #1 opened against `main`; connector returned 403, authenticated `gh pr create` fallback succeeded |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

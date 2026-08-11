@@ -57,7 +57,7 @@
 
 ## Known boundary
 
-There is no authorized GitHub remote in this workspace, so this release is not
-claimed as publicly deployed. The ZIP and localhost preview are the completed
-delivery artifacts; the verified Pages workflow can be used after a repository
-target is explicitly supplied.
+The source is published to `dfanx/japan-driving-guide` through draft PR #1, but
+this release is not yet claimed as publicly deployed. The ZIP and localhost
+preview remain the completed delivery artifacts until the PR is merged and the
+verified Pages workflow produces a reachable live URL.
