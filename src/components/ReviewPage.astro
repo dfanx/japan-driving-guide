@@ -1,0 +1,211 @@
+---
+import { z } from "astro/zod";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { questionBank } from "../lib/content/catalog";
+import { withBase } from "../lib/paths";
+import LearningShell from "./LearningShell.astro";
+
+const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
+const isEnglish = locale === "en";
+const questions = questionBank.filter((question) => question.reviewStatus === "approved");
+if (questions.length !== 24) throw new Error("Full review requires the 24 approved Questions");
+
+const copy = isEnglish
+  ? {
+      title: "Final driving check",
+      description: "Finish the guide, then work through 24 practical decisions before collecting the rental car.",
+      skip: "Skip to main content",
+      rail: "Final review",
+      railEyebrow: "Before pickup",
+      railItems: ["Finish the 16 lessons", "Answer 24 situations", "Review weak topics"],
+      eyebrow: "After the full guide",
+      lead: "One question at a time. You can return to answered questions, and the final page points you back to topics worth another look.",
+      startNote: "Allow about 8–12 minutes. Answers lock after submission so the result reflects your first decision.",
+      question: "Question",
+      answered: "answered",
+      optionLabel: "Answer choices",
+      submit: "Check this answer",
+      previous: "Previous question",
+      next: "Next question",
+      result: "See my result",
+      correct: "Correct",
+      incorrect: "Not quite",
+      why: "Why",
+      resultEyebrow: "Your final check",
+      resultTitle: "Ready to drive—or review first?",
+      score: "Score",
+      strong: "Solid first decision-making",
+      review: "Review a few topics before pickup",
+      priority: "Pause and review the priority topics",
+      breakdown: "Topic review",
+      topicStrong: "Looking good",
+      topicReview: "Review once",
+      topicPriority: "Review before driving",
+      reviewLesson: "Open lesson",
+      restart: "Try all 24 again",
+      lessons: "Back to all lessons",
+      footer: "Use the result to decide what to review—not as a driving licence or guarantee.",
+    }
+  : {
+      title: "上路前總複習",
+      description: "看完 16 課後，用 24 個實際情境確認自己真的會判斷。",
+      skip: "跳到主要內容",
+      rail: "總複習流程",
+      railEyebrow: "取車前最後一關",
+      railItems: ["看完 16 課", "完成 24 個情境", "補強不熟的主題"],
+      eyebrow: "完整攻略讀完後",
+      lead: "一次只看一題。答過的題目可以回頭看，最後會告訴你哪些主題值得再補一次。",
+      startNote: "約 8–12 分鐘。每題送出後鎖定，保留你的第一反應。",
+      question: "第",
+      answered: "題已作答",
+      optionLabel: "答案選項",
+      submit: "確認這題",
+      previous: "上一題",
+      next: "下一題",
+      result: "看學習結果",
+      correct: "答對了",
+      incorrect: "這題要再想一下",
+      why: "判斷重點",
+      resultEyebrow: "你的總複習結果",
+      resultTitle: "可以上路，還是先補幾課？",
+      score: "答對",
+      strong: "基本判斷穩定，可以出發",
+      review: "幾個主題再看一次會更安心",
+      priority: "先補強重點，再拿車鑰匙",
+      breakdown: "各主題表現",
+      topicStrong: "目前穩定",
+      topicReview: "建議再看一次",
+      topicPriority: "上路前先複習",
+      reviewLesson: "回去看這一課",
+      restart: "重新做 24 題",
+      lessons: "回全部 16 課",
+      footer: "這份結果是複習導航，不是駕照測驗或安全保證。",
+    };
+
+const categoryLabels = isEnglish
+  ? {
+      left_side_driving: "Left-side driving", signals: "Signals", stop_sign: "STOP", intersections: "Intersections",
+      pedestrians: "Pedestrians", cyclists: "Cyclists", speed: "Speed", rail_crossing: "Rail crossings",
+      signs: "Signs", parking: "Parking", expressway: "Expressways", fuel: "Fuel", emergency: "Emergencies",
+      safety_basics: "Fitness to drive",
+    }
+  : {
+      left_side_driving: "靠左行駛", signals: "號誌", stop_sign: "止まれ", intersections: "路口轉彎",
+      pedestrians: "行人", cyclists: "自行車", speed: "速限", rail_crossing: "平交道",
+      signs: "交通標誌", parking: "停車", expressway: "高速公路", fuel: "加油", emergency: "事故與故障",
+      safety_basics: "能不能開車",
+    };
+
+const categoryLessonSlugs = {
+  left_side_driving: "left-side-driving", signals: "signals", stop_sign: "stop-signs", intersections: "intersections",
+  pedestrians: "pedestrians", cyclists: "cyclists", speed: "speed", rail_crossing: "rail-crossings",
+  signs: "signs", parking: "parking", expressway: "expressways", fuel: "fuel", emergency: "emergency",
+  safety_basics: "safety-basics",
+};
+const reviewLinks = Object.fromEntries(
+  Object.entries(categoryLessonSlugs).map(([tag, slug]) => [tag, withBase(`/${locale}/learn/${slug}/`)]),
+);
+const localeLinks = { "zh-TW": "/zh-TW/review/", en: "/en/review/" };
+const questionPayload = JSON.stringify(questions);
+const categoryPayload = JSON.stringify({ labels: categoryLabels, links: reviewLinks });
+---
+
+<BaseLayout title={`${copy.title} | Japan Driving Guide`} description={copy.description} locale={locale} skipLabel={copy.skip}>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.rail}>
+    <nav slot="rail" aria-label={copy.rail}>
+      <p class="rail-label">{copy.railEyebrow}</p>
+      <ol class="rail-list review-rail-list">
+        {copy.railItems.map((item, index) => (
+          <li aria-current={index === 1 ? "step" : undefined}>
+            <span class="rail-list__marker" data-state={index === 1 ? "current" : undefined}>{String(index + 1).padStart(2, "0")}</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ol>
+    </nav>
+
+    <div class="review-page" data-review-page data-locale={locale}>
+      <header class="review-hero">
+        <p class="eyebrow">{copy.eyebrow}</p>
+        <h1>{copy.title}</h1>
+        <p class="lead">{copy.lead}</p>
+        <p class="review-hero__note">{copy.startNote}</p>
+      </header>
+
+      <section
+        class="review-session"
+        data-full-review
+        data-questions={questionPayload}
+        data-category-meta={categoryPayload}
+        data-copy={JSON.stringify(copy)}
+        aria-labelledby="review-question-heading"
+      >
+        <header class="review-progress">
+          <div>
+            <strong data-progress-label>{copy.question} 1 / {questions.length}</strong>
+            <span><b data-answered-count>0</b> / {questions.length} {copy.answered}</span>
+          </div>
+          <progress max={questions.length} value="0" data-review-progress>0</progress>
+        </header>
+
+        <form class="review-form" data-review-form>
+          {questions.map((question, index) => (
+            <fieldset
+              class="review-question"
+              data-review-question
+              data-question-id={question.id}
+              data-question-index={index}
+              hidden={index !== 0}
+            >
+              <legend id={index === 0 ? "review-question-heading" : undefined} tabindex="-1">{question.prompt[locale]}</legend>
+              {question.diagramId && (
+                <img class="review-question__diagram" src={withBase(`/diagrams/${question.diagramId}.svg`)} width="1200" height="800" alt="" />
+              )}
+              <ul class="checkpoint-options" aria-label={copy.optionLabel}>
+                {question.options.map((option) => (
+                  <li>
+                    <label class="checkpoint-option" data-option-id={option.id}>
+                      <input class="checkpoint-option__input" type="radio" name={question.id} value={option.id} />
+                      <span class="checkpoint-option__marker" aria-hidden="true">{option.id}</span>
+                      <span>{option.text[locale]}</span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              <div class="checkpoint-feedback" data-review-feedback role="status" tabindex="-1" hidden>
+                <p class="checkpoint-feedback__status" data-review-feedback-status></p>
+                <p class="checkpoint-feedback__explanation"><strong>{copy.why}：</strong>{question.explanation[locale]}</p>
+              </div>
+            </fieldset>
+          ))}
+
+          <div class="review-controls">
+            <button class="secondary-action" type="button" data-review-previous disabled>← {copy.previous}</button>
+            <button class="primary-action" type="submit" data-review-submit>{copy.submit}</button>
+            <button class="primary-action" type="button" data-review-next hidden>{copy.next} →</button>
+          </div>
+        </form>
+
+        <section class="review-result" data-review-result tabindex="-1" hidden aria-labelledby="review-result-title">
+          <p class="eyebrow">{copy.resultEyebrow}</p>
+          <h2 id="review-result-title">{copy.resultTitle}</h2>
+          <p class="review-result__score"><span>{copy.score}</span><strong data-review-score></strong></p>
+          <p class="review-result__headline" data-review-headline></p>
+          <h3>{copy.breakdown}</h3>
+          <ol class="review-breakdown" data-review-breakdown></ol>
+          <div class="review-result__actions">
+            <button class="primary-action" type="button" data-review-restart>{copy.restart}</button>
+            <a class="secondary-action" href={withBase(`/${locale}/learn/`)}>{copy.lessons}</a>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <div slot="footer"><p>{copy.footer}</p></div>
+  </LearningShell>
+</BaseLayout>
+
+<script>
+  import "../scripts/review";
+</script>

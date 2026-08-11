@@ -1,27 +1,30 @@
 ---
+import { z } from "astro/zod";
+
+import { diagramManifestSchema } from "../../tools/diagram-generator/src/manifest";
+import { diagramSceneSchema } from "../../tools/diagram-generator/src/schema";
+import sceneData from "../../tools/diagram-generator/scenes/D002.json";
 import diagramManifestData from "../data/diagram-manifest.json";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getRuleById } from "../lib/content/catalog";
 import { lessonFrontmatterSchema } from "../lib/content/lesson-schema";
-import { getQuestionById, getRuleById } from "../lib/content/catalog";
-import { getDriverSimulationByDiagramId } from "../lib/content/lesson-visuals";
+import { getDriverSimulationByDiagramId, getVisualGuidance } from "../lib/content/lesson-visuals";
 import { lessonNavigation } from "../lib/content/lesson-navigation";
 import { withBase } from "../lib/paths";
 import LearningShell from "./LearningShell.astro";
 import LessonVisuals from "./LessonVisuals.astro";
-import { diagramManifestSchema } from "../../tools/diagram-generator/src/manifest";
-import { diagramSceneSchema } from "../../tools/diagram-generator/src/schema";
-import sceneData from "../../tools/diagram-generator/scenes/D002.json";
-import { z } from "astro/zod";
 
 const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
-const lesson = Astro.props.lesson;
-const lessonMeta = lessonFrontmatterSchema.parse(lesson);
-const question = getQuestionById("Q002");
+const lessonMeta = lessonFrontmatterSchema.parse(Astro.props.lesson);
 const rule = getRuleById("JP-RULE-SIGNAL-RED-001");
 const scene = diagramSceneSchema.parse(sceneData);
 const driverSimulation = getDriverSimulationByDiagramId(scene.id);
+const guidance = getVisualGuidance(scene.id);
 const manifest = diagramManifestSchema.parse(diagramManifestData);
 const diagramEntry = manifest.items.find((item) => item.id === scene.id);
+const lessonIndex = lessonNavigation.findIndex((item) => item.id === lessonMeta.id);
+const previous = lessonNavigation[lessonIndex - 1];
+const next = lessonNavigation[lessonIndex + 1];
 
 if (lessonMeta.locale !== locale || lessonMeta.id !== "M02-signals") {
   throw new Error("Signal lesson route received mismatched lesson metadata");
@@ -29,303 +32,117 @@ if (lessonMeta.locale !== locale || lessonMeta.id !== "M02-signals") {
 if (
   lessonMeta.reviewStatus !== "approved" ||
   rule.reviewStatus !== "approved" ||
-  question.reviewStatus !== "approved" ||
   scene.reviewStatus !== "approved" ||
   diagramEntry?.reviewStatus !== "approved"
 ) {
   throw new Error("Signal lesson dependencies must all be approved");
 }
-if (
-  !lessonMeta.ruleIds.includes(rule.id) ||
-  !lessonMeta.diagramIds.includes(scene.id) ||
-  question.diagramId !== scene.id ||
-  !question.ruleIds.includes(rule.id)
-) {
-  throw new Error("M02, D002, Q002, and the red-signal Rule are not aligned");
+if (!lessonMeta.ruleIds.includes(rule.id) || !lessonMeta.diagramIds.includes(scene.id)) {
+  throw new Error("M02, D002, and the red-signal Rule are not aligned");
 }
 
 const isEnglish = locale === "en";
 const copy = isEnglish
   ? {
-      description:
-        "Learn the red-light rule every overseas visitor should know before driving in Japan.",
+      description: "Learn the red-light decision every overseas visitor should know before driving in Japan.",
       skipLabel: "Skip to main content",
-      railLabel: "Lesson scope",
-      railEyebrow: "Learn modules",
+      railLabel: "Learn modules",
+      railEyebrow: "Full guide",
       lessonNumber: "Lesson 02",
-      legalLabel: "Legal rule",
+      practicalLabel: "Use this on the road",
+      eyebrow: "Road decision",
       lead: "A clear road does not override a red signal.",
-      figureLabel: "Decision scene",
-      simulationLabel: "Driver's view · generated simulation",
-      simulationNote:
-        "Context only. Use the exact diagram below to identify the signal and stopping position.",
-      figureCaption:
-        "Vehicle A stops before the stop line. The traffic-light face is the exact image published by Japan’s National Police Agency.",
-      checkpointLabel: "Scenario check · Q002",
-      checkpointTitle: "Make the call",
-      checkpointNote:
-        "Choose one answer. Your first answer is final for this checkpoint.",
-      optionLabel: "Answer choices",
-      submitLabel: "Check answer",
-      correctLabel: "Correct",
-      incorrectLabel: "Incorrect",
-      explanationLabel: "Why",
-      resultButtonLabel: "View review result",
-      resultEyebrow: "This session",
-      resultTitle: "Review recommendation",
-      weaknessTagLabel: "Signals",
-      strongResultLabel: "Correct this time",
-      reviewResultLabel: "Review recommended",
-      priorityReviewResultLabel: "Priority review",
-      strongResultMessage:
-        "You answered correctly. One question is not enough to confirm mastery, so keep this lesson available for review.",
-      reviewResultMessage:
-        "Review this lesson before driving. More answered questions are needed for a stable result.",
-      priorityReviewResultMessage:
-        "Review this signal rule before driving. The incorrect answer shows a high-priority gap, but the sample is still limited.",
-      limitedSampleLabel: "Limited sample · based on 1 answered question",
-      sufficientSampleLabel: "Based on multiple answered questions",
-      reviewLinkLabel: "Review the Signals lesson",
-      sourceNote: "Official rule verification date",
-      recheckNote: "Recheck current official guidance before driving.",
+      sectionLabel: "See the situation",
+      sectionTitle: "Red light, empty junction—what now?",
+      watch: "Watch for",
+      action: "Do this",
+      decision: "How to read it",
+      previous: "Previous lesson",
+      next: "Next lesson",
+      index: "All lessons",
+      review: "Final 24-question review",
+      footer: "Finish all 16 lessons, then use the final review to check your first reaction.",
     }
   : {
-      description: "日本紅燈到底能不能轉？用一張圖和一題情境快速搞懂。",
-      skipLabel: "跳至主要內容",
+      description: "日本紅燈到底能不能轉？先看現場，再把正確反應記成直覺。",
+      skipLabel: "跳到主要內容",
       railLabel: "16 課攻略",
       railEyebrow: "完整課程",
       lessonNumber: "第 02 課",
-      legalLabel: "日本法規",
+      practicalLabel: "上路會用到",
+      eyebrow: "駕駛判斷",
       lead: "路口沒車，也不能把紅燈當成可以轉。",
-      figureLabel: "先看圖",
-      simulationLabel: "駕駛座視角 · 生成模擬",
-      simulationNote: "只用來看現場視野；號誌與停車位置請以下方精準解說圖為準。",
-      figureCaption:
-        "A 車停在停止線前；號誌圖取自日本警察廳官方資料。",
-      checkpointLabel: "你會怎麼開？ · Q002",
-      checkpointTitle: "選一個答案",
-      checkpointNote: "送出後不能修改。",
-      optionLabel: "答案選項",
-      submitLabel: "確認答案",
-      correctLabel: "答對了",
-      incorrectLabel: "答案不正確",
-      explanationLabel: "原因",
-      resultButtonLabel: "看複習建議",
-      resultEyebrow: "這次作答",
-      resultTitle: "複習建議",
-      weaknessTagLabel: "號誌",
-      strongResultLabel: "本題答對",
-      reviewResultLabel: "建議複習",
-      priorityReviewResultLabel: "建議優先複習",
-      strongResultMessage:
-        "這題答對了。上路前再掃一次，別讓母國習慣接管方向盤。",
-      reviewResultMessage: "上路前再看一次這課，先把紅燈反應練成直覺。",
-      priorityReviewResultMessage:
-        "先別急著上路。把這條紅燈規則重看一次，再做其他情境題。",
-      limitedSampleLabel: "只看 1 題，還不能代表完全熟悉",
-      sufficientSampleLabel: "依多題作答結果",
-      reviewLinkLabel: "重看號誌課",
-      sourceNote: "規則查核日",
-      recheckNote: "出發前仍要以日本現場標誌、號誌和最新官方資訊為準。",
+      sectionLabel: "先看情境",
+      sectionTitle: "紅燈、路口沒車，現在怎麼做？",
+      watch: "先注意",
+      action: "建議做法",
+      decision: "看圖判斷",
+      previous: "上一課",
+      next: "下一課",
+      index: "全部 16 課",
+      review: "24 題上路前總複習",
+      footer: "看完 16 課，再用總複習確認自己的第一反應。",
     };
-const localeLinks = {
-  "zh-TW": "/zh-TW/learn/signals/",
-  en: "/en/learn/signals/",
-};
-const localizedQuestion = question.prompt[locale];
-const localizedOptions = question.options.map((option) => ({
-  id: option.id,
-  text: option.text[locale],
-}));
-const localizedExplanation = question.explanation[locale];
-const questionPayload = JSON.stringify(question);
-const reviewHref = `${withBase(localeLinks[locale])}#${lessonMeta.id}`;
+const localeLinks = { "zh-TW": "/zh-TW/learn/signals/", en: "/en/learn/signals/" };
 ---
 
-<BaseLayout
-  title={`${lessonMeta.title} | Japan Driving Guide`}
-  description={copy.description}
-  locale={locale}
-  skipLabel={copy.skipLabel}
->
-  <LearningShell
-    currentLocale={locale}
-    localeLinks={localeLinks}
-    railLabel={copy.railLabel}
-  >
+<BaseLayout title={`${lessonMeta.title} | Japan Driving Guide`} description={copy.description} locale={locale} skipLabel={copy.skipLabel}>
+  <LearningShell currentLocale={locale} localeLinks={localeLinks} railLabel={copy.railLabel}>
     <nav slot="rail" aria-label={copy.railLabel}>
       <p class="rail-label">{copy.railEyebrow}</p>
       <ol class="rail-list module-rail-list">
-        {
-          lessonNavigation.map((item) => (
-            <li aria-current={item.id === lessonMeta.id ? "step" : undefined}>
-              <span
-                class="rail-list__marker"
-                data-state={item.id === lessonMeta.id ? "current" : undefined}
-              >
-                {String(item.order + 1).padStart(2, "0")}
-              </span>
-              <a href={withBase(`/${locale}/learn/${item.slug}/`)}>{item.title[locale]}</a>
-            </li>
-          ))
-        }
+        {lessonNavigation.map((item) => (
+          <li aria-current={item.id === lessonMeta.id ? "step" : undefined}>
+            <span class="rail-list__marker" data-state={item.id === lessonMeta.id ? "current" : undefined}>{String(item.order + 1).padStart(2, "0")}</span>
+            <a href={withBase(`/${locale}/learn/${item.slug}/`)}>{item.title[locale]}</a>
+          </li>
+        ))}
       </ol>
     </nav>
 
-    <article
-      id={lessonMeta.id}
-      class="lesson-page"
-      data-lesson-id={lessonMeta.id}
-      data-rule-id={rule.id}
-      data-diagram-id={scene.id}
-      data-question-id={question.id}
-    >
+    <article id={lessonMeta.id} class="lesson-page" data-lesson-id={lessonMeta.id} data-rule-id={rule.id} data-diagram-id={scene.id}>
       <header class="lesson-hero">
-        <div class="lesson-meta" aria-label={copy.legalLabel}>
-          <span>{copy.lessonNumber}</span>
-          <span>{copy.legalLabel}</span>
-        </div>
-        <p class="eyebrow">Signals · {scene.id}</p>
+        <div class="lesson-meta"><span>{copy.lessonNumber}</span><span>{copy.practicalLabel}</span></div>
+        <p class="eyebrow">{copy.eyebrow}</p>
         <h1>{lessonMeta.title}</h1>
         <p class="lead lesson-lead">{copy.lead}</p>
       </header>
 
-      <section class="lesson-diagram-sequence" data-scenario-pair data-paired-diagram-id="D002" aria-label={copy.figureLabel}>
-        <figure class="lesson-diagram lesson-diagram--simulation" data-driver-simulation data-simulation-id={driverSimulation.id}>
-          <p class="diagram-label">{copy.simulationLabel}</p>
-          <img
-            src={withBase(driverSimulation.assetPath)}
-            alt={driverSimulation.alt[locale]}
-            width={driverSimulation.width}
-            height={driverSimulation.height}
-            loading="eager"
-            decoding="sync"
-          />
-          <figcaption>{driverSimulation.alt[locale]} <small>{copy.simulationNote}</small></figcaption>
-        </figure>
+      <section class="lesson-visuals signal-primary-scenario" data-scenario-pair data-paired-diagram-id="D002" aria-labelledby="signal-primary-title">
+        <header class="section-heading lesson-visuals__heading">
+          <p class="eyebrow">{copy.sectionLabel}</p>
+          <h2 id="signal-primary-title">{copy.sectionTitle}</h2>
+        </header>
+        <div class="lesson-diagram-sequence">
+          <figure class="lesson-diagram lesson-diagram--simulation" data-driver-simulation data-simulation-id={driverSimulation.id}>
+            <img src={withBase(driverSimulation.assetPath)} alt={driverSimulation.alt[locale]} width={driverSimulation.width} height={driverSimulation.height} loading="eager" decoding="sync" />
+            <figcaption class="visual-teaching-caption">
+              <p class="visual-teaching-caption__lead"><span class="visual-badge">{copy.sectionLabel}</span>{guidance.situation[locale]}</p>
+              <dl class="visual-teaching-points"><div><dt>{copy.watch}</dt><dd>{guidance.watch[locale]}</dd></div></dl>
+            </figcaption>
+          </figure>
 
-        <figure class="lesson-diagram" aria-labelledby="D002-caption">
-          <p class="diagram-label">{copy.figureLabel} · D002</p>
-          <img
-            src={withBase("/diagrams/D002.svg")}
-            alt={scene.alt[locale]}
-            width="1200"
-            height="800"
-            loading="eager"
-            decoding="sync"
-            data-testid="lesson-diagram"
-          />
-          <figcaption id="D002-caption">{copy.figureCaption}</figcaption>
-        </figure>
+          <figure class="lesson-diagram" aria-labelledby="D002-caption">
+            <img src={withBase("/diagrams/D002.svg")} alt={scene.alt[locale]} width="1200" height="800" loading="eager" decoding="sync" data-testid="lesson-diagram" />
+            <figcaption class="visual-teaching-caption" id="D002-caption">
+              <p class="visual-teaching-caption__lead"><span class="visual-badge visual-badge--action">{copy.action}</span>{guidance.action[locale]}</p>
+              <dl class="visual-teaching-points"><div><dt>{copy.decision}</dt><dd>{scene.alt[locale]}</dd></div></dl>
+            </figcaption>
+          </figure>
+        </div>
       </section>
 
       <LessonVisuals lessonId={lessonMeta.id} locale={locale} excludeDiagramIds={["D002"]} />
 
-      <section class="lesson-copy" data-testid="lesson-copy">
-        <slot />
-      </section>
+      <section class="lesson-copy" data-testid="lesson-copy"><slot /></section>
 
-      <section class="checkpoint-card" id={question.id} aria-labelledby="Q002-title">
-        <p class="checkpoint-label">{copy.checkpointLabel}</p>
-        <h2 id="Q002-title">{copy.checkpointTitle}</h2>
-        <form
-          class="checkpoint-form"
-          data-quiz-session
-          data-question={questionPayload}
-          data-correct-label={copy.correctLabel}
-          data-incorrect-label={copy.incorrectLabel}
-          data-expected-weakness-tag="signals"
-          data-strong-result-label={copy.strongResultLabel}
-          data-review-result-label={copy.reviewResultLabel}
-          data-priority-review-result-label={copy.priorityReviewResultLabel}
-          data-strong-result-message={copy.strongResultMessage}
-          data-review-result-message={copy.reviewResultMessage}
-          data-priority-review-result-message={copy.priorityReviewResultMessage}
-          data-limited-sample-label={copy.limitedSampleLabel}
-          data-sufficient-sample-label={copy.sufficientSampleLabel}
-        >
-          <fieldset class="checkpoint-fieldset" aria-describedby="Q002-note">
-            <legend class="checkpoint-prompt">{localizedQuestion}</legend>
-            <p class="checkpoint-note" id="Q002-note">{copy.checkpointNote}</p>
-            <ul class="checkpoint-options" aria-label={copy.optionLabel}>
-              {
-                localizedOptions.map((option) => (
-                  <li>
-                    <label class="checkpoint-option" data-option-id={option.id}>
-                      <input
-                        class="checkpoint-option__input"
-                        type="radio"
-                        name={question.id}
-                        value={option.id}
-                        required
-                      />
-                      <span class="checkpoint-option__marker" aria-hidden="true">
-                        {option.id}
-                      </span>
-                      <span>{option.text}</span>
-                    </label>
-                  </li>
-                ))
-              }
-            </ul>
-          </fieldset>
-          <button class="checkpoint-submit" type="submit" data-quiz-submit>
-            {copy.submitLabel}
-          </button>
-          <div
-            class="checkpoint-feedback"
-            data-quiz-feedback
-            role="status"
-            tabindex="-1"
-            hidden
-          >
-            <p class="checkpoint-feedback__status" data-feedback-status></p>
-            <p class="checkpoint-feedback__explanation">
-              <strong>{copy.explanationLabel}:</strong> {localizedExplanation}
-            </p>
-          </div>
-          <button
-            class="checkpoint-result-trigger"
-            type="button"
-            data-result-trigger
-            aria-controls="Q002-weakness-result"
-            hidden
-          >
-            {copy.resultButtonLabel}
-          </button>
-          <section
-            class="weakness-result"
-            id="Q002-weakness-result"
-            data-weakness-result
-            aria-labelledby="Q002-weakness-title"
-            tabindex="-1"
-            hidden
-          >
-            <p class="weakness-result__eyebrow">{copy.resultEyebrow}</p>
-            <h3 id="Q002-weakness-title">{copy.resultTitle}</h3>
-            <div class="weakness-result__summary">
-              <span class="weakness-result__tag">{copy.weaknessTagLabel}</span>
-              <strong data-weakness-band-label></strong>
-            </div>
-            <p class="weakness-result__message" data-weakness-message></p>
-            <p class="weakness-result__sample" data-weakness-sample-label></p>
-            <a class="weakness-result__link" href={reviewHref}>
-              {copy.reviewLinkLabel}
-            </a>
-          </section>
-        </form>
-      </section>
+      <nav class="lesson-pagination" aria-label={copy.railLabel}>
+        {previous ? <a rel="prev" href={withBase(`/${locale}/learn/${previous.slug}/`)}>← {copy.previous}: {previous.title[locale]}</a> : <span />}
+        <a href={withBase(`/${locale}/learn/`)}>{copy.index}</a>
+        {next ? <a rel="next" href={withBase(`/${locale}/learn/${next.slug}/`)}>{copy.next}: {next.title[locale]} →</a> : <a href={withBase(`/${locale}/review/`)}>{copy.review} →</a>}
+      </nav>
     </article>
 
-    <div slot="footer">
-      <p>{copy.sourceNote}: <time datetime={rule.verifiedAt}>{rule.verifiedAt}</time></p>
-      <p>{copy.recheckNote}</p>
-    </div>
+    <div slot="footer"><p>{copy.footer} <a href={withBase(`/${locale}/review/`)}>{copy.review}</a></p></div>
   </LearningShell>
 </BaseLayout>
-
-<script>
-  import { initializeQuizSessions } from "../lib/quiz/controller";
-
-  initializeQuizSessions();
-</script>

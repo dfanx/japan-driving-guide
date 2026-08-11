@@ -22,14 +22,15 @@ const copy = isEnglish
         "No turn on red, a full stop at 止まれ, and no assuming an empty roadside is legal parking. Learn the mistakes visitors make most often before pickup.",
       primaryAction: "Start the 10-minute check",
       secondaryAction: "See all 16 lessons",
+      reviewAction: "Take the final review",
       pathLabel: "Complete beginner guide",
       pathTitle: "From rental documents to collision response",
       pathText:
-        "Use the lessons in order or jump straight to parking, ETC, snow, fuel or emergencies. Every legal rule links back to a reviewed Japanese source.",
+        "Follow the lessons in order or jump to parking, ETC, snow, fuel or emergencies. Each one shows what you may see, what can go wrong, and what to do next.",
       timeLabel: "Time needed",
       timeValue: "Essentials 10 min · Full guide 30–45 min",
       note:
-        "Traffic signs use exact Japanese-authority images; road situations use reviewed diagrams.",
+        "Recognize the scene first, then practise the decision you need to make behind the wheel.",
       footer: "Read it before pickup. Keep it for the road.",
     }
   : {
@@ -43,17 +44,19 @@ const copy = isEnglish
       lead: "紅燈不能轉、止まれ要停死、路邊空位不等於能停。先把旅客最常踩雷的規則看懂，再上路。",
       primaryAction: "先看 10 分鐘重點",
       secondaryAction: "看完整 16 課",
+      reviewAction: "做 24 題總複習",
       pathLabel: "新手完整攻略",
       pathTitle: "從租車證件一路看到事故處理",
       pathText:
-        "照順序讀，或直接跳去停車、ETC、雪地、加油和事故處理。每條法規都能回查日本官方來源。",
+        "照順序讀，或直接跳去停車、ETC、雪地、加油和事故處理。每課都先看現場、抓風險，再記住怎麼做。",
       timeLabel: "需要多久",
       timeValue: "重點 10 分鐘 · 完整 30–45 分鐘",
-      note: "交通標誌放日本官方原圖；道路情境使用已查核圖解。",
+      note: "先認出現場，再練習坐在駕駛座上該怎麼判斷。",
       footer: "先看懂，再上路。",
     };
 const fastTrackHref = withBase(`/${locale}/fast-track/`);
 const learnHref = withBase(`/${locale}/learn/`);
+const reviewHref = withBase(`/${locale}/review/`);
 ---
 
 <BaseLayout
@@ -85,6 +88,7 @@ const learnHref = withBase(`/${locale}/learn/`);
         <div class="home-actions">
           <a class="primary-action" href={fastTrackHref}>{copy.primaryAction}</a>
           <a class="secondary-action" href={learnHref}>{copy.secondaryAction}</a>
+          <a class="secondary-action" href={reviewHref}>{copy.reviewAction}</a>
         </div>
       </header>
 

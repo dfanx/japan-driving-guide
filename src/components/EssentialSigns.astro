@@ -8,24 +8,22 @@ const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
 const isEnglish = locale === "en";
 const copy = isEnglish
   ? {
-      eyebrow: "Official visual reference",
+      eyebrow: "Road-sign quick check",
       title: "Ten signs worth recognizing before pickup",
-      intro: "The sign faces below are exact Japanese-authority assets. The guide adds explanation around them but does not redraw or recolor them.",
+      intro: "Recognize the sign, then remember the decision it requires. The two blue-and-red parking signs are easy to confuse, so compare them side by side.",
       meaning: "Official meaning",
       action: "Driving response",
-      source: "Open official source",
-      assetNote: "Asset provenance",
-      provenance: "NPA signs are exact PDF image objects; the railway warning is the exact MLIT GIF. ETC remains link-only because NEXCO's site terms prohibit reposting its image on another website.",
+      source: "See the Japanese reference",
+      linkOnly: "Before entering an ETC-only lane, confirm the rental car has an ETC unit and the card is inserted. If unsure, use a general lane.",
     }
   : {
       eyebrow: "標誌速查",
       title: "取車前先認這 10 類",
-      intro: "交通標誌全部放日本主管機關原圖，不重畫、不改色。先看圖，再記看到時要做什麼。",
+      intro: "先認圖，再記看到時要怎麼做。最容易搞混的是兩個藍紅色停車標誌，務必放在一起比較。",
       meaning: "代表什麼",
       action: "看到怎麼做",
-      source: "看日本官方資料",
-      assetNote: "這些圖從哪來",
-      provenance: "標誌圖來自日本警察廳，平交道警告圖來自國土交通省。NEXCO 不允許把 ETC 圖片轉貼到其他網站，所以本站只放官方連結。",
+      source: "查看日本圖例",
+      linkOnly: "進 ETC 專用車道前，先確認租車有 ETC 車機、卡片也已插好。不確定就走一般車道。",
     };
 ---
 
@@ -55,7 +53,7 @@ const copy = isEnglish
                 {sign.assetLabels?.[index] && <figcaption>{sign.assetLabels[index][locale]}</figcaption>}
               </figure>
             ))}
-            {assets.length === 0 && <p class="sign-card__link-only">{sign.rightsNote?.[locale]}</p>}
+            {assets.length === 0 && <p class="sign-card__link-only">{copy.linkOnly}</p>}
           </div>
           <div class="sign-card__body">
             <p class="sign-card__class">{sign.class[locale]}</p>
@@ -70,14 +68,4 @@ const copy = isEnglish
       );
     })}
   </div>
-
-  <details class="asset-provenance">
-    <summary>{copy.assetNote}</summary>
-    <p>{copy.provenance}</p>
-    <ul>
-      <li><a href="https://www.npa.go.jp/english/bureau/traffic/traffic-light_english.pdf">National Police Agency — Traffic Lights and Road Signs</a></li>
-      <li><a href="https://www.kkr.mlit.go.jp/osaka/works/kouan/mijika/">MLIT Kinki Regional Development Bureau — road signs</a></li>
-      <li><a href="https://global.w-nexco.co.jp/en/trafficrule/gates.html">NEXCO West — Toll Gates Information</a></li>
-    </ul>
-  </details>
 </section>

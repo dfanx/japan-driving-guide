@@ -3,8 +3,8 @@
 ## Delivery
 
 - Archive: `japan-driving-guide-static-2026-08-11.zip`
-- Size: 3,315,580 bytes
-- SHA-256: `5B2C79CBB1495DC00F896E183BBE4058EB8B3C4F850CF250C15589EC3AC12DF4`
+- Size: 3,338,534 bytes
+- SHA-256: `DD5FC6B6EF96E28CA907E434345E3B03824E29BB9D01352F28D53C8A5CED66D9`
 - Format: static Astro output; no backend, login, runtime API, or database
 
 ## What changed
@@ -39,17 +39,27 @@
 - Corrected D006: car A's right turn now follows a continuous curve into the
   eastbound left-side lane instead of pointing into the opposing westbound lane;
   car B's straight conflict path now remains visible through the intersection.
+- Replaced visual production/provenance captions with direct situation, risk,
+  and action teaching copy across all 24 driver-view pairs and three contextual
+  illustrations.
+- Corrected D002 so its red signal appears directly ahead of vehicle A's
+  south-approach lane rather than in the right/oncoming half.
+- Removed the isolated Q002 checkpoint from the Signal lesson. Both locales now
+  provide previous/all/next lesson navigation and a separate 24-question final
+  review with immediate explanations, result bands, and lesson recovery links.
+- Added a final-review parking question that verifies the red-X `no stopping or
+  parking` control against the one-slash `no parking` control.
 
 ## Verification
 
 - `npm run verify:release`: PASS
 - Lint/typecheck: PASS, zero diagnostics
-- Unit: 21 files / 144 tests
+- Unit: 21 files / 145 tests
 - Content: 25 Sources / 36 Rules / 32 lesson documents / 24 Questions / 24 Scenes
 - Diagram gate: 24 candidates / 24 approved
-- Static output: 41 route entry pages
-- Chromium: 45 root passes plus the separate GitHub project-base case
-- Archive integrity: 110 entries, including 41 route entries, 24 diagrams, 24
+- Static output: 43 route entry pages
+- Chromium: 46 root passes plus the separate GitHub project-base case
+- Archive integrity: 111 entries, including 43 route entries, 24 diagrams, 24
   driver-view simulations, 3 contextual WebPs, `sw.js`,
   `manifest.webmanifest`, `offline.html`, and the 24-Question offline bank
 - Local HTTP delivery: the final root build is served from

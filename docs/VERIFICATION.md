@@ -151,6 +151,11 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-11 | F022 | Initial live Pages workflow | EXPECTED FAIL | All verification/build/base-path/smoke gates passed; Configure Pages returned Not Found because repository Pages was not enabled |
 | 2026-08-11 | F022 | Pages workflow attempt 2 | PASS | Run `31474056007` passed build, artifact upload, and deploy after authorized workflow-source enablement |
 | 2026-08-11 | F022 | Public HTTPS smoke | PASS | Root, zh-TW intersections lesson, and D006 returned 200; live D006 declares `eastbound-left` |
+| 2026-08-11 | F030 | Learner-caption and review-flow browser QA | PASS | Signal, parking, visual captions and 24-question review visually inspected; nested-main defect found and corrected |
+| 2026-08-11 | F030 | D002 600px/360px review and approval | PASS | South signal and stop arrow align at x=545 ahead of A; old x=730 control rejected; SHA-256 `51c1ca5c...bdec5a` |
+| 2026-08-11 | F030 | Focused gates | PASS | 28 focused unit assertions and 10 Chromium cases cover guidance, D002, complete review, curriculum handoff, paging, keyboard and mobile |
+| 2026-08-11 | F030 | Full local regression | PASS | Zero-diagnostic lint/typecheck, 21 unit files / 145 tests, 43 pages, 110 PWA URLs, 46 Chromium passes plus one expected skip |
+| 2026-08-11 | Release | F030 static ZIP integrity | PASS | 111 entries / 43 route entries / 3,338,534 bytes; SHA-256 `DD5FC6B6...CED66D9` |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

@@ -3,6 +3,7 @@ import { z } from "astro/zod";
 import diagramManifestData from "../../data/diagram-manifest.json";
 import driverSimulationData from "../../data/driver-simulations.json";
 import illustrationData from "../../data/lesson-illustrations.json";
+import visualGuidanceData from "../../data/visual-guidance.json";
 import d002Data from "../../../tools/diagram-generator/scenes/D002.json";
 import presetSceneData from "../../../tools/diagram-generator/scenes/preset-scenes.json";
 import { diagramManifestSchema } from "../../../tools/diagram-generator/src/manifest";
@@ -52,6 +53,17 @@ export const driverSimulationSchema = z
 
 export type DriverSimulation = z.infer<typeof driverSimulationSchema>;
 
+export const visualGuidanceSchema = z
+  .object({
+    id: z.string().regex(/^(D\d{3}|ILL-M\d{2}-[A-Z0-9-]+)$/),
+    situation: localizedTextSchema,
+    watch: localizedTextSchema,
+    action: localizedTextSchema,
+  })
+  .strict();
+
+export type VisualGuidance = z.infer<typeof visualGuidanceSchema>;
+
 const lessonVisualDefinitionSchema = z
   .object({
     lessonId: z.string().regex(/^M\d{2}-[a-z0-9-]+$/),
@@ -84,6 +96,7 @@ const scenes = diagramSceneSchema.array().parse([d002Data, ...presetSceneData]);
 const manifest = diagramManifestSchema.parse(diagramManifestData);
 const illustrations = lessonIllustrationSchema.array().parse(illustrationData);
 export const driverSimulations = driverSimulationSchema.array().length(24).parse(driverSimulationData);
+export const visualGuidance = visualGuidanceSchema.array().parse(visualGuidanceData);
 const sceneById = new Map(scenes.map((scene) => [scene.id, scene]));
 const manifestById = new Map(manifest.items.map((entry) => [entry.id, entry]));
 const illustrationById = new Map(illustrations.map((item) => [item.id, item]));
@@ -91,6 +104,7 @@ const driverSimulationByDiagramId = new Map(
   driverSimulations.map((item) => [item.diagramId, item]),
 );
 const signById = new Map(essentialSigns.map((sign) => [sign.id, sign]));
+const guidanceById = new Map(visualGuidance.map((item) => [item.id, item]));
 
 if (new Set(definitions.map((item) => item.lessonId)).size !== definitions.length) {
   throw new Error("Lesson visual definitions require unique Lesson IDs");
@@ -107,10 +121,27 @@ if (requiredDiagramIds.some((diagramId) => !driverSimulationByDiagramId.has(diag
   throw new Error("Driver simulations must cover D001-D024 exactly once");
 }
 
+const requiredGuidanceIds = [
+  ...requiredDiagramIds,
+  ...illustrations.map((item) => item.id),
+].sort();
+if (
+  guidanceById.size !== visualGuidance.length ||
+  visualGuidance.map((item) => item.id).sort().join("|") !== requiredGuidanceIds.join("|")
+) {
+  throw new Error("Visual guidance must cover D001-D024 and every lesson illustration exactly once");
+}
+
 export function getDriverSimulationByDiagramId(diagramId: string) {
   const simulation = driverSimulationByDiagramId.get(diagramId);
   if (!simulation) throw new Error(`Driver simulation for ${diagramId} is missing`);
   return simulation;
+}
+
+export function getVisualGuidance(id: string): VisualGuidance {
+  const guidance = guidanceById.get(id);
+  if (!guidance) throw new Error(`Visual guidance ${id} is missing`);
+  return guidance;
 }
 
 export function getLessonVisualSet(lessonId: string) {
@@ -136,12 +167,13 @@ export function getLessonVisualSet(lessonId: string) {
     if (!illustration || illustration.lessonId !== lessonId) {
       throw new Error(`${lessonId} requires matching illustration ${illustrationId}`);
     }
-    return illustration;
+    return { ...illustration, guidance: getVisualGuidance(illustration.id) };
   });
 
   const diagramPairs = diagrams.map((diagram) => ({
     diagram,
     simulation: getDriverSimulationByDiagramId(diagram.id),
+    guidance: getVisualGuidance(diagram.id),
   }));
 
   const officialSigns = definition.officialSignIds.map((signId) => {

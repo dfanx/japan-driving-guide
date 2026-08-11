@@ -2,9 +2,9 @@
 
 ## Current state
 
-- Phase: Release complete
+- Phase: Verified static release and live deployment
 - Active feature: none
-- Last passing feature: F029 — D006 right-turn lane correction
+- Last passing feature: F030 — Learner-first visuals and full review flow
 - Content imported: 25 Sources, 36 Rules, 24 Questions, 32 lesson documents
 - Diagrams generated/approved: 24 review candidates / 24 approved
 - Deployment: live at `https://dfanx.github.io/japan-driving-guide/`
@@ -1665,3 +1665,55 @@ Pages.
 - Future pushes to `main` redeploy automatically and must keep the release gate
   passing. GitHub availability and future legal-source revalidation remain
   external operational dependencies.
+
+## Session 2026-08-11 — F030 learner-first visuals and final review
+
+### Completed
+
+- Replaced production/compliance captions below all 27 visual teaching entries
+  with bilingual situation, risk, and action copy aimed at a traveller about to
+  drive in Japan.
+- Removed the isolated Q002 checkpoint from the Signal lesson and restored its
+  previous/all/next lesson navigation.
+- Added bilingual final-review routes with all 24 approved Questions, locked
+  first answers, immediate explanations, previous/next paging, final score,
+  topic bands, and lesson recovery links.
+- Added final-review entry points to both homes, both Learn indexes, and the last
+  lesson. Q016 now verifies the no-stopping/no-parking sign distinction.
+- Corrected D002 so the red signal and stop instruction are centred ahead of the
+  south-approach lane, reviewed the 600px and 360px candidates, and approved
+  `sha256:51c1ca5ce36a20cb287b8528dfeb5fcd9cbb3c001245592af3123f2450bdec5a`.
+- Kept Source IDs, rights records, review status, and visual provenance in the
+  build-time data model while removing them from the primary learning flow.
+- Inspected the Signal lesson, Parking lesson, captions, official sign card, and
+  final Review page in the local browser at desktop and mobile acceptance sizes.
+
+### Verification
+
+- Lint/typecheck: PASS, zero diagnostics across 110 files.
+- Unit: PASS, 21 files / 145 tests.
+- Content/diagrams: PASS, 25 Sources / 36 Rules / 32 lessons / 24 Questions / 24
+  Scenes; 24 candidates / 24 approved.
+- Static/PWA: PASS, 43 pages / 110 precached URLs.
+- Chromium: PASS, 46 root cases plus one intentional project-base-only skip;
+  the separate project-base deployment case passes in release verification.
+- Focused F030: PASS, ten bilingual, complete-review, mobile, keyboard,
+  caption, and Signal-page cases.
+- Release archive: `release/japan-driving-guide-static-2026-08-11.zip`,
+  3,338,534 bytes / 111 entries / 43 route entries, SHA-256
+  `DD5FC6B6EF96E28CA907E434345E3B03824E29BB9D01352F28D53C8A5CED66D9`.
+
+### Residual risk and rollback
+
+- Generated driver views improve recognition but remain unsuitable as regulated
+  visual evidence; deterministic diagrams and exact approved sign assets remain
+  the authoritative teaching layer.
+- A 24-question review measures first decisions across the guide; it is not a
+  substitute for supervised driving, licence qualification, or live road signs.
+- Rollback is limited to the F030 components, copy data, tests, Q016, and the
+  D002 candidate/manifest/public asset, followed by a static/PWA rebuild.
+
+### Next
+
+No feature is active. The verified F030 release is ready to commit, push to
+`main`, and confirm through GitHub Pages.

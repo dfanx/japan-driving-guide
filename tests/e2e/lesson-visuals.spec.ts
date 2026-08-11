@@ -105,10 +105,12 @@ test("@f028 every diagram is taught as driver view then deterministic explanatio
   );
 });
 
-test("@f028 generated context stays disclosed and fits a 360px lesson", async ({ page }) => {
+test("@f028 @f030 every scenario teaches risk and action without internal production copy", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto("/zh-TW/learn/signs/");
-  await expect(page.getByText("只用來看視野與空間", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("先注意", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("建議做法", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(/生成模擬|查核圖解|官方原圖/)).toHaveCount(0);
   await expect(page.locator('[data-visual-kind="generated-driver-simulation"]')).toHaveCount(5);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(360);
 });

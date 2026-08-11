@@ -38,6 +38,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F027 | Tourist mistake coverage + Taiwan copy refresh | passing | High-risk gaps trace to official sources; parking distinctions and zh-TW copy pass content, mobile, and browser gates |
 | F028 | Driver-seat simulation photos | passing | D001-D024 each pair a disclosed driver-view simulation with the deterministic explanation diagram and official controls |
 | F029 | D006 right-turn lane correction | passing | A's right-turn path enters the eastbound left-side lane; D006 hash, review, mobile, and release gates pass |
+| F030 | Learner-first visuals and full review flow | passing | Captions teach scenario/risk/action; D002 signal is ahead of the approach lane; 24-question bilingual review with paging and results passes release gates |
 
 ## Evidence
 
@@ -563,3 +564,34 @@ WIP limit: exactly zero or one feature may be `active`.
   project-base pass; 24 candidates / 24 approved; 41 pages and 108 PWA URLs.
 - Rollback: revert the D006 preset and focused tests, rebuild the candidate,
   restore the prior approval record/public SVG, and rebuild the static archive.
+
+### F030
+
+- Acceptance runs: `npm run verify:f030`, full `npm run test:e2e`, and
+  `npm run verify:release`
+- Date: 2026-08-11
+- Result: PASS
+- Learner copy: every driver simulation, deterministic diagram, and contextual
+  illustration now teaches a situation, likely mistake, and concrete action.
+  Internal production, approval, provenance, and rights language no longer
+  occupies primary image captions.
+- Review flow: M00-M15 remain uninterrupted lessons with previous/index/next
+  navigation. A bilingual `/review/` route presents all 24 approved Questions,
+  immediate explanations, back/next paging, final score, topic breakdown, and
+  direct lesson recovery links.
+- Parking verification: Q016 now checks the red-X `no stopping or parking`
+  distinction against the one-slash `no parking` control and remains traced to
+  the approved parking-sign Rule.
+- D002 correction: the south-approach red signal and stop instruction are
+  centred at x=545 ahead of vehicle A's northbound approach lane. The prior
+  x=730 right/oncoming-lane placement is rejected by focused tests. The new
+  reviewed/public output is
+  `sha256:51c1ca5ce36a20cb287b8528dfeb5fcd9cbb3c001245592af3123f2450bdec5a`.
+- Verification: zero-diagnostic lint/typecheck; 21 unit files / 145 tests; 43
+  static pages / 110 PWA URLs; 46 root Chromium passes plus the separate
+  project-base case; desktop and 360px browser visual review.
+- Release archive: 111 entries / 3,338,534 bytes; SHA-256
+  `DD5FC6B6EF96E28CA907E434345E3B03824E29BB9D01352F28D53C8A5CED66D9`.
+- Rollback: restore the prior lesson captions and single-question Signal page,
+  remove the review routes/client module, restore Q016, and revert/reapprove the
+  previous D002 bytes. Rebuild static/PWA/release artifacts afterward.

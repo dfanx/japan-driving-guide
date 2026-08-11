@@ -7,8 +7,9 @@ for (const locale of ["zh-TW", "en"] as const) {
     await expect(page.locator("[data-sign-id]")).toHaveCount(10);
     await expect(page.locator("img[data-asset-id]")).toHaveCount(10);
     await expect(page.locator('[data-sign-id="SIGN-ETC-ONLY"]')).toContainText(
-      locale === "en" ? "prohibit reposting" : "不允許轉載",
+      locale === "en" ? "If unsure, use a general lane" : "不確定就走一般車道",
     );
+    await expect(page.locator('[data-sign-id="SIGN-ETC-ONLY"]')).not.toContainText(/repost|轉載/i);
 
     const imageFailures = await page.locator("img[data-asset-id]").evaluateAll((images) =>
       images.filter((image) => !(image instanceof HTMLImageElement) || !image.complete || image.naturalWidth === 0).length,

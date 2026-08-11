@@ -25,12 +25,11 @@ test("@f024 first visit installs the complete core guide for offline use", async
   expect(cached.hasDiagram).toBe(true);
 
   await context.setOffline(true);
-  await page.goto("/en/learn/signals/");
-  await expect(page.getByRole("heading", { level: 1, name: "Traffic Lights and Arrows" })).toBeVisible();
-  await expect(page.getByTestId("lesson-diagram")).toBeVisible();
+  await page.goto("/en/review/");
+  await expect(page.getByRole("heading", { level: 1, name: "Final driving check" })).toBeVisible();
   await page.locator("label.checkpoint-option").first().click();
-  await page.getByRole("button", { name: /check answer/i }).click();
-  await expect(page.locator(".checkpoint-feedback__explanation")).not.toBeEmpty();
+  await page.getByRole("button", { name: /check this answer/i }).click();
+  await expect(page.locator("[data-question-id='Q001'] .checkpoint-feedback__explanation")).not.toBeEmpty();
 });
 
 test("@f024 an uncached offline route uses the honest bilingual fallback", async ({ context, page }) => {

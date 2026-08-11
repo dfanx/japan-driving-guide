@@ -162,14 +162,26 @@ function fourWaySignal(
   const placements: Record<typeof signal.approach, Bounds> = {
     north: { x: 345, y: 185, width: 132, height: 41.5 },
     east: { x: 1005, y: 535, width: 132, height: 41.5 },
-    south: { x: 730, y: 630, width: 132, height: 41.5 },
+    south: { x: 479, y: 470, width: 132, height: 41.5 },
     west: { x: 63, y: 250, width: 132, height: 41.5 },
   };
-  return officialTrafficLight({
-    asset: NPA_RED_TRAFFIC_LIGHT_ASSET,
-    bounds: placements[signal.approach],
-    state: signal.state,
-  });
+  return svgNode(
+    "g",
+    {
+      "data-approach": signal.approach,
+      "data-position": "ahead-of-approach-lane",
+      "data-primitive": "approach-signal",
+    },
+    {
+      children: [
+        officialTrafficLight({
+          asset: NPA_RED_TRAFFIC_LIGHT_ASSET,
+          bounds: placements[signal.approach],
+          state: signal.state,
+        }),
+      ],
+    },
+  );
 }
 
 function fourWayVehicle(
@@ -200,7 +212,7 @@ function stopInstruction(
   const placements: Record<typeof approach, { from: Point; to: Point }> = {
     north: { from: { x: 735, y: 90 }, to: { x: 735, y: 150 } },
     east: { from: { x: 1100, y: 535 }, to: { x: 1040, y: 535 } },
-    south: { from: { x: 630, y: 735 }, to: { x: 630, y: 650 } },
+    south: { from: { x: 545, y: 735 }, to: { x: 545, y: 650 } },
     west: { from: { x: 100, y: 265 }, to: { x: 160, y: 265 } },
   };
   return directionalArrow(placements[approach]);

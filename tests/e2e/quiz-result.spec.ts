@@ -1,91 +1,61 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
-test("@f014 zh-TW incorrect answer produces a limited priority review result", async ({
-  page,
-}) => {
-  await page.goto("/zh-TW/learn/signals/");
-
-  const result = page.locator("[data-weakness-result]");
-  const resultTrigger = page.getByRole("button", { name: "看複習建議" });
-  await expect(result).toBeHidden();
-  await expect(resultTrigger).toBeHidden();
-
-  await page.locator("[data-option-id='A']").click();
-  await page.getByRole("button", { name: "確認答案" }).click();
-  await expect(page.locator("[data-quiz-feedback]")).toBeFocused();
-  await expect(resultTrigger).toBeVisible();
-  await expect(result).toBeHidden();
-
-  await resultTrigger.click();
-  await expect(page.locator("[data-quiz-session]")).toHaveAttribute(
-    "data-session-state",
-    "complete",
+async function completeReview(page: Page, answerCorrectly: boolean): Promise<void> {
+  const questions = await page.locator("[data-full-review]").evaluate((element) =>
+    JSON.parse((element as HTMLElement).dataset.questions ?? "[]") as Array<{
+      answer: string;
+      options: Array<{ id: string }>;
+    }>,
   );
+  expect(questions).toHaveLength(24);
+
+  for (const [index, question] of questions.entries()) {
+    const optionId = answerCorrectly
+      ? question.answer
+      : question.options.find((option) => option.id !== question.answer)?.id;
+    if (!optionId) throw new Error(`Question ${index + 1} has no alternate answer`);
+    const panel = page.locator("[data-review-question]:visible");
+    await panel.locator(`[data-option-id="${optionId}"]`).click();
+    await page.locator("[data-review-submit]").click();
+    await expect(panel.locator("[data-review-feedback]")).toBeVisible();
+    await page.locator("[data-review-next]").click();
+  }
+}
+
+test("@f014 @f030 zh-TW completes all 24 questions and points to weak lessons", async ({ page }) => {
+  await page.goto("/zh-TW/review/");
+  await expect(page.locator("[data-review-result]")).toBeHidden();
+
+  await completeReview(page, false);
+
+  const result = page.locator("[data-review-result]");
   await expect(result).toBeVisible();
   await expect(result).toBeFocused();
-  await expect(result).toHaveAttribute("data-weakness-tag", "signals");
-  await expect(result).toHaveAttribute(
-    "data-weakness-band",
-    "priority_review",
-  );
-  await expect(result).toHaveAttribute("data-weakness-sample", "limited");
+  await expect(result).toContainText("0 / 24");
+  await expect(result).toContainText("先補強重點，再拿車鑰匙");
   await expect(result).toContainText("號誌");
-  await expect(result).toContainText("建議優先複習");
-  await expect(result).toContainText("只看 1 題，還不能代表完全熟悉");
-  await expect(result).not.toContainText("0%");
-
-  const reviewLink = page.getByRole("link", { name: "重看號誌課" });
-  await expect(reviewLink).toHaveAttribute(
-    "href",
-    "/zh-TW/learn/signals/#M02-signals",
-  );
-  await reviewLink.click();
-  await expect(page).toHaveURL(/\/zh-TW\/learn\/signals\/#M02-signals$/);
-  await expect(page.locator("#M02-signals")).toBeVisible();
+  await expect(result).toContainText("上路前先複習");
+  await expect(result.getByRole("link", { name: "回去看這一課" }).first()).toHaveAttribute("href", /\/zh-TW\/learn\//);
 });
 
-test("@f014 en correct answer remains limited and does not claim mastery", async ({
-  page,
-}) => {
-  await page.goto("/en/learn/signals/");
+test("@f014 @f030 en completes all 24 questions without claiming certification", async ({ page }) => {
+  await page.goto("/en/review/");
+  await completeReview(page, true);
 
-  await page.locator("[data-option-id='B']").click();
-  await page.getByRole("button", { name: "Check answer" }).click();
-  await page.getByRole("button", { name: "View review result" }).click();
-
-  const result = page.locator("[data-weakness-result]");
+  const result = page.locator("[data-review-result]");
   await expect(result).toBeVisible();
-  await expect(result).toBeFocused();
-  await expect(result).toHaveAttribute("data-weakness-tag", "signals");
-  await expect(result).toHaveAttribute("data-weakness-band", "strong");
-  await expect(result).toHaveAttribute("data-weakness-sample", "limited");
-  await expect(result).toContainText("Signals");
-  await expect(result).toContainText("Correct this time");
-  await expect(result).toContainText(
-    "One question is not enough to confirm mastery",
-  );
-  await expect(result).toContainText(
-    "Limited sample · based on 1 answered question",
-  );
-  await expect(result).not.toContainText("100%");
-  await expect(page.getByRole("link", { name: "Review the Signals lesson" })).toHaveAttribute(
-    "href",
-    "/en/learn/signals/#M02-signals",
-  );
+  await expect(result).toContainText("24 / 24");
+  await expect(result).toContainText("Solid first decision-making");
+  await expect(result).not.toContainText(/licen[cs]e|guarantee/i);
+  await expect(page.getByRole("button", { name: "Try all 24 again" })).toBeVisible();
 });
 
-test("@f014 360px result actions remain readable touch targets", async ({ page }) => {
+test("@f014 @f030 360px final result stays readable", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
-  await page.goto("/zh-TW/learn/signals/");
+  await page.goto("/zh-TW/review/");
+  await completeReview(page, true);
 
-  await page.locator("[data-option-id='A']").click();
-  await page.getByRole("button", { name: "確認答案" }).click();
-  const resultTrigger = page.getByRole("button", { name: "看複習建議" });
-  expect((await resultTrigger.boundingBox())?.height).toBeGreaterThanOrEqual(44);
-  await resultTrigger.click();
-
-  const reviewLink = page.getByRole("link", { name: "重看號誌課" });
-  expect((await reviewLink.boundingBox())?.height).toBeGreaterThanOrEqual(44);
+  expect((await page.getByRole("button", { name: "重新做 24 題" }).boundingBox())?.height).toBeGreaterThanOrEqual(44);
   const widths = await page.evaluate(() => ({
     viewport: document.documentElement.clientWidth,
     content: document.documentElement.scrollWidth,

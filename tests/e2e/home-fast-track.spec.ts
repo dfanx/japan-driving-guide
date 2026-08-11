@@ -86,7 +86,8 @@ test("@f007 360px home actions fit and retain touch targets", async ({ page }) =
   await page.goto("/zh-TW/");
 
   const actions = page.locator(".home-actions a");
-  await expect(actions).toHaveCount(2);
+  await expect(actions).toHaveCount(3);
+  await expect(page.getByRole("link", { name: "做 24 題總複習" })).toHaveAttribute("href", "/zh-TW/review/");
   const heights = await actions.evaluateAll((elements) =>
     elements.map((element) => element.getBoundingClientRect().height),
   );

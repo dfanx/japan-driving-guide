@@ -113,6 +113,12 @@ describe("T02 reviewed-scene boundary", () => {
     expect(output).toContain('data-primitive="crosswalk"');
     expect(output).toContain('data-primitive="stop-line"');
     expect(output).toContain('data-state="red"');
+    expect(output).toContain('data-approach="south"');
+    expect(output).toContain('data-position="ahead-of-approach-lane"');
+    expect(output).toContain('height="41.5" href="data:image/png;base64,');
+    expect(output).toContain('width="132" x="479" y="470"');
+    expect(output).toContain('x1="545" x2="545" y1="735" y2="650"');
+    expect(output).not.toContain('width="132" x="730" y="630"');
     expect(scene.reviewStatus).toBe("needs_review");
   });
 

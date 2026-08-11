@@ -526,3 +526,42 @@
 - Consequence: D006 now exposes `data-destination-lane="eastbound-left"` and has
   focused unit/browser regression coverage. Future turn diagrams should encode
   the same semantic rather than relying only on visual arrow direction.
+
+## D040 — Governance metadata stays out of the primary learning path
+
+- Date: 2026-08-11
+- Status: accepted
+- Decision: learner-facing visual captions lead with the scene, the trap, and
+  the action. Source IDs, generation method, review state, rights notes, and
+  provenance remain available in structured data, automated gates, and the
+  separate traceability route rather than repeating below each image.
+- Reason: provenance is necessary for maintainers but does not answer the
+  driver's immediate question: “What am I seeing, and what should I do?”
+- Consequence: removing governance metadata from the data model is still
+  prohibited; exposing it in every primary caption is also rejected.
+
+## D041 — Assessment follows the complete curriculum
+
+- Date: 2026-08-11
+- Status: accepted
+- Decision: individual lessons do not contain isolated scored Questions. All 24
+  approved Questions run in order on a bilingual final-review route after the
+  16-lesson path, with immediate explanations and a final topic breakdown.
+- Reason: one question per lesson interrupts reading and cannot support a useful
+  mastery signal. The complete bank provides a consistent final retrieval pass
+  and actionable links to weaker topics.
+- Consequence: new Questions join the reviewed bank and final assessment unless
+  a future product decision explicitly introduces unscored lesson practice.
+
+## D042 — Approach controls declare lane-relative placement
+
+- Date: 2026-08-11
+- Status: accepted
+- Decision: a signal controlling an approach must encode both its approach and
+  `data-position="ahead-of-approach-lane"`; its centre must align with the lane
+  used by the approaching vehicle. D002's south signal therefore centres at
+  x=545 instead of the right/oncoming half at x=796.
+- Reason: a correct red-light face in the wrong lane teaches the wrong control
+  relationship even when the abstract rule is correct.
+- Consequence: D002 has geometry assertions and a reviewed hash. Future signal
+  diagrams must test lane-relative control placement, not only signal state.

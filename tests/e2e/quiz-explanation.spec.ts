@@ -1,76 +1,53 @@
 import { expect, test } from "@playwright/test";
 
-test("@f012 zh-TW locks an incorrect answer and shows the approved explanation", async ({
-  page,
-}) => {
-  await page.goto("/zh-TW/learn/signals/");
+test("@f012 @f030 zh-TW review locks an incorrect answer and explains it", async ({ page }) => {
+  await page.goto("/zh-TW/review/");
 
-  const form = page.locator("[data-quiz-session]");
-  const feedback = page.locator("[data-quiz-feedback]");
+  const panel = page.locator('[data-question-id="Q001"]');
+  const feedback = panel.locator("[data-review-feedback]");
   await expect(feedback).toBeHidden();
 
-  await page.locator("[data-option-id='A']").click();
-  await expect(
-    page.getByRole("radio", { name: "可以", exact: true }),
-  ).toBeChecked();
-  await page.getByRole("button", { name: "確認答案" }).click();
+  await panel.locator('[data-option-id="A"]').click();
+  await expect(panel.getByRole("radio", { name: "右側", exact: true })).toBeChecked();
+  await page.getByRole("button", { name: "確認這題" }).click();
 
-  await expect(form).toHaveAttribute("data-result", "incorrect");
+  await expect(panel).toHaveAttribute("data-result", "incorrect");
   await expect(feedback).toBeVisible();
   await expect(feedback).toBeFocused();
-  await expect(feedback).toContainText("答案不正確");
-  await expect(feedback).toContainText(
-    "紅燈不是自行判斷可轉彎的號誌；只有適用方向的綠色箭頭允許時才可通行。",
-  );
-  await expect(page.locator("[data-option-id='A']")).toHaveAttribute(
-    "data-selected",
-    "true",
-  );
-  await expect(page.locator("[data-option-id='B']")).toHaveAttribute(
-    "data-correct",
-    "true",
-  );
-  await expect(page.getByRole("radio").first()).toBeDisabled();
-  await expect(page.getByRole("radio").last()).toBeDisabled();
-  await expect(page.getByRole("button", { name: "確認答案" })).toBeDisabled();
+  await expect(feedback).toContainText("這題要再想一下");
+  await expect(feedback).toContainText("日本車輛靠左行駛");
+  await expect(panel.locator('[data-option-id="A"]')).toHaveAttribute("data-selected", "true");
+  await expect(panel.locator('[data-option-id="B"]')).toHaveAttribute("data-correct", "true");
+  await expect(panel.getByRole("radio").first()).toBeDisabled();
+  await expect(panel.getByRole("radio").last()).toBeDisabled();
+  await expect(page.getByRole("button", { name: "下一題" })).toBeVisible();
 });
 
-test("@f012 en locks a correct answer and shows the approved explanation", async ({
-  page,
-}) => {
-  await page.goto("/en/learn/signals/");
+test("@f012 @f030 en review locks a correct answer and explains it", async ({ page }) => {
+  await page.goto("/en/review/");
 
-  const form = page.locator("[data-quiz-session]");
-  const feedback = page.locator("[data-quiz-feedback]");
-  await page.locator("[data-option-id='B']").click();
-  await expect(page.getByRole("radio", { name: "No", exact: true })).toBeChecked();
-  await page.getByRole("button", { name: "Check answer" }).click();
+  const panel = page.locator('[data-question-id="Q001"]');
+  await panel.locator('[data-option-id="B"]').click();
+  await expect(panel.getByRole("radio", { name: "Left", exact: true })).toBeChecked();
+  await page.getByRole("button", { name: "Check this answer" }).click();
 
-  await expect(form).toHaveAttribute("data-result", "correct");
+  const feedback = panel.locator("[data-review-feedback]");
+  await expect(panel).toHaveAttribute("data-result", "correct");
   await expect(feedback).toBeVisible();
   await expect(feedback).toBeFocused();
   await expect(feedback).toContainText("Correct");
-  await expect(feedback).toContainText(
-    "A red light does not permit a turn based on your own judgment; proceed only when an applicable green arrow allows it.",
-  );
-  await expect(page.locator("[data-option-id='B']")).toHaveAttribute(
-    "data-selected",
-    "true",
-  );
-  await expect(page.locator("[data-option-id='B']")).toHaveAttribute(
-    "data-correct",
-    "true",
-  );
-  await expect(page.getByRole("radio").first()).toBeDisabled();
-  await expect(page.getByRole("radio").last()).toBeDisabled();
-  await expect(page.getByRole("button", { name: "Check answer" })).toBeDisabled();
+  await expect(feedback).toContainText("Vehicles drive on the left in Japan");
+  await expect(panel.locator('[data-option-id="B"]')).toHaveAttribute("data-selected", "true");
+  await expect(panel.locator('[data-option-id="B"]')).toHaveAttribute("data-correct", "true");
+  await expect(panel.getByRole("radio").first()).toBeDisabled();
+  await expect(panel.getByRole("radio").last()).toBeDisabled();
 });
 
-test("@f012 mobile answer controls keep a 44px touch target", async ({ page }) => {
+test("@f012 @f030 mobile review controls keep a 44px touch target", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
-  await page.goto("/zh-TW/learn/signals/");
+  await page.goto("/zh-TW/review/");
 
-  const sizes = await page.locator(".checkpoint-option, .checkpoint-submit").evaluateAll(
+  const sizes = await page.locator("[data-review-question]:visible .checkpoint-option, [data-review-submit]:visible").evaluateAll(
     (elements) => elements.map((element) => element.getBoundingClientRect().height),
   );
   expect(sizes).not.toHaveLength(0);

@@ -19,7 +19,7 @@ const slugs = [
   "safety-basics",
 ] as const;
 
-const localizedRoutes = ["", "fast-track/", "learn/", "sources/", ...slugs.map((slug) => `learn/${slug}/`)];
+const localizedRoutes = ["", "fast-track/", "learn/", "review/", "sources/", ...slugs.map((slug) => `learn/${slug}/`)];
 const allRoutes = ["/", ...["zh-TW", "en"].flatMap((locale) => localizedRoutes.map((route) => `/${locale}/${route}`))];
 
 test("@f023 every static page has a sound mobile document structure", async ({ page }) => {
@@ -63,15 +63,15 @@ for (const viewport of [
 ]) {
   test(`@f023 representative pages fit ${viewport.width}x${viewport.height}`, async ({ page }) => {
     await page.setViewportSize(viewport);
-    for (const route of ["/", "/zh-TW/", "/en/learn/", "/zh-TW/learn/signals/", "/en/learn/signs/", "/zh-TW/sources/"]) {
+    for (const route of ["/", "/zh-TW/", "/en/learn/", "/zh-TW/learn/signals/", "/en/learn/signs/", "/zh-TW/review/", "/zh-TW/sources/"]) {
       await page.goto(route);
       expect(await page.evaluate(() => document.documentElement.scrollWidth), route).toBe(viewport.width);
     }
   });
 }
 
-test("@f023 skip navigation and lesson checkpoint work from the keyboard", async ({ page }) => {
-  await page.goto("/en/learn/signals/");
+test("@f023 @f030 skip navigation and final review work from the keyboard", async ({ page }) => {
+  await page.goto("/en/review/");
   await page.keyboard.press("Tab");
   const skipLink = page.getByRole("link", { name: "Skip to main content" });
   await expect(skipLink).toBeFocused();
@@ -79,18 +79,18 @@ test("@f023 skip navigation and lesson checkpoint work from the keyboard", async
   await page.keyboard.press("Enter");
   await expect(page.locator("main#main-content")).toBeFocused();
 
-  const firstChoice = page.locator(".checkpoint-option__input").first();
+  const firstChoice = page.locator("[data-question-id='Q001'] .checkpoint-option__input").first();
   await firstChoice.focus();
   await page.keyboard.press("Space");
-  await page.getByRole("button", { name: /check answer/i }).focus();
+  await page.getByRole("button", { name: /check this answer/i }).focus();
   await page.keyboard.press("Enter");
-  await expect(page.locator(".checkpoint-feedback__status")).toContainText(/correct|not quite/i);
-  await expect(page.locator(".checkpoint-feedback__explanation")).not.toBeEmpty();
+  await expect(page.locator("[data-question-id='Q001'] .checkpoint-feedback__status")).toContainText(/correct|not quite/i);
+  await expect(page.locator("[data-question-id='Q001'] .checkpoint-feedback__explanation")).not.toBeEmpty();
 });
 
 test("@f023 critical controls meet the 44px touch-target baseline", async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 });
-  for (const route of ["/", "/en/", "/en/learn/", "/en/learn/signals/", "/en/learn/signs/", "/en/sources/"]) {
+  for (const route of ["/", "/en/", "/en/learn/", "/en/learn/signals/", "/en/learn/signs/", "/en/review/", "/en/sources/"]) {
     await page.goto(route);
     const undersized = await page.locator("a, button, summary, label.checkpoint-option").evaluateAll((elements) =>
       elements.filter((element) => {
@@ -111,7 +111,7 @@ test("@f023 critical controls meet the 44px touch-target baseline", async ({ pag
 test("@f023 reduced-motion preference suppresses interaction transitions", async ({ browser }) => {
   const context = await browser.newContext({ reducedMotion: "reduce" });
   const page = await context.newPage();
-  await page.goto("http://127.0.0.1:4321/en/learn/signals/");
+  await page.goto(`http://127.0.0.1:${process.env.TEST_PORT ?? "4321"}/en/review/`);
   const transitionSeconds = await page.locator(".checkpoint-option").first().evaluate((element) => Number.parseFloat(getComputedStyle(element).transitionDuration));
   expect(transitionSeconds).toBeLessThanOrEqual(0.00001);
   await context.close();

@@ -16,10 +16,10 @@
       "templateId": "T02",
       "candidatePath": "tools/diagram-generator/review/D002.svg",
       "sceneHash": "sha256:f7a7b99e3f23451ebccf61b1726a2ec7ff0571cab91f79c99769120e81698ad0",
-      "outputHash": "sha256:d76dfc5b49333dcb5d6fd5b8b9955e9834d1159a4b061dcff333f0422aea0046",
+      "outputHash": "sha256:51c1ca5ce36a20cb287b8528dfeb5fcd9cbb3c001245592af3123f2450bdec5a",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-10"
+      "reviewedAt": "2026-08-11"
     },
     {
       "id": "D003",

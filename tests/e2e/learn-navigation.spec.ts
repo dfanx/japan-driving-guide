@@ -61,3 +61,18 @@ test("@f008 360px module navigation stays inside the page", async ({ page }) => 
   await expect(page.getByRole("link", { name: /上一課/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /下一課/ })).toBeVisible();
 });
+
+test("@f030 the curriculum ends at the full review instead of a lesson checkpoint", async ({ page }) => {
+  await page.goto("/zh-TW/learn/");
+  await expect(page.getByRole("link", { name: "開始上路總複習" })).toHaveAttribute(
+    "href",
+    "/zh-TW/review/",
+  );
+
+  await page.goto("/zh-TW/learn/safety-basics/");
+  await expect(page.getByRole("link", { name: /24 題上路總複習/ })).toHaveAttribute(
+    "href",
+    "/zh-TW/review/",
+  );
+  await expect(page.locator("[data-quiz-session]")).toHaveCount(0);
+});

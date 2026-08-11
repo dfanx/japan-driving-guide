@@ -17,39 +17,32 @@ const diagramPairs = visualSet.diagramPairs.filter(
 const isEnglish = locale === "en";
 const copy = isEnglish
   ? {
-      eyebrow: "Visual learning",
-      title: "See the driver's view, then break down the decision",
-      intro:
-        "The generated photo builds field awareness. Use the deterministic diagram and exact official visual for the rule and control.",
-      simulation: "Driver's view · generated simulation",
-      simulationNote:
-        "Context only. Do not use this generated image to identify a sign, signal, road marking, fuel grade, or legal requirement.",
-      diagram: "Decision breakdown",
-      officialDiagram: "Includes exact official visual",
-      illustration: "Context illustration · not official evidence",
-      illustrationNote:
-        "Generated only to illustrate context. Do not use it to identify a document, sign, road marking, or legal requirement.",
-      signTitle: "Official signs to recognize in this lesson",
+      eyebrow: "See it before you meet it",
+      title: "What should you notice in this situation?",
+      intro: "Start with the road scene, identify the trap, then remember one action you can use behind the wheel.",
+      situation: "Situation",
+      watch: "Watch for",
+      actionLabel: "Do this",
+      decision: "How to read it",
+      signTitle: "Signs to recognize in this lesson",
       meaning: "Meaning",
       action: "What to do",
-      officialSource: "Open official source",
-      linkOnly: "Official link only",
+      officialSource: "See the Japanese reference",
+      linkOnly: "Open the Japanese ETC lane guide to see the current sign",
     }
   : {
-      eyebrow: "先看圖",
-      title: "先看現場，再拆解判斷",
-      intro: "生成模擬照先建立臨場感；法規、位置與標誌辨認，以解說圖和日本官方原圖為準。",
-      simulation: "駕駛座視角 · 生成模擬",
-      simulationNote: "只用來看視野與空間；不要拿它辨認標誌、號誌、標線、油品或法規。",
-      diagram: "判斷解說圖",
-      officialDiagram: "含官方標誌原圖",
-      illustration: "情境示意（非官方圖）",
-      illustrationNote: "這張圖只用來看情境，不要拿它辨認證件、標誌、標線或法規。",
+      eyebrow: "先在這裡看過一次",
+      title: "遇到這個情況，你要先注意什麼？",
+      intro: "先看道路情境，抓出最容易犯的錯，再記住一個上路就能用的動作。",
+      situation: "情境",
+      watch: "先注意",
+      actionLabel: "建議做法",
+      decision: "看圖判斷",
       signTitle: "這一課要認得的標誌",
       meaning: "代表什麼",
       action: "看到怎麼做",
-      officialSource: "看日本官方資料",
-      linkOnly: "只放官方連結",
+      officialSource: "查看日本圖例",
+      linkOnly: "開啟日本 ETC 車道圖例，先認清現場樣式",
     };
 const headingId = `${lessonId}-visuals-title`;
 ---
@@ -78,15 +71,17 @@ const headingId = `${lessonId}-visuals-title`;
             decoding="async"
             alt={illustration.alt[locale]}
           />
-          <figcaption>
-            <span class="visual-badge visual-badge--context">{copy.illustration}</span>
-            <span>{illustration.alt[locale]}</span>
-            <small>{copy.illustrationNote}</small>
+          <figcaption class="visual-teaching-caption">
+            <p class="visual-teaching-caption__lead"><span class="visual-badge">{copy.situation}</span>{illustration.guidance.situation[locale]}</p>
+            <dl class="visual-teaching-points">
+              <div><dt>{copy.watch}</dt><dd>{illustration.guidance.watch[locale]}</dd></div>
+              <div><dt>{copy.actionLabel}</dt><dd>{illustration.guidance.action[locale]}</dd></div>
+            </dl>
           </figcaption>
         </figure>
       ))}
 
-      {diagramPairs.map(({ diagram, simulation }) => (
+      {diagramPairs.map(({ diagram, simulation, guidance }) => (
         <article class="lesson-scenario-pair" data-scenario-pair data-paired-diagram-id={diagram.id}>
           <figure
             class="lesson-visual-card lesson-visual-card--simulation"
@@ -102,10 +97,11 @@ const headingId = `${lessonId}-visuals-title`;
               decoding="async"
               alt={simulation.alt[locale]}
             />
-            <figcaption>
-              <span class="visual-badge visual-badge--context">{copy.simulation}</span>
-              <span>{simulation.alt[locale]}</span>
-              <small>{copy.simulationNote}</small>
+            <figcaption class="visual-teaching-caption">
+              <p class="visual-teaching-caption__lead"><span class="visual-badge">{copy.situation}</span>{guidance.situation[locale]}</p>
+              <dl class="visual-teaching-points">
+                <div><dt>{copy.watch}</dt><dd>{guidance.watch[locale]}</dd></div>
+              </dl>
             </figcaption>
           </figure>
 
@@ -123,12 +119,11 @@ const headingId = `${lessonId}-visuals-title`;
               decoding="async"
               alt={diagram.alt[locale]}
             />
-            <figcaption>
-              <span class="visual-badge">{copy.diagram} · {diagram.id}</span>
-              {diagram.containsOfficialVisual && (
-                <span class="visual-badge visual-badge--official">{copy.officialDiagram}</span>
-              )}
-              <span>{diagram.alt[locale]}</span>
+            <figcaption class="visual-teaching-caption">
+              <p class="visual-teaching-caption__lead"><span class="visual-badge visual-badge--action">{copy.actionLabel}</span>{guidance.action[locale]}</p>
+              <dl class="visual-teaching-points">
+                <div><dt>{copy.decision}</dt><dd>{diagram.alt[locale]}</dd></div>
+              </dl>
             </figcaption>
           </figure>
         </article>
@@ -162,7 +157,6 @@ const headingId = `${lessonId}-visuals-title`;
                 {assets.length === 0 && (
                   <div class="lesson-sign-card__link-only">
                     <strong>{copy.linkOnly}</strong>
-                    <p>{sign.rightsNote?.[locale]}</p>
                   </div>
                 )}
               </div>

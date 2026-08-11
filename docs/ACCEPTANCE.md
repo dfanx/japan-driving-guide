@@ -98,6 +98,12 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] All 24 simulation WebPs pass exact hash and 1200×800 dimension gates
 - [x] F029 D006 right turn follows a continuous path into the eastbound left-side lane
 - [x] D006 lane semantics, 360px rendering, approval hash, and full release regression pass
+- [x] F030 visual captions teach situation, risk, and action without production/compliance copy
+- [x] D002 signal and stop instruction align ahead of the south approach lane
+- [x] Signal and generic lessons expose previous/index/next navigation without isolated scored questions
+- [x] Bilingual 24-question final review supports paging, explanations, score, topic bands, and lesson recovery
+- [x] Q016 verifies the no-stopping/no-parking sign distinction
+- [x] F030 desktop/mobile visual QA and full release regression pass
 
 ## External release boundary
 

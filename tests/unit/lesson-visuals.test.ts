@@ -8,9 +8,11 @@ import { describe, expect, it } from "vitest";
 import illustrationData from "../../src/data/lesson-illustrations.json";
 import { lessonNavigation } from "../../src/lib/content/lesson-navigation";
 import {
+  getVisualGuidance,
   getLessonVisualSet,
   lessonIllustrationSchema,
   lessonVisualDefinitions,
+  visualGuidance,
 } from "../../src/lib/content/lesson-visuals";
 
 const root = process.cwd();
@@ -41,6 +43,18 @@ describe("F026 lesson visual coverage", () => {
     const actual = lessonVisualDefinitions.flatMap((item) => item.diagramIds).sort();
     expect(actual).toEqual(expectedDiagramIds);
     expect(new Set(actual).size).toBe(actual.length);
+  });
+
+  it("gives every scene and illustration learner-facing situation, risk, and action copy", () => {
+    expect(visualGuidance).toHaveLength(27);
+    for (const guidance of visualGuidance) {
+      for (const locale of ["zh-TW", "en"] as const) {
+        expect(guidance.situation[locale].length, `${guidance.id}/${locale}/situation`).toBeGreaterThan(6);
+        expect(guidance.watch[locale].length, `${guidance.id}/${locale}/watch`).toBeGreaterThan(6);
+        expect(guidance.action[locale].length, `${guidance.id}/${locale}/action`).toBeGreaterThan(6);
+      }
+    }
+    expect(getVisualGuidance("D002").action["zh-TW"]).toContain("停止線前");
   });
 
   it("keeps bilingual lesson frontmatter aligned with the visual mapping", () => {
