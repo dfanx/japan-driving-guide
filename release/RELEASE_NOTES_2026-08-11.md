@@ -57,7 +57,7 @@
 
 ## Known boundary
 
-The source is published to `dfanx/japan-driving-guide` through draft PR #1, but
-this release is not yet claimed as publicly deployed. The ZIP and localhost
-preview remain the completed delivery artifacts until the PR is merged and the
-verified Pages workflow produces a reachable live URL.
+The source is merged into `dfanx/japan-driving-guide` and this release is live at
+`https://dfanx.github.io/japan-driving-guide/`. Actions run `31474056007`
+attempt 2 passed verification, artifact upload, and deployment; the public root,
+zh-TW intersections lesson, and D006 asset returned HTTP 200.

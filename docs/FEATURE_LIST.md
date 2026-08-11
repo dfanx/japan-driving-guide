@@ -30,7 +30,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F019A | Official visual assets + D002 approval/promotion | passing | Provenance passes; human-approved bytes alone enter `public/diagrams` |
 | F020 | Lesson integration with diagrams | passing | Mobile readability passes |
 | F021 | Content traceability page/footer | passing | Verified date and sources display |
-| F022 | GitHub Pages CI/CD | blocked | Deploy and base-path smoke pass |
+| F022 | GitHub Pages CI/CD | passing | Deploy and base-path smoke pass |
 | F023 | Full mobile/accessibility pass | passing | Acceptance checklist passes |
 | F024 | PWA/offline | passing | Core guide works offline after first visit |
 | F025 | Production content revalidation | passing | Latest official sources rechecked before release |
@@ -415,15 +415,16 @@ WIP limit: exactly zero or one feature may be `active`.
 ### F022
 
 - Acceptance run: `npm run verify:f022`
-- Date: 2026-08-10
-- Result: BLOCKED only on live GitHub deployment; implementation checks PASS
+- Date: 2026-08-11
+- Result: PASS
 - Base path: 41 HTML files and 906 internal route/asset references resolve under
   `/japan-driving-guide/`; one Chromium path/asset smoke case passes
 - Workflow: official GitHub Pages artifact/deployment actions, least-privilege
   permissions, Node/npm lockfile install, full static gates, and project/user-site
   base-path selection are configured
-- External blocker: the workspace has no Git remote or repository visibility
-  decision; no public repository was created by inference
+- Live evidence: PR #1 merged at `781ec5cc`; Actions run `31474056007` attempt 2
+  passed build and deploy; the public root, zh-TW intersections lesson, and D006
+  returned HTTP 200 at `https://dfanx.github.io/japan-driving-guide/`
 - Rollback: remove `withBase`, Pages workflow, base-aware preview server,
   F022 scripts/tests/docs, and restore root-only link generation
 

@@ -102,5 +102,5 @@ PWA, or deployment work. Those belong to later feature gates.
 ## External release boundary
 
 - [x] GitHub Pages workflow and artifact are implementation-verified
-- [ ] Live GitHub Pages URL (pending PR #1 merge and successful Pages deployment)
+- [x] Live GitHub Pages URL passes root, lesson, and D006 HTTP checks
 - [x] Owner-directed promotion of D001 and D003-D024 after 600px/360px visual review

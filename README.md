@@ -75,9 +75,10 @@ Question bank.
 ## Deployment
 
 `.github/workflows/deploy-pages.yml` verifies and deploys either an owner-site
-root path or repository project path. The source repository is
-`https://github.com/dfanx/japan-driving-guide`; no live Pages URL is claimed
-until the publication PR is merged and deployment completes.
+root path or repository project path. Source and live site:
+
+- Repository: `https://github.com/dfanx/japan-driving-guide`
+- GitHub Pages: `https://dfanx.github.io/japan-driving-guide/`
 
 ## Repository map
 

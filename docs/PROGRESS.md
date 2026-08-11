@@ -7,7 +7,7 @@
 - Last passing feature: F029 — D006 right-turn lane correction
 - Content imported: 25 Sources, 36 Rules, 24 Questions, 32 lesson documents
 - Diagrams generated/approved: 24 review candidates / 24 approved
-- Deployment: source pushed in PR #1; live GitHub Pages pending merge/deployment
+- Deployment: live at `https://dfanx.github.io/japan-driving-guide/`
 
 ## Session 2026-08-10
 
@@ -1605,12 +1605,12 @@ authorized GitHub repository and running the verified Pages workflow.
   review remains necessary after any future renderer-wide road-layout change.
 - Rollback is limited to the D006 preset, its focused tests, manifest/public SVG,
   and rebuilt release artifact. No Rule, Source, or lesson copy changed.
-- F022 remains blocked only on completing the PR merge and live Pages deployment.
+- F022 live deployment is passing.
 
 ### Next
 
-No feature is active. The corrected release is ready locally; public deployment
-still requires PR #1 to merge and the Pages workflow to complete.
+No feature is active. The corrected release is available locally and on GitHub
+Pages.
 
 ## Session 2026-08-11 — GitHub source publication
 
@@ -1635,5 +1635,33 @@ still requires PR #1 to merge and the Pages workflow to complete.
   returned 403 for PR creation, so the documented CLI fallback was used.
 - Product release verification remains the recorded F029 `verify:release` PASS;
   publication changed only Git metadata, `.gitignore`, and handoff text.
-- F022 remains blocked until PR #1 is merged and the Pages workflow produces a
+- F022 was completed after PR #1 merged and the Pages workflow produced a
   reachable public URL.
+
+## Session 2026-08-11 — PR merge and live Pages deployment
+
+### Completed
+
+- Confirmed PR #1 was mergeable at head `9b55c00`, marked it ready, and merged
+  it into `main` as merge commit `781ec5cc` without force-push.
+- Diagnosed the first Pages run failure: all source/build/base-path/smoke gates
+  passed, but `actions/configure-pages` returned Not Found because Pages was not
+  enabled for the repository.
+- With explicit user authorization, enabled GitHub Pages with build type
+  `workflow` and reran Actions run `31474056007`.
+- Attempt 2 passed both build and deploy jobs. Public HTTPS is enforced.
+
+### Verification
+
+- PR #1 state: MERGED.
+- GitHub Actions: PASS, run `31474056007`, attempt 2.
+- Public HTTP: root, `/zh-TW/learn/intersections/`, and `/diagrams/D006.svg`
+  returned 200.
+- Live D006 contains `data-destination-lane="eastbound-left"`.
+- Live URL: `https://dfanx.github.io/japan-driving-guide/`.
+
+### Residual risk
+
+- Future pushes to `main` redeploy automatically and must keep the release gate
+  passing. GitHub availability and future legal-source revalidation remain
+  external operational dependencies.

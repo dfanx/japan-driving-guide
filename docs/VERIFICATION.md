@@ -147,12 +147,17 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-11 | Publish | GitHub scope and credential scan | PASS | 292 project files staged; dependencies, build/test output, caches and `tmp/` excluded; no credential-pattern match |
 | 2026-08-11 | Publish | Branch push | PASS | Commit `8ebcb75` pushed to `dfanx/japan-driving-guide:agent/publish-guide` without rewriting existing `main` |
 | 2026-08-11 | Publish | Draft PR | PASS | PR #1 opened against `main`; connector returned 403, authenticated `gh pr create` fallback succeeded |
+| 2026-08-11 | Publish | PR #1 merge | PASS | Head `9b55c00` was mergeable/clean and merged into `main` as `781ec5cc` |
+| 2026-08-11 | F022 | Initial live Pages workflow | EXPECTED FAIL | All verification/build/base-path/smoke gates passed; Configure Pages returned Not Found because repository Pages was not enabled |
+| 2026-08-11 | F022 | Pages workflow attempt 2 | PASS | Run `31474056007` passed build, artifact upload, and deploy after authorized workflow-source enablement |
+| 2026-08-11 | F022 | Public HTTPS smoke | PASS | Root, zh-TW intersections lesson, and D006 returned 200; live D006 declares `eastbound-left` |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify
 chain passed. Treat recurrence as a Windows filesystem observation, not as a
 successful deletion guarantee.
 
-## Not yet part of verification
+## External verification boundary
 
-- Live GitHub Pages deployment (F022; local/project-base routing is verified)
+- Live GitHub Pages deployment is verified. Third-party uptime and future
+  authority-source changes remain external dependencies.
