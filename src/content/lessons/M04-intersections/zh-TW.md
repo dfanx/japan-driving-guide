@@ -5,6 +5,8 @@ title: 路口與轉彎
 ruleIds:
   - JP-RULE-INTERSECTION-RIGHT-001
   - JP-RULE-INTERSECTION-LEFT-CHECK-001
+  - JP-RULE-LANE-CHANGE-YELLOW-001
+  - JP-RULE-GUIDE-STRIP-001
 diagramIds:
   - D006
   - D007
@@ -22,6 +24,10 @@ reviewStatus: approved
 ## 左轉別只看前面
 
 左轉前看後視鏡和車身左側。自行車、機車或行人很容易卡在左後方視線死角，轉彎要慢。
+
+## 要轉彎，提早選車道
+
+照車道箭頭和標線提早排進正確車道。進入黃色實線管制區後，不要為了跟導航臨時跨線；導流帶是用來整理車流，不是讓你加速插隊。錯過車道就順路往前，再安全改道。
 
 ## 小路口別硬背誰先
 

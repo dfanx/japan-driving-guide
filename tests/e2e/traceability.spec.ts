@@ -18,11 +18,11 @@ for (const localeCase of [
     await page.goto(`/${localeCase.locale}/sources/`);
     await expect(page.locator("html")).toHaveAttribute("lang", localeCase.locale);
     await expect(page.getByRole("heading", { level: 1, name: localeCase.heading })).toBeVisible();
-    await expect(page.locator(".source-entry")).toHaveCount(25);
+    await expect(page.locator(".source-entry")).toHaveCount(29);
     await expect(page.locator(".classification-card")).toHaveCount(3);
-    await expect(page.locator(".classification-card li")).toHaveCount(36);
+    await expect(page.locator(".classification-card li")).toHaveCount(39);
     await expect(page.locator('time[datetime="2026-08-10"]')).toHaveCount(21);
-    await expect(page.locator('time[datetime="2026-08-11"]')).toHaveCount(6);
+    await expect(page.locator('time[datetime="2026-08-12"]')).toHaveCount(4);
     await expect(page.locator(".locale-status a").filter({ hasText: localeCase.locale === "en" ? "中" : "EN" })).toHaveAttribute("href", localeCase.alternate);
 
     await page.goto(`/${localeCase.locale}/learn/`);

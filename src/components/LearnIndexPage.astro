@@ -9,8 +9,8 @@ import { withBase } from "../lib/paths";
 const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
 const isEnglish = locale === "en";
 const copy = isEnglish
-  ? { title: "Learn to drive safely in Japan", lead: "Sixteen practical lessons focus on the decisions overseas visitors are most likely to get wrong.", rail: "Learn modules", start: "Open lesson", reviewEyebrow: "Ready to check yourself?", reviewTitle: "Take the 24-question final review", reviewText: "Complete every question, see why each answer is right, and revisit only the topics that need work.", reviewAction: "Start final review", home: "Back to home", skip: "Skip to main content" }
-  : { title: "日本自駕新手攻略", lead: "第一次在日本開車，從證件、靠左、號誌、停車到事故處理，16 課按順序看完。", rail: "16 課攻略", start: "看這一課", reviewEyebrow: "16 課都看完了？", reviewTitle: "用 24 題確認自己真的會判斷", reviewText: "每題作答後立刻看解析，完成後只回頭補不熟的主題。", reviewAction: "開始上路總複習", home: "回首頁", skip: "跳到主要內容" };
+  ? { title: "Learn to drive safely in Japan", lead: "Sixteen practical lessons focus on the decisions overseas visitors are most likely to get wrong.", rail: "Learn modules", start: "Open lesson", reviewEyebrow: "Ready to check yourself?", reviewTitle: "Take the 25-question final review", reviewText: "Complete every question, see why each answer is right, and revisit only the topics that need work.", reviewAction: "Start final review", home: "Back to home", skip: "Skip to main content" }
+  : { title: "日本自駕新手攻略", lead: "第一次在日本開車，從證件、靠左、號誌、停車到事故處理，16 課按順序看完。", rail: "16 課攻略", start: "看這一課", reviewEyebrow: "16 課都看完了？", reviewTitle: "用 25 題確認自己真的會判斷", reviewText: "每題作答後立刻看解析，完成後只回頭補不熟的主題。", reviewAction: "開始上路總複習", home: "回首頁", skip: "跳到主要內容" };
 const localeLinks = { "zh-TW": "/zh-TW/learn/", en: "/en/learn/" };
 ---
 

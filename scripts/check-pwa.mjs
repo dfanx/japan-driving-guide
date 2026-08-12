@@ -27,7 +27,7 @@ for (const required of [base, `${base}offline.html`, `${base}manifest.webmanifes
 if (precache.some((url) => !url.startsWith(base))) failures.push("Precache contains a URL outside the configured base");
 
 const quizBank = JSON.parse(await readFile(resolve(dist, "data", "quiz-bank.json"), "utf8"));
-if (!Array.isArray(quizBank) || quizBank.length !== 24) failures.push("Offline quiz bank must contain the 24 approved Questions");
+if (!Array.isArray(quizBank) || quizBank.length !== 25) failures.push("Offline quiz bank must contain the 25 approved Questions");
 
 const rootHtml = await readFile(resolve(dist, "index.html"), "utf8");
 if (!rootHtml.includes(`href="${base}manifest.webmanifest"`)) failures.push("Root page does not link the base-aware manifest");
@@ -37,5 +37,5 @@ if (failures.length) {
   failures.forEach((failure) => console.error(`PWA check FAIL: ${failure}`));
   process.exitCode = 1;
 } else {
-  console.log(`PWA check PASS: ${precache.length} precached URL(s), 24 Questions, base ${base}`);
+  console.log(`PWA check PASS: ${precache.length} precached URL(s), 25 Questions, base ${base}`);
 }

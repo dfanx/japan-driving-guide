@@ -23,5 +23,9 @@
   {"sourceId":"S22","checkedAt":"2026-08-11","outcome":"verified","evidence":"Current NPA seat-belt page states that the driver and passengers in every seating position must wear the provided seat belts under Article 71-3."},
   {"sourceId":"S23","checkedAt":"2026-08-11","outcome":"verified","evidence":"Current NPA child-seat page states that a driver must not carry a child under six without an appropriate child restraint, subject to statutory exceptions."},
   {"sourceId":"S24","checkedAt":"2026-08-11","outcome":"verified","evidence":"Current Tokyo Metropolitan Police page states that immediate inability to move the vehicle controls abandoned-parking status regardless of short duration, engine or hazard lights."},
-  {"sourceId":"S25","checkedAt":"2026-08-11","outcome":"verified","evidence":"Current National Rent-a-Car Association visitor page confirms short roadside parking risk, reserved monthly bays, lock-plate parking and parking-meter conditions."}
+  {"sourceId":"S25","checkedAt":"2026-08-11","outcome":"verified","evidence":"Current National Rent-a-Car Association visitor page confirms short roadside parking risk, reserved monthly bays, lock-plate parking and parking-meter conditions."},
+  {"sourceId":"S26","checkedAt":"2026-08-12","outcome":"verified","evidence":"NPA fiscal review materials explicitly distinguish semi-fixed automatic speed devices for expressways and portable devices for general roads."},
+  {"sourceId":"S27","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA white paper describes planned enforcement by crash conditions and priority routes and includes significant speeding among targeted dangerous behaviours."},
+  {"sourceId":"S28","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA traffic-regulation page explains the safety and congestion-control purpose of yellow solid no-lane-change road markings."},
+  {"sourceId":"S29","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA traffic-method guide defines guide strips and provides official instruction for road markings, speed, signals and safe road positioning."}
 ]

@@ -44,6 +44,7 @@ const expectedQuestionDiagrams: Readonly<Record<string, string>> = {
   Q017: "D021",
   Q018: "D022",
   Q023: "D024",
+  Q025: "D011",
 };
 
 const officialAssetIds = [
@@ -78,13 +79,13 @@ describe("F018 semantic Scene inventory", () => {
     }
   });
 
-  it("stages only the explicit curriculum mappings and activates approved D002 only", () => {
+  it("stages only the explicit curriculum mappings and activates reviewed question diagrams", () => {
     const actual = Object.fromEntries(
       questionBank
         .filter((question) => question.diagramId)
         .map((question) => [question.id, question.diagramId]),
     );
-    expect(actual).toEqual({ Q002: "D002" });
+    expect(actual).toEqual({ Q002: "D002", Q025: "D011" });
     expect(
       Object.fromEntries(
         mappingData.items.map((entry) => [entry.questionId, entry.diagramId]),
@@ -94,7 +95,7 @@ describe("F018 semantic Scene inventory", () => {
       mappingData.items
         .filter((entry) => entry.reviewStatus === "approved")
         .map((entry) => entry.questionId),
-    ).toEqual(["Q002"]);
+    ).toEqual(["Q002", "Q025"]);
   });
 
   it("uses exact registered official assets for regulated signal and sign faces", () => {

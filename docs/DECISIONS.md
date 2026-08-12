@@ -565,3 +565,21 @@
   relationship even when the abstract rule is correct.
 - Consequence: D002 has geometry assertions and a reviewed hash. Future signal
   diagrams must test lane-relative control placement, not only signal state.
+
+## D043 — Enforcement folklore is not a driving margin
+
+- Date: 2026-08-12
+- Status: accepted
+- Decision: the guide may explain that Japan uses fixed, semi-fixed, and
+  portable speed-enforcement equipment, but it must not publish alleged camera
+  trigger tolerances, lead-car shielding, detector tactics, or claims that only
+  the first vehicle is stopped. Learner guidance remains: obey the posted or
+  otherwise applicable speed limit.
+- Reason: an observed enforcement threshold is neither a legal allowance nor a
+  stable safety rule. Optimizing for non-detection would turn a safety product
+  into an evasion guide and could expose visitors to collision, penalty, rental,
+  and immigration consequences that the supplied anecdote cannot establish.
+- Consequence: anecdotal posts and photographed books may identify learner
+  confusion, but accepted rules require Japanese-authority Source IDs. Book
+  layouts are not reproduced; verified concepts are merged into original,
+  deterministic diagrams and Taiwan-facing action copy.

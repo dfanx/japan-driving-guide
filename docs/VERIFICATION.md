@@ -156,6 +156,12 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-11 | F030 | Focused gates | PASS | 28 focused unit assertions and 10 Chromium cases cover guidance, D002, complete review, curriculum handoff, paging, keyboard and mobile |
 | 2026-08-11 | F030 | Full local regression | PASS | Zero-diagnostic lint/typecheck, 21 unit files / 145 tests, 43 pages, 110 PWA URLs, 46 Chromium passes plus one expected skip |
 | 2026-08-11 | Release | F030 static ZIP integrity | PASS | 111 entries / 43 route entries / 3,338,534 bytes; SHA-256 `DD5FC6B6...CED66D9` |
+| 2026-08-12 | F031 | Official-source and reference-image audit | PASS | S26-S29 support enforcement equipment, yellow no-lane-change markings, guide strips and current guidance; all 13 supplied textbook photos are mapped in `F031_REFERENCE_IMAGE_AUDIT.md` without copying the artwork |
+| 2026-08-12 | F031 | D011 600px/360px review and approval | PASS | Original two-road comparison clearly separates no-centre-line roads from roads with a centre line; reviewed/public SHA-256 `76072143...16866`; restored D002 retains reviewed SHA-256 `51c1ca5c...bdec5a`; 24/24 diagram gate passes |
+| 2026-08-12 | F031 | Focused gates | PASS | `npm run test:f031` and `npm run test:e2e:f031` cover the speed myth, rejected evasion advice, bilingual parity, Q025, source traceability, lesson rendering and diagram semantics |
+| 2026-08-12 | F031 | Full local release regression | PASS | `npm run verify:release` exits 0: zero-diagnostic lint/typecheck; 22 unit files / 149 tests; 29 Sources / 39 Rules / 32 lessons / 25 Questions / 24 Scenes; 43 pages; 110 PWA URLs; 49 root Chromium passes with one expected project-base skip and the separate project-base case passing |
+| 2026-08-12 | F031 | Learner-flow browser QA | PASS | Speed, intersections and final-review routes visually inspected in the local app; images load; Q001 locks the first answer, explains it and exposes next-page navigation |
+| 2026-08-12 | Release | F031 static ZIP integrity | PASS | 112 entries / 43 route entries / 3,343,307 bytes; SHA-256 `11C65D33...AE1821` |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

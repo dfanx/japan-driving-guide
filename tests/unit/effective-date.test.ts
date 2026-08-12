@@ -64,7 +64,7 @@ describe("content effective-date source", () => {
       resolveContentAsOfDate({
         environment: {},
       }),
-    ).toBe("2026-08-11");
+    ).toBe("2026-08-12");
   });
 
   it("rejects an invalid explicit date", () => {

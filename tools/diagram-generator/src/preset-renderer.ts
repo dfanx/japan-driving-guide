@@ -199,11 +199,21 @@ function renderCrosswalk(scene: PresetDiagramScene): string {
 
 function renderRoadComparison(scene: PresetDiagramScene): string {
   return custom(scene, [
-    roadSegment({ x: 120, y: 0, width: 320, height: 800 }),
-    roadSegment({ x: 680, y: 0, width: 400, height: 800 }),
-    laneBoundary({ start: { x: 880, y: 6 }, end: { x: 880, y: 794 }, width: 7 }),
-    vehicle({ bounds: { x: 205, y: 520, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
-    vehicle({ bounds: { x: 760, y: 520, width: 64, height: 100 }, color: "blue", heading: "north", label: "B" }),
+    svgNode("g", { "data-road-type": "no-centre-line", "data-effective-limit": "30-from-2026-09-01-unless-posted" }, { children: [
+      roadSegment({ x: 120, y: 0, width: 320, height: 800 }),
+      vehicle({ bounds: { x: 205, y: 520, width: 64, height: 100 }, color: "yellow", heading: "north", label: "A" }),
+      svgNode("rect", { "data-representation": "teaching-label-not-road-sign", fill: "#ffffff", height: 150, rx: 18, stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 6, width: 280, x: 140, y: 65 }),
+      text("A 無中央線｜9·1 起", 280, 125, { fill: DIAGRAM_PALETTE.signalHousing, size: 32 }),
+      text("無另標：30 km/h", 280, 180, { fill: DIAGRAM_PALETTE.signalHousing, size: 30 }),
+    ] }),
+    svgNode("g", { "data-road-type": "centre-line", "data-action": "read-posted-limit" }, { children: [
+      roadSegment({ x: 680, y: 0, width: 400, height: 800 }),
+      laneBoundary({ start: { x: 880, y: 6 }, end: { x: 880, y: 794 }, width: 7 }),
+      vehicle({ bounds: { x: 760, y: 520, width: 64, height: 100 }, color: "blue", heading: "north", label: "B" }),
+      svgNode("rect", { "data-representation": "teaching-label-not-road-sign", fill: "#ffffff", height: 150, rx: 18, stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 6, width: 340, x: 710, y: 65 }),
+      text("B  有中央線", 880, 125, { fill: DIAGRAM_PALETTE.signalHousing, size: 38 }),
+      text("看現場速限", 880, 180, { fill: DIAGRAM_PALETTE.signalHousing, size: 32 }),
+    ] }),
   ]);
 }
 

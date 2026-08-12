@@ -499,6 +499,19 @@ JAF 的一般說明仍載明：普通小客車在沒有指定速限標誌/標線
 - 有中央線或車輛通行帶的一般道路等，法定速限仍維持 60 km/h（除非標誌另有指定）。
 - **標誌/標線指定速限優先。**
 
+### 速度取締迷思
+
+日本不是「不抓超速」。警察廳資料明確列出高速公路使用的半固定式，以及一般道路使用的可搬式速度取締設備；警方也會依事故狀況規劃重點路段與時段。
+
+下列網路說法不得寫成教材建議：
+
+- 一般道路或高速公路有固定的「安全超速額度」；
+- 跟著前車超速就不會被取締；
+- 警察只會取締車隊第一台；
+- 看到特定 App、三角錐或設備提示才需要減速。
+
+這些說法混淆「設備可能的運作方式」與「道路允許的速度」。教材結論只能是：**依現場速限行駛，不把取締門檻當成合法額度，也不要跟著前車超速。**
+
 ### 網站內容必須做「生效日版本控制」
 
 這是本專案最重要的內容治理示例。
@@ -526,9 +539,11 @@ From **2026-09-01**, the NPA states that the statutory limit on many local/livin
 
 Roads with a center line or traffic lanes and certain other categories retain the 60 km/h statutory limit unless another speed is posted.
 
+Japan does enforce speed limits. NPA material documents semi-fixed devices used on expressways, portable devices used on general roads, and enforcement planned around crash conditions and priority routes. Rumoured camera thresholds, following a speeding lead vehicle, or assuming only the first vehicle will be stopped are not traffic rules and must not be taught as safe tactics.
+
 **Diagram:** D011 — Narrow local road without center line vs road with center line.  
 **Weakness tag:** `speed`  
-**Sources:** S04, S09.
+**Sources:** S04, S09, S16, S26, S27.
 
 ---
 
@@ -598,6 +613,10 @@ If the crossing is controlled by a traffic signal that permits passage, follow t
 
 在交叉路口附近看到禁止變換車道的黃色實線時，不要為了臨時跟導航轉彎而跨線硬切。
 
+### 導流帶不是插隊車道
+
+導流帶的功能是讓車流安全、順暢地分流。要轉彎就依車道箭頭提早排入；錯過車道時繼續前進再改道，不要壓過導流帶硬切。
+
 ### 導航叫你轉，但標誌不允許
 
 > **道路標誌優先於導航。**
@@ -606,7 +625,7 @@ If the crossing is controlled by a traffic signal that permits passage, follow t
 
 **Diagrams:** D013–D018 — compact sign cards.  
 **Weakness tag:** `signs`  
-**Sources:** S04, S10.
+**Sources:** S04, S10, S28, S29.
 
 ---
 
@@ -947,7 +966,7 @@ JAF Road Service:
 # 20. 種子題庫 / Seed Quiz Bank
 
 > 正式網站建議至少 60–100 題經人工查核的題庫。  
-> 以下 24 題是內容與資料結構的基準題，不要求 Codex 自由幻想新增法規題；擴充題目必須能回指教材 Rule ID 與 Source ID。
+> 以下 25 題是內容與資料結構的基準題，不要求 Codex 自由幻想新增法規題；擴充題目必須能回指教材 Rule ID 與 Source ID。
 
 ## Q001
 - **Tag:** left_side_driving
@@ -1146,6 +1165,15 @@ JAF Road Service:
 - **EN:** You drank last night and still feel hungover this morning, but you are not currently drinking. Should you drive?
 - **Answer:** No / 不應駕駛
 
+## Q025
+- **Tag:** speed
+- **ZH:** 速限 40 km/h，前車開得更快，網路又說相機通常要超速很多才拍。你可以跟著加速嗎？
+- **EN:** The limit is 40 km/h, the car ahead is faster, and an online post claims cameras trigger only far above the limit. May you speed up to follow?
+- A. 可以，沒到傳聞門檻就安全 / Yes, staying below the rumoured threshold is safe
+- B. 不可以，40 是上限；取締方式不是超速額度 / No. Forty is the limit; enforcement methods are not a speeding allowance
+- **Answer:** B
+- **Diagram:** D011
+
 ---
 
 # 21. 弱點分析分類 / Weakness Categories
@@ -1278,6 +1306,26 @@ JAF Road Service:
 ## S17 — e-Gov Order for Enforcement of the Road Traffic Act
 - URL: https://laws.e-gov.go.jp/law/335CO0000000270
 - Use: 僅供編輯/法規查核
+- Tier: S
+
+## S26 — NPA, Traffic-enforcement equipment development
+- URL: https://www.npa.go.jp/policies/budget/review/r6/siryou_R6_2.pdf
+- Use: 半固定與可搬式速度取締設備的官方分類與使用道路
+- Tier: S
+
+## S27 — NPA, Traffic enforcement based on crash prevention
+- URL: https://www.npa.go.jp/hakusyo/r07/honbun/html/bb5551000.html
+- Use: 依事故狀況、重點路段與時段規劃交通取締
+- Tier: S
+
+## S28 — NPA, Purpose of yellow no-lane-change markings
+- URL: https://www.npa.go.jp/bureau/traffic/seibi2/kisei/mokuteki/shinnrohennkoukinnshi/shinnrohennkoukinnshi.html
+- Use: 黃色實線禁止變換車道管制的目的與適用
+- Tier: S
+
+## S29 — NPA, Traffic methods guide
+- URL: https://www.npa.go.jp/bureau/traffic/20241113kyousoku.pdf
+- Use: 導流帶、道路標線、號誌與速度的官方駕駛指引
 - Tier: S
 
 ---

@@ -23,6 +23,8 @@ reviewStatus: approved
 
 If the driver leaves and cannot move the vehicle immediately, it may be treated as abandoned parking regardless of duration, engine state or hazard lights. If the rule is unclear, use a lawful car park.
 
+An empty-looking kerb space is not enough. Read the no-parking or no-stopping sign, auxiliary plate, roadside marking and statutory clear zone together.
+
 ## Remember five metres and ten metres
 
 Intersections, corners and pedestrian/bicycle crossings commonly require five metres of clearance. Railway crossings and operating bus/tram stops commonly require ten metres. This is not the full list; use the [Tokyo Metropolitan Police official diagram](https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/seido/jogai_kokyo.files/chushakinshi.pdf) for the complete set.

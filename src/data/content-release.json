@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "releaseId": "2026-08-11",
-  "contentAsOfDate": "2026-08-11",
-  "sourcesRevalidatedAt": "2026-08-11",
-  "rulesRevalidatedAt": "2026-08-11",
+  "releaseId": "2026-08-12",
+  "contentAsOfDate": "2026-08-12",
+  "sourcesRevalidatedAt": "2026-08-12",
+  "rulesRevalidatedAt": "2026-08-12",
   "reviewBasis": "Incremental editorial review against current official publisher pages and primary Japanese legal references; per-source and per-rule dates remain explicit"
 }

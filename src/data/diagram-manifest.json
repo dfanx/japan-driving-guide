@@ -19,7 +19,7 @@
       "outputHash": "sha256:51c1ca5ce36a20cb287b8528dfeb5fcd9cbb3c001245592af3123f2450bdec5a",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-11"
+      "reviewedAt": "2026-08-12"
     },
     {
       "id": "D003",
@@ -105,11 +105,11 @@
       "id": "D011",
       "templateId": "C02",
       "candidatePath": "tools/diagram-generator/review/D011.svg",
-      "sceneHash": "sha256:4c6a023bb5e84a9848ad7811a118139f46f45e5d0faeee4649cefe7a0f824e81",
-      "outputHash": "sha256:d5feeb7ca4bc6db8e994b38eaa95de87546872e1dec98571c051d40de8f9722a",
+      "sceneHash": "sha256:6e324b9a4557d2ea02129357fcef0f0127478c289955a44a5c487e078798b823",
+      "outputHash": "sha256:760721437ec4e0ed9fefee7f0d8e83e26c36d9a47221ce11df11a3811cd16866",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-11"
+      "reviewedAt": "2026-08-12"
     },
     {
       "id": "D012",

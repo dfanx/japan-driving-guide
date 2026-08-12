@@ -8,7 +8,7 @@ import { resolveContentAsOfDate } from "../../src/lib/effective-date";
 describe("F025 release content revalidation", () => {
   it("freezes effectivity to the reviewed release date instead of the build clock", () => {
     expect(resolveContentAsOfDate({ environment: {} })).toBe(contentRelease.contentAsOfDate);
-    expect(contentRelease.contentAsOfDate).toBe("2026-08-11");
+    expect(contentRelease.contentAsOfDate).toBe("2026-08-12");
   });
 
   it("records an explicit revalidation outcome for every and only approved Source", () => {
@@ -36,7 +36,7 @@ describe("F025 release content revalidation", () => {
   });
 
   it("retains each Rule's actual review date and caps it at the release date", () => {
-    expect(ruleCatalog).toHaveLength(36);
+    expect(ruleCatalog).toHaveLength(39);
     expect(
       ruleCatalog.every(
         (rule) => rule.verifiedAt <= contentRelease.rulesRevalidatedAt,

@@ -12,6 +12,7 @@
     { "questionId": "Q014", "diagramId": "D012", "reviewStatus": "needs_review" },
     { "questionId": "Q017", "diagramId": "D021", "reviewStatus": "needs_review" },
     { "questionId": "Q018", "diagramId": "D022", "reviewStatus": "needs_review" },
-    { "questionId": "Q023", "diagramId": "D024", "reviewStatus": "needs_review" }
+    { "questionId": "Q023", "diagramId": "D024", "reviewStatus": "needs_review" },
+    { "questionId": "Q025", "diagramId": "D011", "reviewStatus": "approved" }
   ]
 }

@@ -17,13 +17,15 @@ order: 2
 reviewStatus: approved
 ---
 
-## Scenario
+## Red means stop, including turns
 
 You reach a red light in Japan and the direction you want to turn appears clear of vehicles and pedestrians.
 
-## What to do
-
 Stop at the stopping point. Do not turn left or right on your own judgment. Proceed in a direction only when an applicable green arrow permits it, while still checking for conflicting traffic.
+
+## Yellow does not mean accelerate
+
+Stop before the line when you can do so smoothly and safely. Continue only when you are already too close to stop safely; do not accelerate to beat the signal.
 
 ## Common mistake
 

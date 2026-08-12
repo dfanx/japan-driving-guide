@@ -9,16 +9,16 @@ import LearningShell from "./LearningShell.astro";
 const locale = z.enum(["zh-TW", "en"]).parse(Astro.props.locale);
 const isEnglish = locale === "en";
 const questions = questionBank.filter((question) => question.reviewStatus === "approved");
-if (questions.length !== 24) throw new Error("Full review requires the 24 approved Questions");
+if (questions.length !== 25) throw new Error("Full review requires the 25 approved Questions");
 
 const copy = isEnglish
   ? {
       title: "Final driving check",
-      description: "Finish the guide, then work through 24 practical decisions before collecting the rental car.",
+      description: "Finish the guide, then work through 25 practical decisions before collecting the rental car.",
       skip: "Skip to main content",
       rail: "Final review",
       railEyebrow: "Before pickup",
-      railItems: ["Finish the 16 lessons", "Answer 24 situations", "Review weak topics"],
+      railItems: ["Finish the 16 lessons", "Answer 25 situations", "Review weak topics"],
       eyebrow: "After the full guide",
       lead: "One question at a time. You can return to answered questions, and the final page points you back to topics worth another look.",
       startNote: "Allow about 8–12 minutes. Answers lock after submission so the result reflects your first decision.",
@@ -43,17 +43,17 @@ const copy = isEnglish
       topicReview: "Review once",
       topicPriority: "Review before driving",
       reviewLesson: "Open lesson",
-      restart: "Try all 24 again",
+      restart: "Try all 25 again",
       lessons: "Back to all lessons",
       footer: "Use the result to decide what to review—not as a driving licence or guarantee.",
     }
   : {
       title: "上路前總複習",
-      description: "看完 16 課後，用 24 個實際情境確認自己真的會判斷。",
+      description: "看完 16 課後，用 25 個實際情境確認自己真的會判斷。",
       skip: "跳到主要內容",
       rail: "總複習流程",
       railEyebrow: "取車前最後一關",
-      railItems: ["看完 16 課", "完成 24 個情境", "補強不熟的主題"],
+      railItems: ["看完 16 課", "完成 25 個情境", "補強不熟的主題"],
       eyebrow: "完整攻略讀完後",
       lead: "一次只看一題。答過的題目可以回頭看，最後會告訴你哪些主題值得再補一次。",
       startNote: "約 8–12 分鐘。每題送出後鎖定，保留你的第一反應。",
@@ -78,7 +78,7 @@ const copy = isEnglish
       topicReview: "建議再看一次",
       topicPriority: "上路前先複習",
       reviewLesson: "回去看這一課",
-      restart: "重新做 24 題",
+      restart: "重新做 25 題",
       lessons: "回全部 16 課",
       footer: "這份結果是複習導航，不是駕照測驗或安全保證。",
     };

@@ -3,11 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: none
+- Active feature: F031 — Speed-enforcement myths and reference-scenario audit
 - Last passing feature: F030 — Learner-first visuals and full review flow
-- Content imported: 25 Sources, 36 Rules, 24 Questions, 32 lesson documents
+- Content imported: 29 Sources, 39 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 24 review candidates / 24 approved
-- Deployment: live at `https://dfanx.github.io/japan-driving-guide/`
+- Deployment: live at `https://dfanx.github.io/japan-driving-guide/`; F031 is
+  locally release-verified and awaits the same-session Pages confirmation
 
 ## Session 2026-08-10
 

@@ -39,6 +39,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F028 | Driver-seat simulation photos | passing | D001-D024 each pair a disclosed driver-view simulation with the deterministic explanation diagram and official controls |
 | F029 | D006 right-turn lane correction | passing | A's right-turn path enters the eastbound left-side lane; D006 hash, review, mobile, and release gates pass |
 | F030 | Learner-first visuals and full review flow | passing | Captions teach scenario/risk/action; D002 signal is ahead of the approach lane; 24-question bilingual review with paging and results passes release gates |
+| F031 | Speed-enforcement myths and reference-scenario audit | active | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
 
 ## Evidence
 
@@ -595,3 +596,20 @@ WIP limit: exactly zero or one feature may be `active`.
 - Rollback: restore the prior lesson captions and single-question Signal page,
   remove the review routes/client module, restore Q016, and revert/reapprove the
   previous D002 bytes. Rebuild static/PWA/release artifacts afterward.
+
+### F031
+
+- Date opened: 2026-08-12
+- Status: ACTIVE
+- Scope: verify the supplied speed-enforcement claims against current Japanese
+  authority sources; add a learner-facing myth/action section; audit the 13
+  photographed textbook concepts against the existing signal, intersection,
+  parking, expressway, and fuel lessons; redraw only verified gaps as original,
+  deterministic course visuals.
+- Rejected input boundary: enforcement thresholds, following a speeding lead
+  vehicle, detector/app tactics, and claims about which vehicle police will stop
+  are not treated as lawful or safe driving guidance.
+- Local acceptance: bilingual/source parity, diagram review evidence, focused
+  browser tests, full release verification, and static archive integrity pass.
+- External acceptance pending: push the verified revision and confirm the live
+  GitHub Pages routes.

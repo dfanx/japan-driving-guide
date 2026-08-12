@@ -24,7 +24,7 @@ function readLesson(lessonId: string, locale: "zh-TW" | "en") {
 
 describe("F027 tourist mistake coverage", () => {
   const expectedRules = {
-    "JP-RULE-PARKING-SIGN-DISTINCTION-001": ["S10", "S16", "S24"],
+    "JP-RULE-PARKING-SIGN-DISTINCTION-001": ["S10", "S16", "S24", "S29"],
     "JP-RULE-PARKING-CLEAR-ZONES-001": ["S16", "S20"],
     "JP-RULE-DISTRACTED-DRIVING-001": ["S16", "S21"],
     "JP-RULE-SEATBELT-ALL-001": ["S16", "S22"],
@@ -33,15 +33,15 @@ describe("F027 tourist mistake coverage", () => {
   } as const;
 
   it("adds only source-traced legal rules to the approved catalogs", () => {
-    expect(sourceCatalog).toHaveLength(25);
-    expect(ruleCatalog).toHaveLength(36);
+    expect(sourceCatalog).toHaveLength(29);
+    expect(ruleCatalog).toHaveLength(39);
 
     for (const [id, sourceIds] of Object.entries(expectedRules)) {
       const rule = ruleCatalog.find((candidate) => candidate.id === id);
       expect(rule, id).toBeDefined();
       expect(rule?.legalOrGuidance, id).toBe("legal_rule");
       expect(rule?.sourceIds, id).toEqual(sourceIds);
-      expect(rule?.verifiedAt, id).toBe("2026-08-11");
+      expect(rule?.verifiedAt, id).toMatch(/^2026-08-1[12]$/);
     }
   });
 

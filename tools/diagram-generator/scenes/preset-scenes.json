@@ -217,12 +217,13 @@
     },
     "ruleIds": [
       "JP-RULE-SPEED-POSTED-001",
-      "JP-RULE-SPEED-LOCAL-2026-001"
+      "JP-RULE-SPEED-LOCAL-2026-001",
+      "JP-RULE-SPEED-ENFORCEMENT-001"
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "A 側為無中央線的狹窄生活道路；B 側為有中央線的道路。",
-      "en": "Side A is a narrow local road without a center line; side B has a center line."
+      "zh-TW": "A 側是無中央線的生活道路，標示 2026-09-01 起無另行指定時的 30 km/h；B 側有中央線，提醒駕駛讀現場速限。",
+      "en": "Side A is a local road without a centre line and shows the 30 km/h rule from 2026-09-01 when no other limit is posted; side B has a centre line and prompts the driver to read the posted limit."
     },
     "reviewStatus": "approved"
   },

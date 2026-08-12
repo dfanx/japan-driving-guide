@@ -10,7 +10,7 @@ import { validateContentData } from "../../src/lib/content/schema";
 import { classifyEffectiveWindow } from "../../src/lib/effective-date";
 
 const expectedQuestionIds = Array.from(
-  { length: 24 },
+  { length: 25 },
   (_, index) => `Q${String(index + 1).padStart(3, "0")}`,
 );
 const expectedDiagramIds = Array.from(
@@ -19,7 +19,7 @@ const expectedDiagramIds = Array.from(
 );
 
 describe("seed Question bank", () => {
-  it("contains exactly Q001 through Q024 in deterministic order", () => {
+  it("contains exactly Q001 through Q025 in deterministic order", () => {
     expect(questionBank.map((question) => question.id)).toEqual(
       expectedQuestionIds,
     );

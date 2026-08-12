@@ -70,7 +70,7 @@ test("@f030 the curriculum ends at the full review instead of a lesson checkpoin
   );
 
   await page.goto("/zh-TW/learn/safety-basics/");
-  await expect(page.getByRole("link", { name: /24 題上路總複習/ })).toHaveAttribute(
+  await expect(page.getByRole("link", { name: /25 題上路總複習/ })).toHaveAttribute(
     "href",
     "/zh-TW/review/",
   );
