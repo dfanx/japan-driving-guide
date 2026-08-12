@@ -65,11 +65,11 @@
       "id": "D007",
       "templateId": "T02",
       "candidatePath": "tools/diagram-generator/review/D007.svg",
-      "sceneHash": "sha256:ce850b08220c3f70efb1a957c0c09fa8a5a8c390ee55d16884fb26c26133a98c",
-      "outputHash": "sha256:550da4c2c749e5c2e5a473fd7e8c1e694f789af72d0816429ac87f15815059b9",
+      "sceneHash": "sha256:2283baa243a93dbc0b8715caa1e30b5ff48d661ba67b1c989860af85d9c5f076",
+      "outputHash": "sha256:e7e69a30d195b7639e402d38c0e95df2d91b064955d73d1bd5fe762dcc8a61bc",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-11"
+      "reviewedAt": "2026-08-12"
     },
     {
       "id": "D008",
@@ -185,11 +185,11 @@
       "id": "D019",
       "templateId": "T09",
       "candidatePath": "tools/diagram-generator/review/D019.svg",
-      "sceneHash": "sha256:0e364e36178c459c62c94d525e83f4c00ad74d632fe4cecbca40f8122a22cc5f",
-      "outputHash": "sha256:f21a945aeae44a26cd1aa3756fcafe9bde65dd8407d2c62ce3d4d0e3d2428630",
+      "sceneHash": "sha256:d9251762ed668192850d9a09f6467c14b326fccf8bc257f1c8c931dec78de5e0",
+      "outputHash": "sha256:b71c3798aff241a74310c5ad2cd257a3a031486217bcac141e57a5d9bdf9d47e",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-11"
+      "reviewedAt": "2026-08-12"
     },
     {
       "id": "D020",
@@ -240,6 +240,46 @@
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
       "reviewedAt": "2026-08-11"
+    },
+    {
+      "id": "D025",
+      "templateId": "T13",
+      "candidatePath": "tools/diagram-generator/review/D025.svg",
+      "sceneHash": "sha256:3d58d98528f8951649807362f7c26ffe630d229b59dda268771e6fee380c9572",
+      "outputHash": "sha256:cc21cef5b4248a202043518ac700e2e6cc204c85877f12fcb9aa54932170b427",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-12"
+    },
+    {
+      "id": "D026",
+      "templateId": "T14",
+      "candidatePath": "tools/diagram-generator/review/D026.svg",
+      "sceneHash": "sha256:360a5a58c9ac8296e97e880fbf787051ad783719fa2bdcb04a62d84f2b2381f7",
+      "outputHash": "sha256:17410df702658fbd17d0a1c8d0fc3f313c61cfac61c4a5d3b0554b13bfc60394",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-12"
+    },
+    {
+      "id": "D027",
+      "templateId": "C05",
+      "candidatePath": "tools/diagram-generator/review/D027.svg",
+      "sceneHash": "sha256:6551a8a451a048c14e28e3884dd12bfdedf27c85d780b73d17318632899b9aff",
+      "outputHash": "sha256:9c5366152d569238257d9767be65cb73481df3c0afc7c2b1c26cbf2a0a1a1eb3",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-12"
+    },
+    {
+      "id": "D028",
+      "templateId": "T15",
+      "candidatePath": "tools/diagram-generator/review/D028.svg",
+      "sceneHash": "sha256:b90373f3ea1890c50740b4d978ec1476fbc21129e48f6b07107d0e88d3daab73",
+      "outputHash": "sha256:f338ee63bc52bb6d660d5d301f882d5ef6a88cbc6df736fec0ab3ee185a7097a",
+      "generatorVersion": "1.1.0",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-08-12"
     }
   ]
 }

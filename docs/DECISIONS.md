@@ -583,3 +583,49 @@
   confusion, but accepted rules require Japanese-authority Source IDs. Book
   layouts are not reproduced; verified concepts are merged into original,
   deterministic diagrams and Taiwan-facing action copy.
+
+## D044 — The home page starts the curriculum, not a competing shortcut
+
+- Date: 2026-08-12
+- Status: accepted by user direction
+- Decision: the primary home action opens Lesson 01 directly. The visible
+  ten-minute entry is removed; the 16-lesson directory and final review remain
+  secondary paths. The old Fast Track route stays buildable only so existing
+  bookmarks do not break, but it is no longer promoted in the learning flow.
+- Reason: three competing starting points force a first-time visitor to design
+  the course before learning. The lowest-friction safe default is the reviewed
+  lesson sequence from the beginning.
+- Consequence: home and deployment tests lock the Lesson 01 destination and
+  absence of a visible ten-minute choice. Removing the legacy route itself is a
+  separate compatibility decision.
+
+## D045 — Context, instruction, and authority remain three visual layers
+
+- Date: 2026-08-12
+- Status: accepted
+- Decision: F032 scenarios use a driver-view simulation for field context, an
+  original deterministic diagram for the taught maneuver or control relation,
+  and an official Source or exact regulated asset where the rule depends on it.
+  Photographed book layouts are not redrawn or copied.
+- Reason: a photo-like scene helps recognition but is geometrically unreliable;
+  a schematic can teach geometry but does not prove the law; primary official
+  evidence supports the legal or guidance claim. Combining the layers without
+  confusing their roles improves transfer while preserving auditability.
+- Consequence: D007/D019 and D025-D028 require hash approval and mobile review;
+  generated images declare `containsOfficialVisual: false`; legal, official-
+  guidance, and practical-advice Rules remain separately classified.
+
+## D046 — Safe facility re-approach is advice, not U-turn permission
+
+- Date: 2026-08-12
+- Status: accepted
+- Decision: drivers crossing a sidewalk into a parking lot, fuel station, or
+  shop must first yield and confirm the path is clear. If the approach cannot be
+  completed without blocking traffic or crossing blind, the guide advises
+  continuing to a lawful, visible, safe place and returning from the same-side
+  direction. It never prescribes an arbitrary U-turn.
+- Reason: the first-principles objective is to remove a blind cross-traffic and
+  pedestrian conflict, not to substitute one risky maneuver for another.
+- Consequence: the legal duty and the route-planning suggestion have separate
+  Rule IDs and classifications; diagrams show the safe decision order without
+  asserting that every nearby reversal is lawful.

@@ -14,7 +14,7 @@ test("@f022 project Pages base path preserves routes and static assets", async (
   await zhEntry.click();
   await expect(page).toHaveURL(new RegExp(`${base.replaceAll("/", "\\/")}zh-TW/$`));
 
-  const learn = page.getByRole("link", { name: "看完整 16 課" });
+  const learn = page.getByRole("link", { name: "查看 16 課目錄" });
   await expect(learn).toHaveAttribute("href", `${base}zh-TW/learn/`);
   await learn.click();
   await expect(page.locator(".lesson-card-grid > li")).toHaveCount(16);

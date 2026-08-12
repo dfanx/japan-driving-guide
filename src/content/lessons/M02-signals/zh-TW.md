@@ -7,10 +7,14 @@ ruleIds:
   - JP-RULE-SIGNAL-YELLOW-001
   - JP-RULE-SIGNAL-ARROW-001
   - JP-RULE-SIGNAL-FLASHING-001
+  - JP-RULE-SIGNAL-ACTUATED-001
+  - JP-RULE-SIGNAL-STREETCAR-001
 diagramIds:
   - D002
   - D003
   - D004
+  - D026
+  - D027
 quizTags:
   - signals
 order: 2
@@ -28,6 +32,14 @@ reviewStatus: approved
 ## 黃燈不是叫你加速
 
 黃燈亮起時，能在停止線前平順安全停住就停。只有已經太接近、急煞反而危險時，才繼續通過；不要看到黃燈就補油門。
+
+## 小路口紅燈很久，可能是在等你被偵測到
+
+車流少的支道路口常見感應號誌。把車停在停止線前、感應器能偵測到的位置，耐心等燈；停太後面、越過停止線或一直往前磨，反而可能感應不到。若現場有按鈕或告示，就照現場操作。
+
+## 黃色箭頭不是給汽車走的
+
+路面電車路線可能出現黃色箭頭。它只准路面電車依箭頭行駛，汽車和機車不能跟著走；你要看的是自己車道的圓形燈或綠色箭頭。
 
 ## 台灣旅客常犯的錯
 

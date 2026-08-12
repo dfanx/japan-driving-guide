@@ -76,9 +76,9 @@ const lessonVisualDefinitionSchema = z
 const definitions = lessonVisualDefinitionSchema.array().length(16).parse([
   { lessonId: "M00-eligibility", diagramIds: [], illustrationIds: ["ILL-M00-DOCUMENT-CHECK"], officialSignIds: [] },
   { lessonId: "M01-left-side-driving", diagramIds: ["D001"], illustrationIds: [], officialSignIds: ["SIGN-NO-ENTRY", "SIGN-ONE-WAY"] },
-  { lessonId: "M02-signals", diagramIds: ["D002", "D003", "D004"], illustrationIds: [], officialSignIds: [] },
+  { lessonId: "M02-signals", diagramIds: ["D002", "D003", "D004", "D026", "D027"], illustrationIds: [], officialSignIds: [] },
   { lessonId: "M03-stop-signs", diagramIds: ["D005"], illustrationIds: [], officialSignIds: ["SIGN-STOP"] },
-  { lessonId: "M04-intersections", diagramIds: ["D006", "D007", "D008"], illustrationIds: [], officialSignIds: ["SIGN-SLOW"] },
+  { lessonId: "M04-intersections", diagramIds: ["D006", "D007", "D008", "D025", "D028"], illustrationIds: [], officialSignIds: ["SIGN-SLOW"] },
   { lessonId: "M05-pedestrians", diagramIds: ["D009"], illustrationIds: [], officialSignIds: ["SIGN-PEDESTRIAN-CROSSING"] },
   { lessonId: "M06-cyclists", diagramIds: ["D010"], illustrationIds: [], officialSignIds: [] },
   { lessonId: "M07-speed", diagramIds: ["D011"], illustrationIds: [], officialSignIds: ["SIGN-MAXIMUM-SPEED"] },
@@ -95,7 +95,7 @@ const definitions = lessonVisualDefinitionSchema.array().length(16).parse([
 const scenes = diagramSceneSchema.array().parse([d002Data, ...presetSceneData]);
 const manifest = diagramManifestSchema.parse(diagramManifestData);
 const illustrations = lessonIllustrationSchema.array().parse(illustrationData);
-export const driverSimulations = driverSimulationSchema.array().length(24).parse(driverSimulationData);
+export const driverSimulations = driverSimulationSchema.array().length(28).parse(driverSimulationData);
 export const visualGuidance = visualGuidanceSchema.array().parse(visualGuidanceData);
 const sceneById = new Map(scenes.map((scene) => [scene.id, scene]));
 const manifestById = new Map(manifest.items.map((entry) => [entry.id, entry]));
@@ -114,11 +114,11 @@ if (driverSimulationByDiagramId.size !== driverSimulations.length) {
   throw new Error("Driver simulations require unique Diagram IDs");
 }
 
-const requiredDiagramIds = Array.from({ length: 24 }, (_, index) =>
+const requiredDiagramIds = Array.from({ length: 28 }, (_, index) =>
   `D${String(index + 1).padStart(3, "0")}`,
 );
 if (requiredDiagramIds.some((diagramId) => !driverSimulationByDiagramId.has(diagramId))) {
-  throw new Error("Driver simulations must cover D001-D024 exactly once");
+  throw new Error("Driver simulations must cover D001-D028 exactly once");
 }
 
 const requiredGuidanceIds = [
@@ -129,7 +129,7 @@ if (
   guidanceById.size !== visualGuidance.length ||
   visualGuidance.map((item) => item.id).sort().join("|") !== requiredGuidanceIds.join("|")
 ) {
-  throw new Error("Visual guidance must cover D001-D024 and every lesson illustration exactly once");
+  throw new Error("Visual guidance must cover D001-D028 and every lesson illustration exactly once");
 }
 
 export function getDriverSimulationByDiagramId(diagramId: string) {

@@ -36,7 +36,7 @@ describe("F025 release content revalidation", () => {
   });
 
   it("retains each Rule's actual review date and caps it at the release date", () => {
-    expect(ruleCatalog).toHaveLength(39);
+    expect(ruleCatalog).toHaveLength(45);
     expect(
       ruleCatalog.every(
         (rule) => rule.verifiedAt <= contentRelease.rulesRevalidatedAt,

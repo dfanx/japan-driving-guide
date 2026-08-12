@@ -6,6 +6,7 @@ ruleIds:
   - JP-RULE-PARKING-DESIGNATED-001
   - JP-RULE-PARKING-SIGN-DISTINCTION-001
   - JP-RULE-PARKING-CLEAR-ZONES-001
+  - JP-RULE-PARKING-ROAD-MARKING-001
 diagramIds:
   - D019
 quizTags:
@@ -24,6 +25,13 @@ reviewStatus: approved
 If the driver leaves and cannot move the vehicle immediately, it may be treated as abandoned parking regardless of duration, engine state or hazard lights. If the rule is unclear, use a lawful car park.
 
 An empty-looking kerb space is not enough. Read the no-parking or no-stopping sign, auxiliary plate, roadside marking and statutory clear zone together.
+
+## Solid and broken yellow kerb markings differ
+
+- **Solid yellow roadside line:** no stopping or parking.
+- **Broken yellow roadside line:** no parking; any brief stop still depends on signs, auxiliary plates, location and the legal definition of parking.
+
+The restriction follows the marked length. Do not import kerb-colour assumptions from another country.
 
 ## Remember five metres and ten metres
 

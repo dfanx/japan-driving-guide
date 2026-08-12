@@ -173,6 +173,10 @@ export const PRESET_COMPOSITIONS = [
   "expressway_lanes",
   "fuel_card",
   "breakdown",
+  "guide_strip",
+  "actuated_signal",
+  "streetcar_signal",
+  "facility_entry",
 ] as const;
 
 const expectedCompositionById: Readonly<Record<string, (typeof PRESET_COMPOSITIONS)[number]>> = {
@@ -199,6 +203,10 @@ const expectedCompositionById: Readonly<Record<string, (typeof PRESET_COMPOSITIO
   D022: "toll_gate",
   D023: "fuel_card",
   D024: "breakdown",
+  D025: "guide_strip",
+  D026: "actuated_signal",
+  D027: "streetcar_signal",
+  D028: "facility_entry",
 };
 
 export const presetDiagramSceneSchema = z

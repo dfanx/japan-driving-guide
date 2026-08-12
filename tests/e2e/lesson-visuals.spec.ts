@@ -101,7 +101,7 @@ test("@f028 every diagram is taught as driver view then deterministic explanatio
   }
 
   expect([...seen].sort()).toEqual(
-    Array.from({ length: 24 }, (_, index) => `D${String(index + 1).padStart(3, "0")}`),
+    Array.from({ length: 28 }, (_, index) => `D${String(index + 1).padStart(3, "0")}`),
   );
 });
 

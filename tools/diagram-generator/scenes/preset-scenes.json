@@ -128,12 +128,13 @@
     },
     "ruleIds": [
       "JP-RULE-INTERSECTION-LEFT-CHECK-001",
-      "JP-RULE-PEDESTRIAN-CROSSING-001"
+      "JP-RULE-PEDESTRIAN-CROSSING-001",
+      "JP-RULE-INTERSECTION-LEFT-POSITION-001"
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "左轉 A 車旁有同側自行車 B，穿越道旁另有行人 P。",
-      "en": "Left-turning vehicle A has cyclist B beside it and pedestrian P at the crossing."
+      "zh-TW": "左轉車 A 先確認左側自行車 B，再靠近道路左端慢行並留意行人 P。",
+      "en": "Left-turning vehicle A checks cyclist B, approaches close to the left edge, and watches pedestrian P."
     },
     "reviewStatus": "approved"
   },
@@ -413,12 +414,12 @@
     },
     "ruleIds": [
       "JP-RULE-PARKING-DESIGNATED-001",
-      "JP-RULE-PEDESTRIAN-CROSSING-001"
+      "JP-RULE-PARKING-ROAD-MARKING-001"
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "路邊停車位置不確定時，應改用指定停車場，不阻擋穿越道。",
-      "en": "When roadside legality is unclear, use designated parking and do not block a crossing."
+      "zh-TW": "路邊黃色實線禁止駐車與臨時停車；黃色破線禁止駐車。",
+      "en": "A solid yellow roadside line prohibits stopping and parking; a broken yellow line prohibits parking."
     },
     "reviewStatus": "approved"
   },
@@ -529,6 +530,95 @@
     "alt": {
       "zh-TW": "高速公路故障車 A 做好警示後，乘員 P 撤離到護欄外。",
       "en": "After warning traffic around broken-down vehicle A, person P evacuates behind the guardrail."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D025",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "guide_strip",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-GUIDE-STRIP-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "車輛 A、B 沿白色斜線導流帶外側進入各自車道，不把斜線區當成車道。",
+      "en": "Vehicles A and B follow their lanes around a white hatched guide strip instead of driving through it."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D026",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "actuated_signal",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGNAL-ACTUATED-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "感應號誌前，車輛 A 停在停止線前的偵測範圍內等待。",
+      "en": "At an actuated signal, vehicle A waits within the detection area before the stop line."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D027",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "streetcar_signal",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-SIGNAL-STREETCAR-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "黃色箭頭只准路面電車通行，汽車 A 不得跟著箭頭行駛。",
+      "en": "The yellow arrow permits the streetcar only; car A must not follow it."
+    },
+    "reviewStatus": "approved"
+  },
+  {
+    "id": "D028",
+    "schemaVersion": "1.0.0",
+    "template": "Preset",
+    "composition": "facility_entry",
+    "canvas": {
+      "aspect": "3:2",
+      "viewBox": {
+        "width": 1200,
+        "height": 800
+      }
+    },
+    "ruleIds": [
+      "JP-RULE-FACILITY-ENTRY-001",
+      "JP-RULE-FACILITY-APPROACH-001"
+    ],
+    "assetIds": [],
+    "alt": {
+      "zh-TW": "車輛 A 從同向車道接近路邊停車場，跨越人行道前停車並讓行人 P 通過。",
+      "en": "Vehicle A approaches a roadside car park from the same direction, stopping before the sidewalk to yield to pedestrian P."
     },
     "reviewStatus": "approved"
   }

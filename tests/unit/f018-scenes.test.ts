@@ -27,7 +27,7 @@ const scenes = readdirSync(sceneDirectory)
   });
 
 const expectedSceneIds = Array.from(
-  { length: 24 },
+  { length: 28 },
   (_, index) => `D${String(index + 1).padStart(3, "0")}`,
 );
 
@@ -68,7 +68,7 @@ function sceneById(id: string): DiagramScene {
 }
 
 describe("F018 semantic Scene inventory", () => {
-  it("contains exactly D001 through D024 with valid Rule references", () => {
+  it("contains exactly D001 through D028 with valid Rule references", () => {
     expect(scenes.map((scene) => scene.id).sort()).toEqual(expectedSceneIds);
     const ruleIds = new Set(ruleCatalog.map((rule) => rule.id));
     for (const scene of scenes) {
@@ -141,6 +141,15 @@ describe("F018 semantic Scene inventory", () => {
     expect(d006).toContain('x1="740" x2="835" y1="335" y2="335"');
     expect(d006).not.toContain('x1="740" x2="835" y1="465" y2="465"');
   });
+
+  it("encodes the F032 safety semantics in deterministic SVG data", () => {
+    expect(buildDiagramArtifact(sceneById("D007")).svg).toContain('data-turn-position="approach-left-edge"');
+    expect(buildDiagramArtifact(sceneById("D019")).svg).toContain('data-roadside-marking="yellow-broken"');
+    expect(buildDiagramArtifact(sceneById("D025")).svg).toContain('data-guide-strip="keep-clear"');
+    expect(buildDiagramArtifact(sceneById("D026")).svg).toContain('data-signal-type="vehicle-actuated"');
+    expect(buildDiagramArtifact(sceneById("D027")).svg).toContain('data-yellow-arrow-applies-to="streetcar-only"');
+    expect(buildDiagramArtifact(sceneById("D028")).svg).toContain('data-sidewalk-entry="stop-before-crossing"');
+  });
 });
 
 describe("F018 review and publication boundary", () => {
@@ -150,7 +159,7 @@ describe("F018 review and publication boundary", () => {
         .filter((entry) => entry.reviewStatus === "approved")
         .map((entry) => entry.id),
     ).toEqual(expectedSceneIds);
-    expect(manifestData.items).toHaveLength(24);
+    expect(manifestData.items).toHaveLength(28);
     expect(manifestData.items.filter((entry) => entry.reviewStatus === "needs_review"))
       .toHaveLength(0);
   });

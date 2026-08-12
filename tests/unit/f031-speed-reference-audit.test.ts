@@ -23,7 +23,7 @@ const d011 = readdirSync(join(root, "tools", "diagram-generator", "scenes"))
 
 describe("F031 speed myths and reference-image audit", () => {
   it("traces the accepted speed and lane guidance only to reviewed official sources", () => {
-    expect(sourceCatalog.slice(-4).map((source) => source.id)).toEqual(["S26", "S27", "S28", "S29"]);
+    expect(sourceCatalog.filter((source) => ["S26", "S27", "S28", "S29"].includes(source.id)).map((source) => source.id)).toEqual(["S26", "S27", "S28", "S29"]);
     expect(ruleCatalog.find((rule) => rule.id === "JP-RULE-SPEED-ENFORCEMENT-001")?.sourceIds)
       .toEqual(["S16", "S26", "S27"]);
     expect(ruleCatalog.find((rule) => rule.id === "JP-RULE-LANE-CHANGE-YELLOW-001")?.legalOrGuidance)

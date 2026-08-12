@@ -17,7 +17,7 @@ import {
 
 const root = process.cwd();
 const expectedDiagramIds = Array.from(
-  { length: 24 },
+  { length: 28 },
   (_, index) => `D${String(index + 1).padStart(3, "0")}`,
 );
 
@@ -39,14 +39,14 @@ describe("F026 lesson visual coverage", () => {
     }
   });
 
-  it("places every D001-D024 diagram in exactly one lesson visual set", () => {
+  it("places every D001-D028 diagram in exactly one lesson visual set", () => {
     const actual = lessonVisualDefinitions.flatMap((item) => item.diagramIds).sort();
     expect(actual).toEqual(expectedDiagramIds);
     expect(new Set(actual).size).toBe(actual.length);
   });
 
   it("gives every scene and illustration learner-facing situation, risk, and action copy", () => {
-    expect(visualGuidance).toHaveLength(27);
+    expect(visualGuidance).toHaveLength(31);
     for (const guidance of visualGuidance) {
       for (const locale of ["zh-TW", "en"] as const) {
         expect(guidance.situation[locale].length, `${guidance.id}/${locale}/situation`).toBeGreaterThan(6);

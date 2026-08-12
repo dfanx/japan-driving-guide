@@ -104,6 +104,15 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] Bilingual 24-question final review supports paging, explanations, score, topic bands, and lesson recovery
 - [x] Q016 verifies the no-stopping/no-parking sign distinction
 - [x] F030 desktop/mobile visual QA and full release regression pass
+- [x] Home primary action starts Lesson 01 and exposes no ten-minute choice
+- [x] Left-turn edge positioning and guide strips have bilingual source-traced teaching and reviewed diagrams
+- [x] Solid/broken yellow roadside parking lines have a direct comparison diagram
+- [x] Actuated signals and streetcar signals have separate recognition and action guidance
+- [x] Roadside-facility entry separates the pedestrian-yield duty from same-direction re-approach advice
+- [x] D007, D019 and D025-D028 pass deterministic hash, approval and 360px review gates
+- [x] D025-D028 driver-view simulations pass 1200x800, hash and no-official-visual gates
+- [x] F032 focused, full release and 390px learner-flow checks pass
+- [ ] F032 public Pages workflow and HTTPS smoke recorded
 
 ## External release boundary
 

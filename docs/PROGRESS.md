@@ -3,10 +3,10 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: none
+- Active feature: F032 — Direct lesson entry and overlooked road-control scenarios
 - Last passing feature: F031 — Speed-enforcement myths and reference-scenario audit
-- Content imported: 29 Sources, 39 Rules, 25 Questions, 32 lesson documents
-- Diagrams generated/approved: 24 review candidates / 24 approved
+- Content imported: 30 Sources, 45 Rules, 25 Questions, 32 lesson documents
+- Diagrams generated/approved: 28 review candidates / 28 approved
 - Deployment: F031 commit `d454418` is live at
   `https://dfanx.github.io/japan-driving-guide/`; Pages run `31553355397` passed
 
@@ -1761,3 +1761,64 @@ No feature is active. The verified F030 release is ready to commit, push to
 ### Next
 
 No feature is active. F031 is verified locally and live on GitHub Pages.
+
+## Session 2026-08-12 — F032 overlooked road-control scenarios
+
+### Completed locally
+
+- Removed the visible ten-minute home entry. The primary call to action now
+  starts Lesson 01, with the 16-lesson directory and final review kept as
+  secondary choices.
+- Added bilingual, source-traced teaching for left-turn edge positioning,
+  guide strips, solid/broken yellow roadside parking lines, actuated signals,
+  streetcar signals, and entry across a sidewalk into a roadside facility.
+- Kept the safe same-direction re-approach suggestion classified as practical
+  advice. It does not authorize a U-turn or override local signs and markings.
+- Added D025-D028 and revised D007/D019. All six diagrams were reviewed at
+  600px and 360px, then approved through the existing deterministic hash gate.
+- Generated and reviewed four 1200x800 driver-view context images for D025-D028.
+  They contain no accepted official visual and remain secondary to the
+  deterministic diagram and official control layer.
+- Inspected the home, intersections, signals, and parking flows at 390x844 in
+  the in-app browser. Images loaded, content stayed within the viewport, and
+  the browser console reported no warnings or errors.
+
+### Verification
+
+- `npm run test:f032`: PASS — 5 files / 24 tests.
+- `npm run test`: PASS — 23 files / 153 tests.
+- `npm run verify:release`: PASS — zero-diagnostic lint/typecheck; 30 Sources /
+  45 Rules / 32 lessons / 25 Questions / 28 Scenes; 28/28 diagrams approved;
+  43 pages; 118 PWA URLs; 51 root Chromium passes plus one expected
+  project-base skip; the separate project-base case passes.
+- Visual review: PASS — D007, D019 and D025-D028 at 600px/360px, plus learner
+  routes at 390x844.
+
+### Content and diagram evidence
+
+- New Source: S30, Fukushima Prefectural Police traffic-signal Q&A.
+- New Rules: `JP-RULE-INTERSECTION-LEFT-POSITION-001`,
+  `JP-RULE-PARKING-ROAD-MARKING-001`, `JP-RULE-SIGNAL-ACTUATED-001`,
+  `JP-RULE-SIGNAL-STREETCAR-001`, `JP-RULE-FACILITY-ENTRY-001`, and
+  `JP-RULE-FACILITY-APPROACH-001`.
+- Diagram hashes: D007 `e7e69a30...`, D019 `b71c3798...`, D025 `cc21cef5...`,
+  D026 `17410df7...`, D027 `9c536615...`, and D028 `f338ee63...`.
+- Generated-image prompts and exact output hashes are recorded in
+  `docs/IMAGEGEN_F032_PROMPTS.md`.
+
+### Residual risk and rollback
+
+- Actuated-signal detectors, streetcar controls, and roadside markings vary by
+  place. The lesson teaches recognition and decision order, not a universal
+  hardware layout.
+- Generated driver views are contextual simulations, not legal or regulated
+  visual evidence. The official source catalog and reviewed diagrams remain the
+  authority layer.
+- Rollback is the F032 home/content/Source/Rule/diagram/image/test change set,
+  followed by rebuilding static and PWA output. No backend or data migration
+  exists.
+
+### Next
+
+F032 remains the sole active feature until the `main` push, Pages workflow, and
+public HTTPS smoke are recorded. No further curriculum expansion is in scope.

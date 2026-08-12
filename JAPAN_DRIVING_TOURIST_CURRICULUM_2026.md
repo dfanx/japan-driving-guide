@@ -246,6 +246,9 @@ Before moving, spend 30 seconds locating the indicators, wipers, lights, hazard 
 ### 黃色箭頭
 這主要是給路面電車使用，汽車不要把它當成自己的通行箭頭。
 
+### 感應號誌
+低車流支道路口可能使用感應號誌。車輛應停在停止線前、偵測器可感應的位置等待；若停得太後面或越線，可能無法被偵測。現場若有按鈕或操作告示，依現場指示。
+
 ### 閃紅
 汽車要先完全停止，再確認安全後通行。
 
@@ -259,6 +262,7 @@ Before moving, spend 30 seconds locating the indicators, wipers, lights, hazard 
 - **Red:** Do not pass the stopping point.
 - **Green arrow:** You may proceed in the indicated direction even if the main signal is red or yellow.
 - **Yellow arrow:** Primarily for streetcars/trams, not ordinary cars.
+- **Vehicle-actuated signal:** Stop in the detection position immediately before the stop line and wait; follow any local button or instruction.
 - **Flashing red:** Stop first, then proceed when safe.
 - **Flashing yellow:** Proceed carefully.
 
@@ -268,6 +272,8 @@ Before moving, spend 30 seconds locating the indicators, wipers, lights, hazard 
 - D002 — Red light + stop line + crosswalk  
 - D003 — Green arrow while main signal is red  
 - D004 — Flashing red vs flashing yellow
+- D026 — Vehicle-actuated signal detection position
+- D027 — Yellow streetcar arrow is not for cars
 
 **Weakness tag:** `signals`  
 **Sources:** S03, S04, S05.
@@ -337,10 +343,15 @@ If visibility is poor, stop at the required point first, then creep forward caut
 
 左轉前：
 
-1. 後視鏡確認。
+1. 提早打方向燈並用後視鏡、肩後確認。
 2. 注意左側路緣是否有自行車、機車或行人。
-3. 轉彎時保持低速。
-4. 行人穿越道有人就停。
+3. 確認安全後靠近道路左端慢行，減少左側被鑽入的空隙。
+4. 若左側已有人車就先讓，不能靠左把對方夾住。
+5. 行人穿越道有人就停。
+
+### 進入停車場、加油站或商店
+
+跨越人行道進出路外設施前，先在緊鄰人行道前停車並讓行人、自行車通過。若入口位於對向、視線不清，或轉彎會讓車身橫擋道路，應繼續前進，到合法安全的位置改成同向接近；這不是允許任意迴轉。
 
 ### 無號誌小路口
 
@@ -363,6 +374,8 @@ Because Japan drives on the left:
 
 - a **left turn** generally enters the near side;
 - a **right turn** crosses opposing traffic.
+
+Before a left turn, signal and check the left side first, then approach close to the left edge and turn slowly. Yield if a cyclist or motorcycle is already beside the car. When entering an off-road facility, stop before crossing the sidewalk and yield; if a direct turn would block traffic or visibility is poor, re-approach from the same direction after a lawful safe reorientation.
 
 When turning right, yield to:
 
@@ -615,7 +628,7 @@ If the crossing is controlled by a traffic signal that permits passage, follow t
 
 ### 導流帶不是插隊車道
 
-導流帶的功能是讓車流安全、順暢地分流。要轉彎就依車道箭頭提早排入；錯過車道時繼續前進再改道，不要壓過導流帶硬切。
+導流帶常以白色斜線、邊界與箭頭引導車流安全分向。它不是新增車道、超車空間或臨停區。要轉彎就依車道箭頭提早排入；錯過車道時繼續前進再改道，不要壓過導流帶硬切。
 
 ### 導航叫你轉，但標誌不允許
 
@@ -635,6 +648,13 @@ If the crossing is controlled by a traffic signal that permits passage, follow t
 ## 繁體中文
 
 日本城市道路的停車限制很多，路面看起來有空位，不代表可以停。
+
+### 路邊黃色線
+
+- 黃色實線：禁止駐車與臨時停車。
+- 黃色破線：禁止駐車；是否能短暫停靠仍須看標誌、附牌、位置與法律定義。
+
+管制沿標線長度延伸，不能只看車旁一小段。
 
 ### 最實用的原則
 
@@ -664,7 +684,7 @@ Best tourist practice:
 - recognize no-parking and no-stopping signs;
 - never block pedestrian crossings.
 
-**Diagram:** D019 — Legal parking lot vs tempting but prohibited roadside stop.  
+**Diagram:** D019 — Solid versus broken yellow roadside restrictions.
 **Weakness tag:** `parking`  
 **Sources:** S04, S06.
 
@@ -960,6 +980,10 @@ JAF Road Service:
 | D022 | 一般 / ETC / ETC-only 收費車道 |
 | D023 | 日本常見油種與油槍顏色 |
 | D024 | 高速公路故障後撤離到護欄外 |
+| D025 | 導流帶外側正確行駛 |
+| D026 | 感應號誌停止與偵測位置 |
+| D027 | 黃色箭頭僅供路面電車 |
+| D028 | 同向進入路外設施並在人行道前停車 |
 
 ---
 
@@ -1326,6 +1350,11 @@ JAF Road Service:
 ## S29 — NPA, Traffic methods guide
 - URL: https://www.npa.go.jp/bureau/traffic/20241113kyousoku.pdf
 - Use: 導流帶、道路標線、號誌與速度的官方駕駛指引
+- Tier: S
+
+## S30 — Fukushima Prefectural Police, Traffic signal Q&A
+- URL: https://www.police.pref.fukushima.jp/06.koutuu/shingouki_qa.pdf
+- Use: 感應號誌的運作方式與停止線前車輛偵測位置
 - Tier: S
 
 ---

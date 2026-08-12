@@ -18,7 +18,7 @@ accident or breakdown.
 
 ## Product outcomes
 
-- Ten-minute Must Know path
+- Direct Lesson 01 entry into the ordered 16-lesson guide
 - 30–45 minute full guide
 - Shared zh-TW/en rule, question, and diagram identity
 - Reviewed questions with immediate explanations
@@ -59,4 +59,3 @@ and production deployment remain out of scope until their feature gates open.
 3. Effective dates are content data, not editorial prose.
 4. A diagram with incorrect geometry is a content defect, not decoration.
 5. Completion requires evidence; implementation alone is not evidence.
-

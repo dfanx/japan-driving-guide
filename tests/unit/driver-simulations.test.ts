@@ -16,16 +16,16 @@ import {
 
 const root = process.cwd();
 const expectedDiagramIds = Array.from(
-  { length: 24 },
+  { length: 28 },
   (_, index) => `D${String(index + 1).padStart(3, "0")}`,
 );
 
 describe("F028 driver-seat simulations", () => {
-  it("pairs D001-D024 exactly once with approved context-only images", () => {
+  it("pairs D001-D028 exactly once with approved context-only images", () => {
     const simulations = driverSimulationSchema.array().parse(simulationData);
-    expect(simulations).toHaveLength(24);
+    expect(simulations).toHaveLength(28);
     expect(simulations.map((item) => item.diagramId).sort()).toEqual(expectedDiagramIds);
-    expect(new Set(simulations.map((item) => item.diagramId)).size).toBe(24);
+    expect(new Set(simulations.map((item) => item.diagramId)).size).toBe(28);
 
     for (const simulation of simulations) {
       expect(simulation.id).toBe(`SIM-${simulation.diagramId}`);
@@ -52,7 +52,7 @@ describe("F028 driver-seat simulations", () => {
 
   it("keeps each lesson diagram paired with its matching simulation", () => {
     const allPairs = lessonNavigation.flatMap((lesson) => getLessonVisualSet(lesson.id).diagramPairs);
-    expect(allPairs).toHaveLength(24);
+    expect(allPairs).toHaveLength(28);
     for (const { diagram, simulation } of allPairs) {
       expect(simulation).toBe(getDriverSimulationByDiagramId(diagram.id));
       expect(simulation.diagramId).toBe(diagram.id);

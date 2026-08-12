@@ -4,33 +4,23 @@ const localeCases = [
   {
     locale: "zh-TW",
     home: "/zh-TW/",
-    fastTrack: "/zh-TW/fast-track/",
     alternateHome: "/en/",
-    alternateFastTrack: "/en/fast-track/",
-    homeHeading: "日本自駕別靠運氣，取車前先看懂這 10 件事",
-    startLabel: "先看 10 分鐘重點",
-    fastTrackHeading: "快速必學",
-    lessonLabel: "看完整課程",
-    lessonHref: "/zh-TW/learn/signals/",
-    parkingHref: "/zh-TW/learn/parking/",
+    homeHeading: "日本自駕別靠運氣，從第 1 課開始看懂",
+    startLabel: "開始第 1 課",
+    firstLesson: "/zh-TW/learn/eligibility/",
   },
   {
     locale: "en",
     home: "/en/",
-    fastTrack: "/en/fast-track/",
     alternateHome: "/zh-TW/",
-    alternateFastTrack: "/zh-TW/fast-track/",
-    homeHeading: "Ten things to know before driving in Japan",
-    startLabel: "Start the 10-minute check",
-    fastTrackHeading: "Fast Track",
-    lessonLabel: "Open lesson",
-    lessonHref: "/en/learn/signals/",
-    parkingHref: "/en/learn/parking/",
+    homeHeading: "Drive Japan with judgment, not luck",
+    startLabel: "Start Lesson 01",
+    firstLesson: "/en/learn/eligibility/",
   },
 ] as const;
 
 for (const localeCase of localeCases) {
-  test(`@f007 ${localeCase.locale} home and Fast Track preserve parity`, async ({
+  test(`@f007 @f032 ${localeCase.locale} home starts at Lesson 01`, async ({
     page,
   }) => {
     await page.goto(localeCase.home);
@@ -40,31 +30,14 @@ for (const localeCase of localeCases) {
     ).toBeVisible();
     await expect(page.getByRole("link", { name: localeCase.startLabel })).toHaveAttribute(
       "href",
-      localeCase.fastTrack,
+      localeCase.firstLesson,
     );
     await expect(page.locator(".locale-status a").filter({ hasText: localeCase.locale === "en" ? "中" : "EN" })).toHaveAttribute(
       "href",
       localeCase.alternateHome,
     );
 
-    await page.goto(localeCase.fastTrack);
-    await expect(
-      page.getByRole("heading", { level: 1, name: localeCase.fastTrackHeading }),
-    ).toBeVisible();
-    const items = page.locator("[data-fast-track-items] > li");
-    await expect(items).toHaveCount(10);
-    await expect(items.nth(2).getByRole("link", { name: localeCase.lessonLabel })).toHaveAttribute(
-      "href",
-      localeCase.lessonHref,
-    );
-    await expect(items.nth(6).getByRole("link", { name: localeCase.lessonLabel })).toHaveAttribute(
-      "href",
-      localeCase.parkingHref,
-    );
-    await expect(page.locator(".locale-status a").filter({ hasText: localeCase.locale === "en" ? "中" : "EN" })).toHaveAttribute(
-      "href",
-      localeCase.alternateFastTrack,
-    );
+    await expect(page.getByText(/10 分鐘|10-minute/i)).toHaveCount(0);
   });
 }
 

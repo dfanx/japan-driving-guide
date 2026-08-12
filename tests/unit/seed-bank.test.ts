@@ -14,7 +14,7 @@ const expectedQuestionIds = Array.from(
   (_, index) => `Q${String(index + 1).padStart(3, "0")}`,
 );
 const expectedDiagramIds = Array.from(
-  { length: 24 },
+  { length: 28 },
   (_, index) => `D${String(index + 1).padStart(3, "0")}`,
 );
 

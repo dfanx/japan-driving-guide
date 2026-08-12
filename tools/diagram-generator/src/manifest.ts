@@ -25,7 +25,7 @@ const sha256Schema = z.string().regex(/^sha256:[0-9a-f]{64}$/);
 export const diagramManifestEntrySchema = z
   .object({
     id: z.string().regex(/^D\d{3}$/),
-    templateId: z.string().regex(/^(?:T(?:0[1-9]|1[0-2])|C0[1-4])$/),
+    templateId: z.string().regex(/^(?:T(?:0[1-9]|1[0-5])|C0[1-5])$/),
     candidatePath: z.string().regex(/^tools\/diagram-generator\/review\/D\d{3}\.svg$/),
     sceneHash: sha256Schema,
     outputHash: sha256Schema,

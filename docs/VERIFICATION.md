@@ -165,6 +165,9 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | Publish | F031 main push | PASS | Commit `d454418` pushed to `dfanx/japan-driving-guide:main` without force-push |
 | 2026-08-12 | F022/F031 | GitHub Pages workflow | PASS | Run `31553355397`: source verification, project-base build, base-path check, Chromium smoke, artifact upload and deploy completed successfully |
 | 2026-08-12 | F031 | Public HTTPS smoke | PASS | Root, zh-TW speed, intersections, final review and D011 returned HTTP 200; speed, 25-question and no-centre-line F031 markers are present |
+| 2026-08-12 | F032 | Focused gates | PASS | `npm run test:f032`: 5 files / 24 tests; bilingual copy, source classification, home destination, simulations, scene semantics and visual pairing pass |
+| 2026-08-12 | F032 | Diagram and learner-flow visual QA | PASS | D007, D019 and D025-D028 reviewed at 600px/360px; home, intersections, signals and parking inspected at 390x844 with loaded images, no overflow and a clean console |
+| 2026-08-12 | F032 | Full local release regression | PASS | `TEST_PORT=4332 npm run verify:release`: 23 unit files / 153 tests; 30 Sources / 45 Rules / 28 Scenes; 43 pages; 118 PWA URLs; 51 root Chromium passes, one expected skip and one separate project-base pass |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

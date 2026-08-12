@@ -27,5 +27,6 @@
   {"sourceId":"S26","checkedAt":"2026-08-12","outcome":"verified","evidence":"NPA fiscal review materials explicitly distinguish semi-fixed automatic speed devices for expressways and portable devices for general roads."},
   {"sourceId":"S27","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA white paper describes planned enforcement by crash conditions and priority routes and includes significant speeding among targeted dangerous behaviours."},
   {"sourceId":"S28","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA traffic-regulation page explains the safety and congestion-control purpose of yellow solid no-lane-change road markings."},
-  {"sourceId":"S29","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA traffic-method guide defines guide strips and provides official instruction for road markings, speed, signals and safe road positioning."}
+  {"sourceId":"S29","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current NPA traffic-method guide defines guide strips and provides official instruction for road markings, speed, signals and safe road positioning."},
+  {"sourceId":"S30","checkedAt":"2026-08-12","outcome":"verified","evidence":"The current Fukushima Prefectural Police traffic-signal Q&A explains that a semi-actuated signal detects vehicles stopped immediately before the stop line and changes the low-volume approach on demand."}
 ]

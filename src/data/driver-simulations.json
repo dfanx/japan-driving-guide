@@ -334,5 +334,61 @@
     "reviewStatus": "approved",
     "containsOfficialVisual": false,
     "alt": { "zh-TW": "車輛故障後停在高速公路路肩，主線車流仍高速通過。", "en": "A disabled car is stopped on a motorway shoulder while traffic continues at speed in the main lanes." }
+  },
+  {
+    "id": "SIM-D025",
+    "diagramId": "D025",
+    "assetPath": "/assets/driver-simulations/d025-driver-view.webp",
+    "width": 1200,
+    "height": 800,
+    "assetSha256": "sha256:d1fc1d3a9f27dc75476e21ebac8561da1fe64514356177541a96fe79154496de",
+    "createdAt": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "kind": "generated_driver_simulation",
+    "reviewStatus": "approved",
+    "containsOfficialVisual": false,
+    "alt": { "zh-TW": "駕駛接近以白色斜線導流帶分隔車流的日本市區道路。", "en": "The driver approaches an urban Japanese road where white hatched guide strips channel traffic." }
+  },
+  {
+    "id": "SIM-D026",
+    "diagramId": "D026",
+    "assetPath": "/assets/driver-simulations/d026-driver-view.webp",
+    "width": 1200,
+    "height": 800,
+    "assetSha256": "sha256:bccaea0da9858a49fc68ef7a73689ffe169cb45e1f10e94a0a746524a023dee7",
+    "createdAt": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "kind": "generated_driver_simulation",
+    "reviewStatus": "approved",
+    "containsOfficialVisual": false,
+    "alt": { "zh-TW": "車輛在低車流路口的停止線前等待號誌感應。", "en": "A vehicle waits before the stop line at a low-traffic actuated junction." }
+  },
+  {
+    "id": "SIM-D027",
+    "diagramId": "D027",
+    "assetPath": "/assets/driver-simulations/d027-driver-view.webp",
+    "width": 1200,
+    "height": 800,
+    "assetSha256": "sha256:126a3048a6e77b2f759620d9669e937e0d2b25fa0227cd8188698bcce5a73ad7",
+    "createdAt": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "kind": "generated_driver_simulation",
+    "reviewStatus": "approved",
+    "containsOfficialVisual": false,
+    "alt": { "zh-TW": "駕駛接近有路面電車軌道、架空線與電車的日本路口。", "en": "The driver approaches a Japanese junction with tram tracks, overhead wires, and a streetcar." }
+  },
+  {
+    "id": "SIM-D028",
+    "diagramId": "D028",
+    "assetPath": "/assets/driver-simulations/d028-driver-view.webp",
+    "width": 1200,
+    "height": 800,
+    "assetSha256": "sha256:9a30d9e4066fcc246ea85ea35d58b9a612bd8343c62e98bc9d945ff54aa955f8",
+    "createdAt": "2026-08-12",
+    "generator": "OpenAI built-in image generation",
+    "kind": "generated_driver_simulation",
+    "reviewStatus": "approved",
+    "containsOfficialVisual": false,
+    "alt": { "zh-TW": "駕駛從同向車道接近左側商店入口，人行道上有行人與自行車。", "en": "The driver approaches a shop entrance on the left from the same direction, with a pedestrian and cyclist on the sidewalk." }
   }
 ]
