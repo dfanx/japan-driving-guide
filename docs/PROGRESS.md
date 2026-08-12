@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: none
+- Active feature: F033 — D020 expressway-merge geometry correction
 - Last passing feature: F032 — Direct lesson entry and overlooked road-control scenarios
 - Content imported: 30 Sources, 45 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
-- Deployment: F032 product commit `b31315b` is live at
-  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31556479002` passed
+- Deployment: F032 audit head `27cf2df` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31556646562` passed
 
 ## Session 2026-08-10
 
@@ -1822,3 +1822,59 @@ No feature is active. F031 is verified locally and live on GitHub Pages.
 
 No feature is active. F032 is verified locally and live on GitHub Pages. No
 further curriculum expansion is in scope.
+
+## Session 2026-08-12 — F033 D020 expressway-merge geometry correction
+
+### Session start
+
+- Active feature: F033 only.
+- Files read: project brief, feature ledger, progress handoff, D020 scene,
+  T06 renderer/golden fixture, diagram manifest and template tests.
+- Scope: replace the diagonal hard corner with a tangent-continuous ramp and
+  merge taper, then rebuild, visually review, approve, verify and deploy D020.
+- Out of scope: Rules, Sources, lesson wording, driver simulation and unrelated
+  diagrams.
+- Risk: T06 is a golden template, so a renderer correction intentionally drifts
+  both the template golden and D020 approval hash; no other scene may drift.
+- Verification: geometry assertions, template golden, diagram gate, 600px/360px
+  review, expressway lesson browser check and full release regression.
+- Rollback: restore T06/D020 renderer, golden, manifest and SVG bytes, then
+  rebuild static/PWA output.
+
+### Completed locally
+
+- Replaced the hard-corner ramp polygon with a continuous curved ramp that
+  becomes tangent to the horizontal mainline.
+- Extended the acceleration lane into a narrowing merge taper and marked its
+  endpoint explicitly in the SVG contract.
+- Moved the ramp movement arrow away from the dashed separator and into the
+  acceleration-lane centre after the first visual review exposed an overlap.
+- Rebuilt T06 and D020, reviewed both 600px and 360px captures, then approved
+  D020 with SHA-256
+  `e69d99d01710d31a48f368d7f55e42a2c2966480ca8543835aeaaf26963f8082`.
+- Inspected the full expressway lesson card at desktop and mobile widths in the
+  in-app browser. Both scenario cards fit, images loaded, and the console had no
+  warnings or errors.
+
+### Verification
+
+- `npm run verify:f033`: PASS — 3 focused unit files / 31 tests, zero-diagnostic
+  lint/typecheck, 28/28 diagrams, 43-page build, and one mobile Chromium case.
+- `npm run verify:release`: PASS — 24 unit files / 157 tests; 52 root Chromium
+  passes plus one expected project-base skip; the separate project-base case
+  passes; 118 PWA URLs and 1,175 project-base references pass.
+- Visual QA: PASS — D020 at 600px and 360px plus the production lesson card at
+  desktop and 390px-class mobile viewport.
+
+### Residual risk and rollback
+
+- The geometry is an explanatory schematic, not an engineering drawing of a
+  specific interchange. It now preserves the essential ramp/mainline
+  relationship without claiming universal dimensions.
+- Rollback is limited to T06/D020 renderer, golden, candidate/public SVG,
+  manifest, tests and package commands, followed by a static/PWA rebuild.
+
+### Next
+
+F033 remains the sole active feature until the product commit, Pages workflow,
+and public D020/lesson smoke are recorded.

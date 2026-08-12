@@ -400,8 +400,9 @@ export function renderExpresswayMergeTemplate(input: {
     nodes: [
       roadSegment({ x: 0, y: 150, width: 1200, height: 340 }),
       svgNode("path", {
+        "data-join": "tangent-horizontal",
         "data-primitive": "merge-ramp",
-        d: "M 0 760 L 0 610 C 260 610 390 540 530 420 L 760 420 L 760 490 L 560 490 C 410 620 260 760 0 760 Z",
+        d: "M 0 800 L 0 650 C 260 650 430 590 600 490 L 1050 490 C 920 490 760 650 610 700 C 420 770 230 800 0 800 Z",
         fill: DIAGRAM_PALETTE.road,
       }),
       laneBoundary({
@@ -411,7 +412,9 @@ export function renderExpresswayMergeTemplate(input: {
         dashed: true,
       }),
       svgNode("path", {
-        d: "M 20 620 C 280 620 420 545 555 438",
+        "data-primitive": "merge-separator",
+        "data-taper-end": "1030,490",
+        d: "M 20 666 C 280 666 450 590 610 515 C 770 515 920 508 1030 490",
         fill: "none",
         stroke: DIAGRAM_PALETTE.roadMarking,
         "stroke-dasharray": "24 18",
@@ -429,8 +432,8 @@ export function renderExpresswayMergeTemplate(input: {
         tone: "movement",
       }),
       directionalArrow({
-        from: { x: 400, y: 535 },
-        to: { x: 465, y: 485 },
+        from: { x: 400, y: 650 },
+        to: { x: 500, y: 610 },
         tone: "movement",
       }),
     ],

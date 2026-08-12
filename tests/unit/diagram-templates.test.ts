@@ -73,6 +73,20 @@ describe("T01-T12 template golden output", () => {
     expect(bicyclePassing).toContain('data-tone="movement"');
     expect(bicyclePassing).not.toMatch(/data-tone="movement"[^>]*stroke="#d64242"/);
   });
+
+  it("keeps the T06 acceleration lane tangent to the mainline instead of forming a hard corner", () => {
+    const expresswayMerge = GOLDEN_TEMPLATE_CASES.find(
+      (entry) => entry.name === "T06-expressway-merge",
+    )!.svg;
+
+    expect(expresswayMerge).toContain('data-join="tangent-horizontal"');
+    expect(expresswayMerge).toContain('data-primitive="merge-separator"');
+    expect(expresswayMerge).toContain('data-taper-end="1030,490"');
+    expect(expresswayMerge).toContain(
+      'd="M 0 800 L 0 650 C 260 650 430 590 600 490 L 1050 490 C 920 490 760 650 610 700 C 420 770 230 800 0 800 Z"',
+    );
+    expect(expresswayMerge).not.toContain("L 560 490 C 410 620");
+  });
 });
 
 describe("T02 reviewed-scene boundary", () => {

@@ -113,6 +113,10 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] D025-D028 driver-view simulations pass 1200x800, hash and no-official-visual gates
 - [x] F032 focused, full release and 390px learner-flow checks pass
 - [x] F032 public Pages workflow and HTTPS smoke recorded
+- [x] D020 ramp, acceleration lane and mainline form one continuous road surface
+- [x] D020 separator narrows into the merge point and movement arrow stays inside the lane
+- [x] T06/D020 geometry, approval hash, 600px/360px review and full release regression pass
+- [ ] F033 public Pages workflow and HTTPS D020 smoke recorded
 
 ## External release boundary
 

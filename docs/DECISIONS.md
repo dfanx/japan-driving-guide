@@ -629,3 +629,17 @@
 - Consequence: the legal duty and the route-planning suggestion have separate
   Rule IDs and classifications; diagrams show the safe decision order without
   asserting that every nearby reversal is lawful.
+
+## D047 — Merge diagrams require tangent-continuous road joins
+
+- Date: 2026-08-12
+- Status: accepted
+- Decision: a schematic ramp joining a horizontal mainline must reach the join
+  with a horizontal tangent and a visibly narrowing lane separator. Movement
+  arrows stay inside their lane rather than overlapping the separator.
+- Reason: the former D020 polygon was technically closed but visually wrong: a
+  diagonal outer edge met a horizontal road edge at a hard corner. That shape
+  teaches a bent roadway and obscures how an acceleration lane actually tapers.
+- Consequence: T06/D020 now expose `data-join="tangent-horizontal"`,
+  `data-primitive="merge-separator"`, and a declared taper endpoint. Focused
+  unit/browser tests reject the former corner and arrow overlap.

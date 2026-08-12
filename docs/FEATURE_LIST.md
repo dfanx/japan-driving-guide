@@ -41,6 +41,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F030 | Learner-first visuals and full review flow | passing | Captions teach scenario/risk/action; D002 signal is ahead of the approach lane; 24-question bilingual review with paging and results passes release gates |
 | F031 | Speed-enforcement myths and reference-scenario audit | passing | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
 | F032 | Direct lesson entry and overlooked road-control scenarios | passing | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
+| F033 | D020 expressway-merge geometry correction | active | Ramp, acceleration lane, merge taper, and mainline form a continuous reviewed road surface without a hard kink; focused, mobile, release, and live gates pass |
 
 ## Evidence
 
@@ -634,3 +635,17 @@ WIP limit: exactly zero or one feature may be `active`.
   Pages run `31556479002`, and public HTTPS content/asset smoke all passed.
 - Rollback: revert commit `b31315b`, rebuild the diagram/PWA outputs, and deploy
   the prior `main`. No backend, database, or migration exists.
+
+### F033
+
+- Date opened: 2026-08-12
+- Status: ACTIVE
+- Reported defect: D020's ramp outer edge meets the mainline at a diagonal hard
+  corner, making the road surface appear bent rather than smoothly merged.
+- Scope: correct T06/D020 road geometry, add a geometric regression contract,
+  rebuild the golden/candidate, review at 600px and 360px, approve the new hash,
+  run release verification, and deploy.
+- Out of scope: no Rule, Source, lesson copy, driver simulation, or other diagram
+  changes.
+- Rollback: restore the prior T06 renderer, golden, D020 candidate/public bytes,
+  and manifest entry; rebuild static/PWA output. No migration exists.

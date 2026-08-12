@@ -196,10 +196,10 @@
       "templateId": "T06",
       "candidatePath": "tools/diagram-generator/review/D020.svg",
       "sceneHash": "sha256:3696ee3cce3a28fad0ca489ac1128c24b8bfbd9469dabb4b7b5c8f9029038200",
-      "outputHash": "sha256:344e0802515b88c042fce7d60737ee973f6ebe8da1061cbf741da863a36250a1",
+      "outputHash": "sha256:e69d99d01710d31a48f368d7f55e42a2c2966480ca8543835aeaaf26963f8082",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-11"
+      "reviewedAt": "2026-08-12"
     },
     {
       "id": "D021",

@@ -170,6 +170,10 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | F032 | Full local release regression | PASS | `TEST_PORT=4332 npm run verify:release`: 23 unit files / 153 tests; 30 Sources / 45 Rules / 28 Scenes; 43 pages; 118 PWA URLs; 51 root Chromium passes, one expected skip and one separate project-base pass |
 | 2026-08-12 | F032 | GitHub Pages workflow | PASS | Run `31556479002` built and deployed product commit `b31315b`; both build and deploy jobs completed successfully |
 | 2026-08-12 | F032 | Public HTTPS smoke | PASS | zh-TW home, signals, intersections and parking return 200; Lesson 01 link and all six new teaching markers are present; D025-D028 return 200 with non-empty SVG bytes |
+| 2026-08-12 | F033 | D020 600px/360px review and approval | PASS | Hard-corner candidate rejected; tangent-continuous ramp, narrowing separator and in-lane arrow reviewed; D020 approved at `e69d99d...f8082` |
+| 2026-08-12 | F033 | `npm run verify:f033` | PASS | 3 focused unit files / 31 tests; zero-diagnostic lint/typecheck; 28/28 diagram gate; 43 pages; mobile expressway lesson case passes |
+| 2026-08-12 | F033 | Full local release regression | PASS | 24 unit files / 157 tests; 52 root Chromium passes and one expected skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
+| 2026-08-12 | F033 | Learner-card browser QA | PASS | Expressway scenario pair inspected at desktop and 390px-class mobile viewport; geometry is smooth, both images load, layout is contained and console is clean |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify
