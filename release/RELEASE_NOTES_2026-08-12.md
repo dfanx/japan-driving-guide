@@ -46,3 +46,9 @@ evidence or artwork sources. The release does not reproduce the photographed
 book layouts and does not publish enforcement-evasion thresholds. Public rules
 trace to Japanese-authority sources; simulations remain context-only and
 deterministic diagrams remain the reviewed explanatory layer.
+
+## Deployment
+
+Main commit `d454418` passed GitHub Pages run `31553355397`. The public speed,
+intersections, final-review, and D011 routes returned HTTP 200 with the F031
+content present.

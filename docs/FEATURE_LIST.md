@@ -39,7 +39,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F028 | Driver-seat simulation photos | passing | D001-D024 each pair a disclosed driver-view simulation with the deterministic explanation diagram and official controls |
 | F029 | D006 right-turn lane correction | passing | A's right-turn path enters the eastbound left-side lane; D006 hash, review, mobile, and release gates pass |
 | F030 | Learner-first visuals and full review flow | passing | Captions teach scenario/risk/action; D002 signal is ahead of the approach lane; 24-question bilingual review with paging and results passes release gates |
-| F031 | Speed-enforcement myths and reference-scenario audit | active | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
+| F031 | Speed-enforcement myths and reference-scenario audit | passing | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
 
 ## Evidence
 
@@ -600,7 +600,7 @@ WIP limit: exactly zero or one feature may be `active`.
 ### F031
 
 - Date opened: 2026-08-12
-- Status: ACTIVE
+- Status: PASSING
 - Scope: verify the supplied speed-enforcement claims against current Japanese
   authority sources; add a learner-facing myth/action section; audit the 13
   photographed textbook concepts against the existing signal, intersection,
@@ -611,5 +611,9 @@ WIP limit: exactly zero or one feature may be `active`.
   are not treated as lawful or safe driving guidance.
 - Local acceptance: bilingual/source parity, diagram review evidence, focused
   browser tests, full release verification, and static archive integrity pass.
-- External acceptance pending: push the verified revision and confirm the live
-  GitHub Pages routes.
+- Live acceptance: main commit `d454418` passed GitHub Pages run `31553355397`;
+  the public speed, intersections, review, and D011 routes return HTTP 200 and
+  expose the new F031 content.
+- Rollback: revert the S26-S29 catalog additions, three F031 Rules, Q025, lesson
+  copy, D011 preset/approval and focused tests, then rebuild the static archive.
+  D002 requires no rollback because its reviewed bytes did not change.

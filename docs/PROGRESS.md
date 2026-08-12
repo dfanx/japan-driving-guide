@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: F031 — Speed-enforcement myths and reference-scenario audit
-- Last passing feature: F030 — Learner-first visuals and full review flow
+- Active feature: none
+- Last passing feature: F031 — Speed-enforcement myths and reference-scenario audit
 - Content imported: 29 Sources, 39 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 24 review candidates / 24 approved
-- Deployment: live at `https://dfanx.github.io/japan-driving-guide/`; F031 is
-  locally release-verified and awaits the same-session Pages confirmation
+- Deployment: F031 commit `d454418` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31553355397` passed
 
 ## Session 2026-08-10
 
@@ -1718,3 +1718,46 @@ Pages.
 
 No feature is active. The verified F030 release is ready to commit, push to
 `main`, and confirm through GitHub Pages.
+
+## Session 2026-08-12 — F031 enforcement myths and reference scenarios
+
+### Completed
+
+- Replaced the supplied speeding folklore with a source-traced bilingual myth
+  correction: Japan uses fixed, semi-fixed and portable enforcement equipment,
+  while alleged tolerance margins and evasion tactics are not driving rules.
+- Added S26-S29, three Rules, Q025 and the matching 25-question review updates.
+- Audited all 13 supplied textbook photos. Verified signal, intersection,
+  parking, guide-strip, fuel and expressway concepts were mapped to existing or
+  original deterministic course visuals; unsupported universal tactics were
+  rejected in `F031_REFERENCE_IMAGE_AUDIT.md`.
+- Redrew and approved D011 as an original road-type comparison. Restored D002
+  from its byte-identical reviewed candidate after detecting a zero-byte local
+  public asset during the build workflow.
+- Created the 2026-08-12 static archive and release notes, committed F031 as
+  `d454418`, pushed `main`, and deployed it through Pages run `31553355397`.
+
+### Verification
+
+- Local release: PASS — 22 unit files / 149 tests; 29 Sources / 39 Rules / 32
+  lessons / 25 Questions / 24 Scenes; 43 pages; 110 PWA URLs; 24/24 diagrams.
+- Browser QA: PASS — speed, intersections and final review render correctly;
+  first-answer locking, explanation and next-page navigation work.
+- GitHub Pages: PASS — build and deploy jobs completed; public speed,
+  intersections, review and D011 routes returned HTTP 200 with F031 markers.
+- Static archive: 3,343,307 bytes / 112 entries; SHA-256
+  `11C65D3334B4B1CFB9C7E3071892E0453E78E7FC214ECD845907603AC8AE1821`.
+
+### Residual risk and rollback
+
+- Enforcement deployment and road-law details remain time-sensitive; source
+  revalidation is still required before future dated releases.
+- The generated driver views are context, not proof of a regulated control.
+  Official assets and reviewed deterministic diagrams remain the authority
+  layer.
+- Rollback is the F031 content/source/question/D011 change set followed by a
+  static/PWA rebuild. The photographed book artwork was never imported.
+
+### Next
+
+No feature is active. F031 is verified locally and live on GitHub Pages.
