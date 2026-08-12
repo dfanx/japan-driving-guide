@@ -40,7 +40,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F029 | D006 right-turn lane correction | passing | A's right-turn path enters the eastbound left-side lane; D006 hash, review, mobile, and release gates pass |
 | F030 | Learner-first visuals and full review flow | passing | Captions teach scenario/risk/action; D002 signal is ahead of the approach lane; 24-question bilingual review with paging and results passes release gates |
 | F031 | Speed-enforcement myths and reference-scenario audit | passing | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
-| F032 | Direct lesson entry and overlooked road-control scenarios | active | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
+| F032 | Direct lesson entry and overlooked road-control scenarios | passing | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
 
 ## Evidence
 
@@ -622,13 +622,15 @@ WIP limit: exactly zero or one feature may be `active`.
 ### F032
 
 - Date opened: 2026-08-12
-- Status: ACTIVE
+- Status: PASSING
 - Scope: replace the ten-minute home entry with a direct Lesson 01 start; add
   source-traced bilingual teaching and original visuals for six overlooked
   road-control and entry scenarios reported by the user.
 - Safety boundary: photographed book pages are discovery references only.
   Streetcar and actuated-signal appearance may vary by location; a U-turn is
   never prescribed unless it is legal, visible, and safe at that location.
-- Acceptance pending: current official-source traceability, bilingual parity,
-  six reviewed simulation/diagram pairs, responsive browser QA, full release
-  verification, and live Pages smoke.
+- Acceptance: PASS — current official-source traceability, bilingual parity,
+  six reviewed diagram pairs, responsive browser QA, full release verification,
+  Pages run `31556479002`, and public HTTPS content/asset smoke all passed.
+- Rollback: revert commit `b31315b`, rebuild the diagram/PWA outputs, and deploy
+  the prior `main`. No backend, database, or migration exists.

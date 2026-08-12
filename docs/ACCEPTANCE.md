@@ -112,7 +112,7 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] D007, D019 and D025-D028 pass deterministic hash, approval and 360px review gates
 - [x] D025-D028 driver-view simulations pass 1200x800, hash and no-official-visual gates
 - [x] F032 focused, full release and 390px learner-flow checks pass
-- [ ] F032 public Pages workflow and HTTPS smoke recorded
+- [x] F032 public Pages workflow and HTTPS smoke recorded
 
 ## External release boundary
 

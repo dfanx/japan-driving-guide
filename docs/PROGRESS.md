@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: F032 — Direct lesson entry and overlooked road-control scenarios
-- Last passing feature: F031 — Speed-enforcement myths and reference-scenario audit
+- Active feature: none
+- Last passing feature: F032 — Direct lesson entry and overlooked road-control scenarios
 - Content imported: 30 Sources, 45 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
-- Deployment: F031 commit `d454418` is live at
-  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31553355397` passed
+- Deployment: F032 product commit `b31315b` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31556479002` passed
 
 ## Session 2026-08-10
 
@@ -1764,7 +1764,7 @@ No feature is active. F031 is verified locally and live on GitHub Pages.
 
 ## Session 2026-08-12 — F032 overlooked road-control scenarios
 
-### Completed locally
+### Completed
 
 - Removed the visible ten-minute home entry. The primary call to action now
   starts Lesson 01, with the 16-lesson directory and final review kept as
@@ -1820,5 +1820,5 @@ No feature is active. F031 is verified locally and live on GitHub Pages.
 
 ### Next
 
-F032 remains the sole active feature until the `main` push, Pages workflow, and
-public HTTPS smoke are recorded. No further curriculum expansion is in scope.
+No feature is active. F032 is verified locally and live on GitHub Pages. No
+further curriculum expansion is in scope.

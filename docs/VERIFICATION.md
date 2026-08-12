@@ -168,6 +168,8 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | F032 | Focused gates | PASS | `npm run test:f032`: 5 files / 24 tests; bilingual copy, source classification, home destination, simulations, scene semantics and visual pairing pass |
 | 2026-08-12 | F032 | Diagram and learner-flow visual QA | PASS | D007, D019 and D025-D028 reviewed at 600px/360px; home, intersections, signals and parking inspected at 390x844 with loaded images, no overflow and a clean console |
 | 2026-08-12 | F032 | Full local release regression | PASS | `TEST_PORT=4332 npm run verify:release`: 23 unit files / 153 tests; 30 Sources / 45 Rules / 28 Scenes; 43 pages; 118 PWA URLs; 51 root Chromium passes, one expected skip and one separate project-base pass |
+| 2026-08-12 | F032 | GitHub Pages workflow | PASS | Run `31556479002` built and deployed product commit `b31315b`; both build and deploy jobs completed successfully |
+| 2026-08-12 | F032 | Public HTTPS smoke | PASS | zh-TW home, signals, intersections and parking return 200; Lesson 01 link and all six new teaching markers are present; D025-D028 return 200 with non-empty SVG bytes |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify
