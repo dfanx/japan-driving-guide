@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: F033 — D020 expressway-merge geometry correction
-- Last passing feature: F032 — Direct lesson entry and overlooked road-control scenarios
+- Active feature: none
+- Last passing feature: F033 — D020 expressway-merge geometry correction
 - Content imported: 30 Sources, 45 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
-- Deployment: F032 audit head `27cf2df` is live at
-  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31556646562` passed
+- Deployment: F033 product head `e2c2561` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31558167512` passed
 
 ## Session 2026-08-10
 
@@ -1876,5 +1876,6 @@ further curriculum expansion is in scope.
 
 ### Next
 
-F033 remains the sole active feature until the product commit, Pages workflow,
-and public D020/lesson smoke are recorded.
+No feature is active. F033 is verified locally and live on GitHub Pages. The
+public lesson and D020 SVG return 200, and the deployed SVG SHA-256 matches the
+approved `e69d99d...f8082` artifact.

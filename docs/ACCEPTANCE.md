@@ -116,7 +116,7 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] D020 ramp, acceleration lane and mainline form one continuous road surface
 - [x] D020 separator narrows into the merge point and movement arrow stays inside the lane
 - [x] T06/D020 geometry, approval hash, 600px/360px review and full release regression pass
-- [ ] F033 public Pages workflow and HTTPS D020 smoke recorded
+- [x] F033 public Pages workflow and HTTPS D020 smoke recorded
 
 ## External release boundary
 
