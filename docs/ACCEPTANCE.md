@@ -126,7 +126,7 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] F034 roadside-facility copy reads road controls and `右折入庫禁止` before
       a right-turn entry and never equates a missing notice with a safe gap
 - [x] F034 focused, full release, bilingual and mobile gates pass locally
-- [ ] F034 GitHub Pages workflow and public HTTPS content markers pass
+- [x] F034 GitHub Pages workflow and public HTTPS content markers pass
 
 ## External release boundary
 

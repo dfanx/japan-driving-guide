@@ -42,7 +42,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F031 | Speed-enforcement myths and reference-scenario audit | passing | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
 | F032 | Direct lesson entry and overlooked road-control scenarios | passing | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
 | F033 | D020 expressway-merge geometry correction | passing | Ramp, acceleration lane, merge taper, and mainline form a continuous reviewed road surface without a hard kink; focused, mobile, release, and live gates pass |
-| F034 | Local driving customs without folklore | active | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
+| F034 | Local driving customs without folklore | passing | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
 
 ## Evidence
 
@@ -657,7 +657,7 @@ WIP limit: exactly zero or one feature may be `active`.
 ### F034
 
 - Date opened: 2026-08-12
-- Status: ACTIVE
+- Status: PASSING
 - Scope: add source-traced bilingual instruction for parking/reversing hazard
   use, two-flash thanks, one-by-one zipper merging, holding a lane through an
   intersection, predictable legal speed, and an explicit every-vehicle railway-
@@ -674,6 +674,9 @@ WIP limit: exactly zero or one feature may be `active`.
   documents, 25 Questions, 28/28 diagrams, 43 pages, 118 PWA URLs, 25 unit
   files / 162 tests, 53 root Chromium passes plus one separate project-base
   pass, and focused 390px affected-lesson coverage.
+- Live acceptance: PASS — product commit `ed4a639` passed GitHub Pages run
+  `31561749290`; all six affected zh-TW lesson routes and the Source catalog
+  return HTTP 200 with their F034 markers.
 - Verification: focused content/source tests, bilingual parity, 360px affected-
   lesson browser checks, full release regression, Pages workflow, and public
   HTTPS markers.

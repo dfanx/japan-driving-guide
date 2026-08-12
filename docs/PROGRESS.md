@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: F034 — local driving customs without folklore
-- Last passing feature: F033 — D020 expressway-merge geometry correction
+- Active feature: none
+- Last passing feature: F034 — local driving customs without folklore
 - Content imported: 33 Sources, 50 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
-- Deployment: F033 product head `e2c2561` is live at
-  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31558167512` passed
+- Deployment: F034 product head `ed4a639` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31561749290` passed
 
 ## Session 2026-08-10
 
@@ -1951,5 +1951,7 @@ approved `e69d99d...f8082` artifact.
 
 ### Next
 
-F034 is locally verified and remains active until the product commit passes the
-GitHub Pages workflow and public HTTPS smoke.
+F034 is passing locally and live. Product commit `ed4a639` passed GitHub Pages
+run `31561749290`; intersections, speed, rail crossings, parking, expressways,
+safety basics and Sources all return HTTP 200 with the expected F034 markers.
+No feature is active.

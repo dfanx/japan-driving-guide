@@ -180,6 +180,8 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | F034 | `TEST_PORT=4344 npm run verify:f034` | PASS | Zero-diagnostic lint/typecheck; 4 focused unit files / 19 tests; 33 Sources / 50 Rules; 28/28 diagram gate; 43 pages; one affected-lesson mobile Chromium case |
 | 2026-08-12 | F034 | Full local release regression | PASS | `TEST_PORT=4345 npm run verify:release`: 25 unit files / 162 tests; 53 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
 | 2026-08-12 | F034 | Learner-flow browser QA | PASS | Current static intersection lesson exposes `右折入庫禁止`, the no-automatic-safety boundary and the mandatory sidewalk stop; railway and parking markers were also inspected |
+| 2026-08-12 | F034 | GitHub Pages workflow | PASS | Run `31561749290` built, base-path tested and deployed product commit `ed4a639`; build and deploy jobs completed successfully |
+| 2026-08-12 | F034 | Public HTTPS smoke | PASS | Intersections, speed, rail crossings, parking, expressways, safety basics and Sources return HTTP 200; all requested F034 markers including `右折入庫禁止`, every-vehicle rail stop and S31-S33 are present |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify
