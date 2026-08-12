@@ -7,6 +7,7 @@ ruleIds:
   - JP-RULE-PARKING-SIGN-DISTINCTION-001
   - JP-RULE-PARKING-CLEAR-ZONES-001
   - JP-RULE-PARKING-ROAD-MARKING-001
+  - JP-RULE-HAZARD-PARKING-CUSTOM-001
 diagramIds:
   - D019
 quizTags:
@@ -25,6 +26,12 @@ reviewStatus: approved
 If the driver leaves and cannot move the vehicle immediately, it may be treated as abandoned parking regardless of duration, engine state or hazard lights. If the rule is unclear, use a lawful car park.
 
 An empty-looking kerb space is not enough. Read the no-parking or no-stopping sign, auxiliary plate, roadside marking and statutory clear zone together.
+
+## Hazards before stopping or reverse parking are a cue, not permission
+
+In Japan, drivers often switch on the hazard lights before a roadside stop or reverse-parking manoeuvre to mean “I am about to stop or back in; please leave space.” You may use them as a supplementary warning, but not every driver will interpret them the same way.
+
+The safe sequence still comes first: slow early, use the directional signal when moving to the kerb, check behind and through every blind spot, then stop or reverse only when clear. Hazards do not replace brake, turn or reversing lights, do not replace observation, and never legalize an illegal stop. If a vehicle closes the gap or someone crosses behind, stop the manoeuvre.
 
 ## Solid and broken yellow kerb markings differ
 

@@ -42,6 +42,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F031 | Speed-enforcement myths and reference-scenario audit | passing | Officially sourced enforcement guidance rejects tolerance/evasion myths; photographed concepts are mapped to original reviewed course visuals without reproducing the book artwork |
 | F032 | Direct lesson entry and overlooked road-control scenarios | passing | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
 | F033 | D020 expressway-merge geometry correction | passing | Ramp, acceleration lane, merge taper, and mainline form a continuous reviewed road surface without a hard kink; focused, mobile, release, and live gates pass |
+| F034 | Local driving customs without folklore | active | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
 
 ## Evidence
 
@@ -652,3 +653,29 @@ WIP limit: exactly zero or one feature may be `active`.
   `e69d99d...f8082` bytes.
 - Rollback: restore the prior T06 renderer, golden, D020 candidate/public bytes,
   and manifest entry; rebuild static/PWA output. No migration exists.
+
+### F034
+
+- Date opened: 2026-08-12
+- Status: ACTIVE
+- Scope: add source-traced bilingual instruction for parking/reversing hazard
+  use, two-flash thanks, one-by-one zipper merging, holding a lane through an
+  intersection, predictable legal speed, and an explicit every-vehicle railway-
+  crossing stop/check warning with the statutory signal exception.
+- Safety boundary: common practice is not promoted into law. Hazard lights do
+  not replace statutory signals or legalize parking; intersection lane changes
+  are not described as universally illegal; `limit +/- 15` is explicitly
+  rejected as a lawful or safe allowance.
+- Roadside-entry clarification: a missing `右折入庫禁止` notice does not by
+  itself prohibit a right-turn entry, but the driver must still read official
+  road controls, yield to opposing traffic, stop before the sidewalk and avoid
+  obstructing normal traffic.
+- Local acceptance: PASS — 33 Sources / 50 Rules, 32 bilingual lesson
+  documents, 25 Questions, 28/28 diagrams, 43 pages, 118 PWA URLs, 25 unit
+  files / 162 tests, 53 root Chromium passes plus one separate project-base
+  pass, and focused 390px affected-lesson coverage.
+- Verification: focused content/source tests, bilingual parity, 360px affected-
+  lesson browser checks, full release regression, Pages workflow, and public
+  HTTPS markers.
+- Rollback: revert only F034 Sources, Rules, lesson copy, tests, scripts and
+  governance records; no diagram, image, backend or migration is involved.

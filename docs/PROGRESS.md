@@ -3,9 +3,9 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: none
+- Active feature: F034 — local driving customs without folklore
 - Last passing feature: F033 — D020 expressway-merge geometry correction
-- Content imported: 30 Sources, 45 Rules, 25 Questions, 32 lesson documents
+- Content imported: 33 Sources, 50 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
 - Deployment: F033 product head `e2c2561` is live at
   `https://dfanx.github.io/japan-driving-guide/`; Pages run `31558167512` passed
@@ -1879,3 +1879,77 @@ further curriculum expansion is in scope.
 No feature is active. F033 is verified locally and live on GitHub Pages. The
 public lesson and D020 SVG return 200, and the deployed SVG SHA-256 matches the
 approved `e69d99d...f8082` artifact.
+
+## Session 2026-08-12 — F034 local driving customs without folklore
+
+### Session start
+
+- Active feature: F034 only.
+- Files read: project brief, feature ledger, progress handoff, curriculum,
+  current Rules/Sources, six affected bilingual lessons and official guidance.
+- Scope: classify five reported driving customs, strengthen the railway-
+  crossing stop/check instruction, clarify right-turn entry into roadside
+  facilities, add traceability/tests, verify and deploy.
+- Out of scope: new diagrams, generated images, questions, backend, analytics
+  and runtime behaviour.
+- Risk: presenting observed customs as law, publishing a speed-tolerance myth,
+  or writing an exceptionless railway rule that conflicts with current law.
+- Verification: focused source/content tests, bilingual parity, mobile browser
+  checks, full release regression, Pages workflow and public HTTPS markers.
+- Rollback: revert the F034 Sources, Rules, lesson copy, tests, package scripts
+  and governance records. No diagram approval or migration is involved.
+
+### Completed locally
+
+- Added S31-S33 and five approved Rules. NEXCO zipper merging is labelled
+  official guidance; hazard-lamp stopping/reversing and thanks signals are
+  labelled practical advice with explicit ambiguity warnings.
+- Added concise learner sections to M04, M07, M10, M11 and M15. The copy rejects
+  any `+15 km/h` allowance and teaches holding a predictable lane through the
+  intersection without claiming a universal statutory ban.
+- Strengthened M08 so every vehicle stops and checks for itself, never follows
+  the previous car blindly and enters only when the exit is clear. The
+  signal-controlled statutory exception remains explicit.
+- Clarified roadside-facility right turns: read official road controls first,
+  then `右折入庫禁止`; no notice means the turn may be permitted, not that it is
+  automatically safe. Opposing traffic and sidewalk users still take priority.
+- No production diagram or driver-simulation bytes changed.
+
+### Verification
+
+- `TEST_PORT=4344 npm run verify:f034`: PASS — 4 focused unit files / 19 tests,
+  zero diagnostics, 33 Sources / 50 Rules, 28/28 diagrams, 43 pages and one
+  affected-lesson mobile Chromium case.
+- `TEST_PORT=4345 npm run verify:release`: PASS — 25 unit files / 162 tests; 53
+  root Chromium passes plus one expected project-base skip; the separate
+  project-base case passes; 118 PWA URLs and 1,175 base-path references pass.
+- Browser QA: PASS — the freshly built zh-TW intersection lesson shows the
+  entrance notice, safety boundary and sidewalk stop in the production layout.
+
+### Content/source evidence
+
+- New Sources: S31 NEXCO Central zipper merge guidance, S32 Panasonic Insurance
+  hazard-lamp safety note, S33 Traffic Science Society communication study.
+- New Rules: `JP-RULE-HAZARD-PARKING-CUSTOM-001`,
+  `JP-RULE-HAZARD-THANKS-CUSTOM-001`, `JP-RULE-MERGE-ZIPPER-001`,
+  `JP-RULE-INTERSECTION-HOLD-LANE-001`, and
+  `JP-RULE-SPEED-PREDICTABLE-001`.
+- Existing S16/S29 and facility-entry Rules support the right-turn entrance
+  clarification; existing railway Rules support the strengthened stop/check
+  copy. Research decisions are recorded in
+  `docs/F034_LOCAL_DRIVING_CUSTOMS_RESEARCH.md`.
+
+### Residual risk and rollback
+
+- Local custom varies by region and driver. The lesson teaches recognition and
+  a conservative response, never priority or permission.
+- Facility notices may be advisory while official road controls are binding;
+  the learner order deliberately reads both and defaults to continuing when
+  the decision is unclear.
+- Rollback is the scoped F034 content/data/test/docs change set followed by a
+  static/PWA rebuild. No external data migration exists.
+
+### Next
+
+F034 is locally verified and remains active until the product commit passes the
+GitHub Pages workflow and public HTTPS smoke.

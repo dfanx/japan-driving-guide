@@ -8,6 +8,7 @@ ruleIds:
   - JP-RULE-DISTRACTED-DRIVING-001
   - JP-RULE-SEATBELT-ALL-001
   - JP-RULE-CHILD-SEAT-001
+  - JP-RULE-HAZARD-THANKS-CUSTOM-001
 diagramIds: []
 quizTags:
   - safety_basics
@@ -30,3 +31,7 @@ Every occupant must wear a seat belt. A child under six generally requires an ap
 ## Do not force the drive
 
 Fatigue, medication side effects, illness, or poor attention should lead you to switch drivers, delay, or cancel. Legal eligibility does not mean you are fit to drive right now.
+
+## Two brief hazard flashes may mean thank you
+
+Some drivers in Japan briefly flash the hazards after you let them merge. Recognize it for what it is: an unofficial courtesy, not a statutory signal, and not universally used. If you choose to respond this way, complete the merge and stabilize the vehicle first; do not reach for the switch while turning, reversing or still managing a conflict. It does not mean “you may go,” grant priority, or prove that a hazard has cleared.

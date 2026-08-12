@@ -117,6 +117,16 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] D020 separator narrows into the merge point and movement arrow stays inside the lane
 - [x] T06/D020 geometry, approval hash, 600px/360px review and full release regression pass
 - [x] F033 public Pages workflow and HTTPS D020 smoke recorded
+- [x] F034 classifies parking/reversing hazards and brief thanks flashes as
+      unofficial, ambiguous customs rather than legal signals
+- [x] F034 teaches NEXCO zipper merging as official guidance and rejects a
+      `+/-15 km/h` legal or safe allowance
+- [x] F034 tells every vehicle to stop/check at a railway crossing while
+      preserving the statutory signal-controlled exception
+- [x] F034 roadside-facility copy reads road controls and `右折入庫禁止` before
+      a right-turn entry and never equates a missing notice with a safe gap
+- [x] F034 focused, full release, bilingual and mobile gates pass locally
+- [ ] F034 GitHub Pages workflow and public HTTPS content markers pass
 
 ## External release boundary
 

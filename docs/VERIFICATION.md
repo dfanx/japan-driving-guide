@@ -176,6 +176,10 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | F033 | Learner-card browser QA | PASS | Expressway scenario pair inspected at desktop and 390px-class mobile viewport; geometry is smooth, both images load, layout is contained and console is clean |
 | 2026-08-12 | F033 | GitHub Pages workflow | PASS | Run `31558167512` built and deployed product commit `e2c2561`; build and deploy jobs completed successfully |
 | 2026-08-12 | F033 | Public HTTPS smoke | PASS | Expressway lesson and D020 SVG return 200; the SVG exposes the tangent join and taper endpoint, omits the old kink, and its deployed SHA-256 exactly matches approved hash `e69d99d...f8082` |
+| 2026-08-12 | F034 | Source and claim triage | PASS | S31-S33 support official zipper guidance and observed hazard customs; unsupported `+/-15`, universal intersection-lane illegality, and exceptionless railway claims are rejected or narrowed |
+| 2026-08-12 | F034 | `TEST_PORT=4344 npm run verify:f034` | PASS | Zero-diagnostic lint/typecheck; 4 focused unit files / 19 tests; 33 Sources / 50 Rules; 28/28 diagram gate; 43 pages; one affected-lesson mobile Chromium case |
+| 2026-08-12 | F034 | Full local release regression | PASS | `TEST_PORT=4345 npm run verify:release`: 25 unit files / 162 tests; 53 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
+| 2026-08-12 | F034 | Learner-flow browser QA | PASS | Current static intersection lesson exposes `右折入庫禁止`, the no-automatic-safety boundary and the mandatory sidewalk stop; railway and parking markers were also inspected |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

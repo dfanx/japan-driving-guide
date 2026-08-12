@@ -8,6 +8,7 @@ ruleIds:
   - JP-RULE-DISTRACTED-DRIVING-001
   - JP-RULE-SEATBELT-ALL-001
   - JP-RULE-CHILD-SEAT-001
+  - JP-RULE-HAZARD-THANKS-CUSTOM-001
 diagramIds: []
 quizTags:
   - safety_basics
@@ -30,3 +31,7 @@ reviewStatus: approved
 ## 不舒服就不要硬開
 
 疲勞、藥物副作用、身體不適或注意力不集中，就換人、延後或取消。能合法開車，不代表你現在適合開。
+
+## 雙黃燈閃兩下，可能是在說謝謝
+
+日本有些駕駛在你讓他匯入後，會短閃雙黃燈致謝。看懂就好：這是非正式禮貌，不是法定燈號，也不是每個人都會這樣用。若你要回謝，先完成匯入、車身穩定後再短暫操作；不要在轉彎、倒車或仍需急著看路時分心。它不代表讓行、可以走或危險解除。

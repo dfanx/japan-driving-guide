@@ -643,3 +643,20 @@
 - Consequence: T06/D020 now expose `data-join="tangent-horizontal"`,
   `data-primitive="merge-separator"`, and a declared taper endpoint. Focused
   unit/browser tests reject the former corner and arrow overlap.
+
+## D048 — Driving customs are recognition aids, not substitute signals
+
+- Date: 2026-08-12
+- Status: accepted
+- Decision: widely observed hazard-light and lane-flow customs may be taught
+  only as practical recognition aids. The guide must state the official or
+  legal action first, name the custom as optional and non-universal, and explain
+  what the custom cannot authorize or communicate reliably.
+- Reason: visitors benefit from recognizing local behavior, but an informal
+  flash pattern is ambiguous and cannot create right of way, replace a turn
+  signal, prove a parking manoeuvre, or legalize a stop. Likewise, a rumoured
+  `+/-15 km/h` social band would convert folklore into unsafe speeding advice.
+- Consequence: zipper merging is classified separately as NEXCO official
+  guidance; parking/reversing hazards, two-flash thanks and holding a lane
+  through an intersection remain practical advice; every speed statement keeps
+  the posted limit as a hard upper bound.

@@ -33,8 +33,8 @@ describe("F027 tourist mistake coverage", () => {
   } as const;
 
   it("adds only source-traced legal rules to the approved catalogs", () => {
-    expect(sourceCatalog).toHaveLength(30);
-    expect(ruleCatalog).toHaveLength(45);
+    expect(sourceCatalog).toHaveLength(33);
+    expect(ruleCatalog).toHaveLength(50);
 
     for (const [id, sourceIds] of Object.entries(expectedRules)) {
       const rule = ruleCatalog.find((candidate) => candidate.id === id);

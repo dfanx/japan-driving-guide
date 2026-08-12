@@ -6,6 +6,7 @@ ruleIds:
   - JP-RULE-SPEED-POSTED-001
   - JP-RULE-SPEED-LOCAL-2026-001
   - JP-RULE-SPEED-ENFORCEMENT-001
+  - JP-RULE-SPEED-PREDICTABLE-001
 diagramIds:
   - D011
 quizTags:
@@ -23,6 +24,10 @@ When a sign or road marking specifies a limit, follow it. A wide-looking road, a
 NPA material documents fixed, semi-fixed and portable speed-enforcement equipment, as well as targeted enforcement planned around crash conditions and priority routes. Not seeing a camera, police vehicle or warning does not mean there is no enforcement.
 
 Online claims about a “safe” amount over the limit or police catching only the first vehicle are not traffic rules. How equipment is configured does not create a lawful speeding allowance. Follow the posted limit and do not copy a speeding lead vehicle.
+
+## There is no “limit plus or minus 15” custom
+
+`+15 km/h` is still speeding, even if surrounding traffic is doing it, and `-15 km/h` is not a target floor. A speed limit is a ceiling, not a speed you must reach. In normal conditions, keep a steady, predictable speed within the law; slow further for rain, narrow streets, limited visibility or people ahead. Do not obstruct traffic without reason, but never speed just to follow it. Expressways and roads with a posted minimum speed remain subject to that separate control.
 
 ## Change effective 2026-09-01
 

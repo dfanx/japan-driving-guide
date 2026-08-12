@@ -11,15 +11,15 @@ import {
 describe("F021 content traceability", () => {
   it("exposes every approved Rule under exactly one classification", () => {
     expect(rulesByClassification.legal_rule).toHaveLength(30);
-    expect(rulesByClassification.official_guidance).toHaveLength(11);
-    expect(rulesByClassification.practical_advice).toHaveLength(4);
+    expect(rulesByClassification.official_guidance).toHaveLength(12);
+    expect(rulesByClassification.practical_advice).toHaveLength(8);
     expect(
       Object.values(rulesByClassification).flat().map((rule) => rule.id).sort(),
     ).toEqual(ruleCatalog.map((rule) => rule.id).sort());
   });
 
   it("resolves every Source to the Rules it supports without inventing links", () => {
-    expect(traceableSources).toHaveLength(30);
+    expect(traceableSources).toHaveLength(33);
     expect(traceableSources.map((source) => source.id)).toEqual(
       sourceCatalog.map((source) => source.id),
     );
