@@ -192,6 +192,8 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-14 | F036 | Context-photo and D025 visual review | PASS | User-supplied photo normalized to 1200x800 WebP `e86ee9c5...577f`; D025 reviewed at 600px/360px and approved at `2f15a11a...9914d` with a right-turn endpoint and yellow-bordered prohibited comparison |
 | 2026-08-14 | F036 | `TEST_PORT=4360 npm run verify:f036` | PASS | Zero-diagnostic lint/typecheck; 4 focused files / 20 tests; 40 Sources / 57 Rules; 28/28 diagrams; 43 pages; mobile D025 case passes |
 | 2026-08-14 | F036 | Full local release regression | PASS | `TEST_PORT=4364 npm run verify:release`: 27 unit files / 172 tests; 55 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
+| 2026-08-14 | F036 | GitHub Pages workflow | PASS | Run `31775556547` built, base-path tested and deployed product commit `aab2a8e`; build and deploy jobs completed successfully |
+| 2026-08-14 | F036 | Public HTTPS smoke | PASS | M04, D025 context WebP, D025 SVG and Sources return HTTP 200; lesson/right-turn markers, `data-turn-lane="right"`, yellow-prohibited semantics and S40 are present |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

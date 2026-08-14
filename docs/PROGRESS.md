@@ -2097,7 +2097,12 @@ product deployment. No feature is active.
 - Rollback is the scoped F036 Source/Rule/lesson/photo/diagram/test/docs change
   set followed by a static/PWA rebuild. No external data migration exists.
 
-### Next
+### Live acceptance and next
 
-F036 is locally passing and remains active pending product commit, GitHub Pages
-workflow and public HTTPS verification.
+- Product commit `aab2a8e` passed GitHub Pages run `31775556547`; both build and
+  deploy jobs completed successfully.
+- Public M04, D025 context WebP, D025 SVG and Sources return HTTP 200. The live
+  lesson contains the corrected heading/right-turn text; the SVG contains
+  `data-turn-lane="right"` and `data-entry-prohibited="yellow-bordered"`; S40
+  is visible in the Source catalog.
+- F036 is passing locally and live. No feature is active.
