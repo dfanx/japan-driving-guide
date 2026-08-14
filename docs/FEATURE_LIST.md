@@ -46,6 +46,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F035 | Visitor tips claim audit and lesson integration | passing | Seven reported tip groups are audited against current authority/operator sources; accepted guidance is concise, bilingual, source-traced, and misleading shortcuts are explicitly corrected |
 | F036 | Guide-strip semantics and D025 correction | passing | White guide strips and yellow-bordered entry-prohibited areas are distinguished in source-traced bilingual copy; D025 context photo and deterministic schematic teach the right-turn-lane geometry and pass review, mobile, release, and live gates |
 | F037 | Concrete three-panel guide-strip diagram | passing | D025 follows the supplied three-panel teaching sequence with explicit queue, right-turn lane, white/yellow marking distinction, and vehicle-conflict risk; focused, mobile, release, and live gates pass |
+| F038 | Hand-sketched D025 geometry and right indicator | passing | D025 uses a full straight/right-turn lane layout with a lower guide-strip taper, queued through traffic and a visibly illuminated right indicator on the turning vehicle; focused, mobile, release, and live gates pass |
 
 ## Evidence
 

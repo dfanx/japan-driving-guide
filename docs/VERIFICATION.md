@@ -198,6 +198,10 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-14 | F037 | `TEST_PORT=4368 npm run verify:f037` | PASS | Zero-diagnostic lint/typecheck; 4 focused files / 25 tests; 40 Sources / 57 Rules; 28/28 diagrams; 43 pages; mobile D025 case passes |
 | 2026-08-14 | F037 | `TEST_PORT=4370 npm run verify:release` | PASS | 28 unit files / 174 tests; 56 root Chromium passes plus one expected project-base skip; separate project-base, 118 PWA URLs and 1,175 base-path references pass |
 | 2026-08-14 | F037 | GitHub Pages run `31776889318` and public smoke | PASS | Build 45s and deploy 10s; live M04/D025 return HTTP 200 with 3 panels, 3 right-turn-lane markers, white-guide, yellow-prohibited and conflict markers |
+| 2026-08-14 | F038 | D025 hand-sketch visual review | PASS | 600px/360px renders show full straight/right-turn lanes, lower guide-strip taper, queued traffic and one illuminated right-side amber indicator per B vehicle; approved hash `120d937c...ff651` |
+| 2026-08-14 | F038 | `TEST_PORT=4372 npm run verify:f038` | PASS | Zero-diagnostic lint/typecheck; 4 focused files / 19 tests; 40 Sources / 57 Rules; 28/28 diagrams; 43 pages; mobile D025 case passes |
+| 2026-08-14 | F038 | Image-load test race correction | PASS | Two release attempts failed on different lesson pages before the audit was changed to await image load/decode; the focused audit and complete rerun pass |
+| 2026-08-14 | F038 | `TEST_PORT=4382 npm run verify:release` | PASS | 29 unit files / 176 tests; 57 root Chromium passes plus one expected project-base skip; separate project-base, 118 PWA URLs and 1,175 base-path references pass |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

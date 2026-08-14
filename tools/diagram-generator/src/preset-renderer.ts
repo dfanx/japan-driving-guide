@@ -307,26 +307,48 @@ function renderParkingMarkingComparison(scene: PresetDiagramScene): string {
 
 function renderGuideStrip(scene: PresetDiagramScene): string {
   const panelWidth = 360;
-  const roadShape = (x: number): SvgNode => svgNode("path", {
-    d: `M ${x + 20} 650 L ${x + 20} 110 L ${x + 340} 110 L ${x + 340} 285 L ${x + 245} 285 L ${x + 245} 650 Z`,
-    fill: DIAGRAM_PALETTE.road,
-    stroke: DIAGRAM_PALETTE.signalHousing,
-    "stroke-linejoin": "round",
-    "stroke-width": 4,
-  });
+  const roadShape = (x: number): SvgNode => svgNode("g", { "data-road-layout": "straight-and-right-turn-lanes" }, { children: [
+    svgNode("rect", {
+      fill: DIAGRAM_PALETTE.road,
+      height: 540,
+      stroke: DIAGRAM_PALETTE.signalHousing,
+      "stroke-width": 4,
+      width: 320,
+      x: x + 20,
+      y: 110,
+    }),
+    svgNode("line", {
+      "data-lane-divider": "through-to-right-turn",
+      stroke: DIAGRAM_PALETTE.roadMarking,
+      "stroke-dasharray": "34 28",
+      "stroke-width": 7,
+      x1: x + 170,
+      x2: x + 170,
+      y1: 120,
+      y2: 640,
+    }),
+    svgNode("path", {
+      d: `M ${x + 90} 250 L ${x + 90} 165 M ${x + 72} 190 L ${x + 90} 165 L ${x + 108} 190`,
+      fill: "none",
+      stroke: DIAGRAM_PALETTE.roadMarking,
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      "stroke-width": 8,
+    }),
+  ] });
   const strip = (x: number, border: string, data: Record<string, string>): SvgNode => {
     const hatchLines = [
-      [151, 605, 235, 635],
-      [155, 555, 238, 585],
-      [160, 505, 240, 535],
-      [165, 455, 242, 485],
-      [170, 405, 244, 435],
-      [175, 355, 244, 382],
-      [181, 310, 243, 334],
+      [178, 625, 330, 625],
+      [181, 583, 330, 583],
+      [188, 540, 330, 540],
+      [200, 495, 330, 495],
+      [220, 450, 330, 450],
+      [247, 405, 330, 405],
+      [280, 360, 330, 360],
     ];
     return svgNode("g", data, { children: [
       svgNode("path", {
-        d: `M ${x + 146} 642 C ${x + 152} 520 ${x + 166} 395 ${x + 184} 288 L ${x + 245} 288 L ${x + 240} 642 Z`,
+        d: `M ${x + 172} 642 C ${x + 176} 525 ${x + 225} 415 ${x + 338} 315 L ${x + 338} 642 Z`,
         fill: "none",
         stroke: border,
         "stroke-linejoin": "round",
@@ -351,20 +373,29 @@ function renderGuideStrip(scene: PresetDiagramScene): string {
   ];
   const rightTurnLane = (x: number): SvgNode => svgNode("g", { "data-turn-lane": "right" }, { children: [
     svgNode("path", {
-      d: `M ${x + 225} 260 C ${x + 235} 205 ${x + 265} 190 ${x + 315} 190`,
+      d: `M ${x + 255} 250 L ${x + 255} 185 C ${x + 255} 165 ${x + 270} 155 ${x + 292} 155 L ${x + 318} 155`,
       fill: "none",
       stroke: DIAGRAM_PALETTE.roadMarking,
       "stroke-linecap": "round",
       "stroke-width": 9,
     }),
     svgNode("path", {
-      d: `M ${x + 292} 172 L ${x + 316} 190 L ${x + 292} 208`,
+      d: `M ${x + 295} 137 L ${x + 319} 155 L ${x + 295} 173`,
       fill: "none",
       stroke: DIAGRAM_PALETTE.roadMarking,
       "stroke-linecap": "round",
       "stroke-linejoin": "round",
       "stroke-width": 9,
     }),
+  ] });
+  const turningVehicle = (x: number, y: number, label = "B"): SvgNode => svgNode("g", { "data-turn-intent": "right" }, { children: [
+    vehicle({ bounds: { x, y, width: 48, height: 76 }, color: "yellow", heading: "north", label }),
+    svgNode("g", { "data-indicator": "right", "data-side": "vehicle-right", "data-state": "on" }, { children: [
+      svgNode("circle", { cx: x + 52, cy: y + 17, fill: "#ffb000", r: 8, stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 2 }),
+      svgNode("line", { stroke: "#ffb000", "stroke-linecap": "round", "stroke-width": 5, x1: x + 64, x2: x + 80, y1: y + 17, y2: y + 17 }),
+      svgNode("line", { stroke: "#ffb000", "stroke-linecap": "round", "stroke-width": 5, x1: x + 62, x2: x + 75, y1: y + 8, y2: y - 2 }),
+      svgNode("line", { stroke: "#ffb000", "stroke-linecap": "round", "stroke-width": 5, x1: x + 62, x2: x + 75, y1: y + 26, y2: y + 36 }),
+    ] }),
   ] });
   const panelFrame = (x: number, dataPanel: string): SvgNode => svgNode("g", { "data-panel": dataPanel }, { children: [
     svgNode("rect", {
@@ -408,11 +439,11 @@ function renderGuideStrip(scene: PresetDiagramScene): string {
     strip(leftX, DIAGRAM_PALETTE.roadMarking, { "data-guide-strip": "crossable-white" }),
     ...queue(leftX),
     svgNode("g", { "data-movement": "through-white-guide-strip" }, { children: [
-      vehicle({ bounds: { x: leftX + 183, y: 448, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
+      turningVehicle(leftX + 148, 545),
       svgNode("path", {
-        d: `M ${leftX + 207} 430 C ${leftX + 210} 365 ${leftX + 220} 310 ${leftX + 245} 255`,
+        d: `M ${leftX + 176} 530 C ${leftX + 195} 470 ${leftX + 235} 390 ${leftX + 255} 300`,
         fill: "none",
-        stroke: DIAGRAM_PALETTE.annotation,
+        stroke: DIAGRAM_PALETTE.success,
         "stroke-linecap": "round",
         "stroke-width": 10,
       }),
@@ -425,9 +456,9 @@ function renderGuideStrip(scene: PresetDiagramScene): string {
     rightTurnLane(middleX),
     strip(middleX, DIAGRAM_PALETTE.signalYellow, { "data-entry-prohibited": "yellow-bordered" }),
     ...queue(middleX),
-    vehicle({ bounds: { x: middleX + 183, y: 448, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
+    turningVehicle(middleX + 148, 545),
     svgNode("path", {
-      d: `M ${middleX + 207} 430 C ${middleX + 210} 365 ${middleX + 220} 310 ${middleX + 245} 255`,
+      d: `M ${middleX + 176} 530 C ${middleX + 195} 470 ${middleX + 235} 390 ${middleX + 255} 300`,
       fill: "none",
       stroke: DIAGRAM_PALETTE.annotation,
       "stroke-linecap": "round",
@@ -441,8 +472,8 @@ function renderGuideStrip(scene: PresetDiagramScene): string {
     rightTurnLane(rightX),
     strip(rightX, DIAGRAM_PALETTE.roadMarking, { "data-guide-strip": "collision-risk" }),
     ...queue(rightX),
-    vehicle({ bounds: { x: rightX + 183, y: 270, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
-    vehicle({ bounds: { x: rightX + 122, y: 245, width: 48, height: 76 }, color: "blue", heading: "north", label: "A" }),
+    turningVehicle(rightX + 220, 365),
+    vehicle({ bounds: { x: rightX + 155, y: 340, width: 48, height: 76 }, color: "blue", heading: "north", label: "A" }),
     conflictBurst(rightX),
     panelLabel(rightX, "斜線區也可能有車", DIAGRAM_PALETTE.annotation),
   ]);

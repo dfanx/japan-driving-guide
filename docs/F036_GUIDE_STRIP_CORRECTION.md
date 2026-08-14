@@ -41,7 +41,7 @@ check ahead, mirrors and blind spots, and avoid a fast queue jump.
   `data-guide-strip="crossable-white"` identifies the white guide strip;
   `data-entry-prohibited="yellow-bordered"` identifies the prohibited area;
   `data-risk="vehicle-in-hatching"` preserves the merge hazard. Reviewed public
-  Current SVG SHA-256 begins `62622967`.
+  Current SVG SHA-256 begins `120d937c` after the F038 geometry refinement.
 
 ## Review boundary
 

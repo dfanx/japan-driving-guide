@@ -144,6 +144,8 @@ PWA, or deployment work. Those belong to later feature gates.
       moving-vehicle conflict, and the prohibited yellow-bordered comparison
 - [x] D025 presents the distinction as three concrete road panels with a queue,
       right-turn lane, allowed/prohibited decisions and a vehicle-conflict scene
+- [x] D025 follows the supplied hand sketch: full straight/right-turn lanes, a
+      lower guide-strip taper and an illuminated right indicator on vehicle B
 - [x] F036 focused, full release, bilingual, hash and 360px gates pass locally
 - [x] F036 GitHub Pages workflow and public HTTPS content/asset markers pass
 

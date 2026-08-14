@@ -2166,3 +2166,62 @@ product deployment. No feature is active.
   teaching panels, three explicit right-turn-lane markers, the white-guide,
   yellow-prohibited and vehicle-conflict semantics.
 - F037 is passing locally and live. No feature is active.
+
+## Session 2026-08-14 — F038 hand-sketched D025 geometry and right indicator
+
+### Session start
+
+- Active feature: F038 only.
+- Files read: D025 renderer/scene/manifest, F037 focused tests and the supplied
+  hand-drawn lane composition.
+- Scope: replace the L-shaped road abstraction with a full-width vertical road:
+  queued straight traffic on the left, a complete right-turn lane on the right,
+  and a lower guide strip that tapers into that turn lane; show the turning
+  vehicle's right indicator illuminated.
+- Out of scope: changing the verified S29/S40 distinction, other diagrams,
+  lessons, runtime features or dependencies.
+- Risk: placing the indicator on the wrong physical side of the car, making it
+  resemble hazard lights, or leaving the guide strip disconnected from the
+  right-turn lane.
+- Verification: semantic geometry tests, approved SVG hash, 600px/360px visual
+  inspection, focused browser test, release regression and public HTTPS smoke.
+- Rollback: restore F037 D025 output `62622967...661a4`. No migration exists.
+
+### Completed locally
+
+- Replaced the top side-branch abstraction with the supplied approach model:
+  full straight and right-turn lanes, a dashed lane divider, and a guide strip
+  that starts wide at the lower approach and tapers into the right-turn lane.
+- Added an illuminated amber right indicator on the physical right side of
+  every B vehicle shown preparing to turn. No left indicator is rendered.
+- Preserved the three-panel white/yellow/conflict comparison and S29/S40 Rule
+  boundary. Approved D025 hash: `120d937c...ff651`.
+- Hardened the existing all-lessons visual test to wait for image load/decode;
+  two consecutive release attempts had failed on different pages before this
+  fix, demonstrating a test timing race rather than a broken asset.
+
+### Verification
+
+- `TEST_PORT=4372 npm run verify:f038`: PASS — zero-diagnostic lint/typecheck,
+  4 focused files / 19 tests, 40 Sources / 57 Rules, 28/28 approved diagrams,
+  43 pages and one 360px Chromium case.
+- Image-load audit after synchronization fix: PASS — all bilingual lesson
+  images loaded and decoded before natural-dimension assertions.
+- `TEST_PORT=4382 npm run verify:release`: PASS — 29 unit files / 176 tests;
+  57 root Chromium passes plus one expected base-path skip; separate project-
+  base case, 118 PWA URLs and 1,175 base-path references pass.
+- Visual review: PASS — D025 inspected at 600px and 360px; the queue, complete
+  right-turn lane, lower taper and right-side amber indicator remain distinct.
+
+### Residual risk and rollback
+
+- The illuminated marker is a static teaching state, not an animation or a
+  claim that signalling alone grants priority. Lesson copy still requires the
+  driver to check traffic, mirrors and blind spots.
+- Rollback is the scoped F038 renderer/scene/test/docs change set and restoration
+  of D025 hash `62622967...661a4`. No migration exists.
+
+### Next
+
+F038 is passing locally. No feature is active. Push, Pages deployment and public
+asset-marker verification remain the release handoff.

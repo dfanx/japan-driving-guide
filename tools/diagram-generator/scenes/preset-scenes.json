@@ -551,8 +551,8 @@
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "三格圖依序顯示白色導流帶可穿越、黃色邊框的立入禁止部分不可進入，以及斜線區可能有車駛向右轉車道的碰撞風險。",
-      "en": "Three panels show that a white guide strip can be crossed, a yellow-bordered entry-prohibited area cannot be entered, and vehicles in the hatching may create a conflict on the way to the right-turn lane."
+      "zh-TW": "三格圖皆有左側直行排隊車流與右側右轉車道；下方導流帶逐漸收束，打右方向燈的 B 車準備進入右轉道，並比較白色導流帶、黃框禁入區與碰撞風險。",
+      "en": "All three panels show queued through traffic on the left and a right-turn lane on the right; the lower guide strip tapers into that lane as vehicle B signals right, comparing a white guide strip, a yellow-bordered prohibited area and the conflict risk."
     },
     "reviewStatus": "approved"
   },

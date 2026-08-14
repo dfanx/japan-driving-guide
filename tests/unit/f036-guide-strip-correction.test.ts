@@ -55,7 +55,7 @@ describe("F036 guide-strip semantics and D025 correction", () => {
     const record = manifest.items.find((diagram) => diagram.id === "D025");
     expect(record?.reviewStatus).toBe("approved");
     expect(record?.reviewedAt).toBe("2026-08-14");
-    expect(record?.outputHash).toBe("sha256:62622967c7aa58380b97fd0c899fbac7337dcadc6e36102752a1f4154e5661a4");
+    expect(record?.outputHash).toBe("sha256:120d937cd98a5203562f139c0a8f3925bda71b1f9065f65348f12460790ff651");
   });
 
   it("binds the regenerated driver view and learner actions to D025", () => {

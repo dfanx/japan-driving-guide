@@ -29,7 +29,7 @@ than decorative.
 ## Review
 
 - 600px and 360px review renders inspected.
-- D025 approved output:
-  `sha256:62622967c7aa58380b97fd0c899fbac7337dcadc6e36102752a1f4154e5661a4`.
+- F037 approved output was `sha256:62622967...661a4`; F038 supersedes its
+  geometry with the hand-sketched straight/right-turn lane composition.
 - The source/rule distinction remains unchanged: S29/S40 support the Rule; the
   supplied image only routes the visual teaching structure.

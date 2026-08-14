@@ -709,3 +709,18 @@
 - Consequence: all three panels repeat the same road and queue geometry; only
   the border, decision and risk state change. Semantic SVG markers and hash
   approval remain mandatory.
+
+## D052 — D025 lane geometry follows the hand-sketched approach model
+
+- Date: 2026-08-14
+- Status: accepted
+- Decision: the approach is one full-width vertical road with a queued through
+  lane on the left and a right-turn lane on the right. The lower guide strip
+  tapers into that right-turn lane. Turning vehicle B displays one illuminated
+  amber indicator on its physical right side.
+- Reason: a side branch at the top still separated the guide strip from the
+  lane it was meant to explain. The hand sketch expresses the approach and lane
+  availability directly.
+- Consequence: all D025 panels expose the same road-layout, lane-divider,
+  right-turn-lane and right-indicator markers. A left indicator is forbidden by
+  the focused test so the teaching symbol cannot imply hazard lights.

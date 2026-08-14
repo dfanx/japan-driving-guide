@@ -26,16 +26,25 @@ test("@f026 every bilingual lesson loads a relevant visual", async ({ page }) =>
       const section = page.locator("[data-lesson-visuals]");
       await expect(section, `${locale}/${slug}`).toBeVisible();
       expect(await section.locator("[data-lesson-visual]").count(), `${locale}/${slug}`).toBeGreaterThan(0);
-      const imageAudit = await section.locator("img").evaluateAll((elements) =>
-        elements.map((element) => {
+      const imageAudit = await section.locator("img").evaluateAll(async (elements) =>
+        Promise.all(elements.map(async (element) => {
           const image = element as HTMLImageElement;
+          if (!image.complete) {
+            await new Promise<void>((resolve) => {
+              image.addEventListener("load", () => resolve(), { once: true });
+              image.addEventListener("error", () => resolve(), { once: true });
+            });
+          }
+          if (image.naturalWidth > 0) {
+            await image.decode().catch(() => undefined);
+          }
           return {
             alt: image.getAttribute("alt")?.trim(),
             complete: image.complete,
             width: image.naturalWidth,
             height: image.naturalHeight,
           };
-        }),
+        })),
       );
       expect(imageAudit.length, `${locale}/${slug}`).toBeGreaterThan(0);
       expect(
