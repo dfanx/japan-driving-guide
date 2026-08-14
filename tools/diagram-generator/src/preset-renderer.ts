@@ -306,79 +306,145 @@ function renderParkingMarkingComparison(scene: PresetDiagramScene): string {
 }
 
 function renderGuideStrip(scene: PresetDiagramScene): string {
-  const guideStripPath = (offsetX: number, border: string, data: Record<string, string>): SvgNode => {
-    const hatch = [
-      [318, 648, 366, 676],
-      [325, 592, 384, 626],
-      [334, 536, 404, 576],
-      [346, 480, 425, 526],
-      [360, 424, 446, 474],
-      [378, 368, 468, 420],
-      [399, 312, 491, 365],
-      [425, 258, 510, 307],
-    ].map(([x1, y1, x2, y2]) => svgNode("line", {
-      stroke: DIAGRAM_PALETTE.roadMarking,
-      "stroke-linecap": "round",
-      "stroke-width": 10,
-      x1: x1 + offsetX,
-      x2: x2 + offsetX,
-      y1,
-      y2,
-    }));
+  const panelWidth = 360;
+  const roadShape = (x: number): SvgNode => svgNode("path", {
+    d: `M ${x + 20} 650 L ${x + 20} 110 L ${x + 340} 110 L ${x + 340} 285 L ${x + 245} 285 L ${x + 245} 650 Z`,
+    fill: DIAGRAM_PALETTE.road,
+    stroke: DIAGRAM_PALETTE.signalHousing,
+    "stroke-linejoin": "round",
+    "stroke-width": 4,
+  });
+  const strip = (x: number, border: string, data: Record<string, string>): SvgNode => {
+    const hatchLines = [
+      [151, 605, 235, 635],
+      [155, 555, 238, 585],
+      [160, 505, 240, 535],
+      [165, 455, 242, 485],
+      [170, 405, 244, 435],
+      [175, 355, 244, 382],
+      [181, 310, 243, 334],
+    ];
     return svgNode("g", data, { children: [
       svgNode("path", {
-        d: `M ${310 + offsetX} 700 C ${330 + offsetX} 555 ${365 + offsetX} 385 ${430 + offsetX} 235 L ${520 + offsetX} 235 C ${430 + offsetX} 410 ${385 + offsetX} 565 ${375 + offsetX} 700 Z`,
+        d: `M ${x + 146} 642 C ${x + 152} 520 ${x + 166} 395 ${x + 184} 288 L ${x + 245} 288 L ${x + 240} 642 Z`,
         fill: "none",
         stroke: border,
         "stroke-linejoin": "round",
-        "stroke-width": border === DIAGRAM_PALETTE.signalYellow ? 13 : 8,
+        "stroke-width": border === DIAGRAM_PALETTE.signalYellow ? 11 : 7,
       }),
-      ...hatch,
+      ...hatchLines.map(([x1, y1, x2, y2]) => svgNode("line", {
+        stroke: DIAGRAM_PALETTE.roadMarking,
+        "stroke-linecap": "square",
+        "stroke-width": 9,
+        x1: x + x1,
+        x2: x + x2,
+        y1,
+        y2,
+      })),
     ] });
   };
+  const queue = (x: number): SvgNode[] => [
+    vehicle({ bounds: { x: x + 58, y: 160, width: 46, height: 72 }, color: "blue", heading: "north" }),
+    vehicle({ bounds: { x: x + 62, y: 270, width: 46, height: 72 }, color: "yellow", heading: "north" }),
+    vehicle({ bounds: { x: x + 58, y: 390, width: 46, height: 72 }, color: "red", heading: "north" }),
+    vehicle({ bounds: { x: x + 62, y: 520, width: 46, height: 72 }, color: "blue", heading: "north" }),
+  ];
+  const rightTurnLane = (x: number): SvgNode => svgNode("g", { "data-turn-lane": "right" }, { children: [
+    svgNode("path", {
+      d: `M ${x + 225} 260 C ${x + 235} 205 ${x + 265} 190 ${x + 315} 190`,
+      fill: "none",
+      stroke: DIAGRAM_PALETTE.roadMarking,
+      "stroke-linecap": "round",
+      "stroke-width": 9,
+    }),
+    svgNode("path", {
+      d: `M ${x + 292} 172 L ${x + 316} 190 L ${x + 292} 208`,
+      fill: "none",
+      stroke: DIAGRAM_PALETTE.roadMarking,
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      "stroke-width": 9,
+    }),
+  ] });
+  const panelFrame = (x: number, dataPanel: string): SvgNode => svgNode("g", { "data-panel": dataPanel }, { children: [
+    svgNode("rect", {
+      fill: "#f8fbfc",
+      height: 650,
+      rx: 8,
+      stroke: dataPanel === "vehicle-conflict" ? DIAGRAM_PALETTE.annotation : DIAGRAM_PALETTE.badge,
+      "stroke-width": 4,
+      width: panelWidth,
+      x,
+      y: 90,
+    }),
+  ] });
+  const panelLabel = (x: number, label: string, fill: string): SvgNode => svgNode("g", { "data-teaching-label": label }, { children: [
+    svgNode("rect", { fill, height: 52, rx: 12, width: 310, x: x + 25, y: 674 }),
+    text(label, x + 180, 710, { fill: "#ffffff", size: 27 }),
+  ] });
+  const allowedCircle = (x: number): SvgNode => svgNode("g", { "data-decision": "allowed" }, { children: [
+    svgNode("circle", { cx: x + 290, cy: 350, fill: "#ffffffdd", r: 42, stroke: DIAGRAM_PALETTE.annotation, "stroke-width": 11 }),
+  ] });
+  const conflictBurst = (x: number): SvgNode => svgNode("g", { "data-risk": "vehicle-in-hatching" }, { children: [
+    svgNode("path", {
+      d: `M ${x + 176} 300 L ${x + 191} 272 L ${x + 204} 294 L ${x + 224} 260 L ${x + 226} 300 L ${x + 258} 282 L ${x + 240} 315 L ${x + 270} 325 L ${x + 235} 335`,
+      fill: "none",
+      stroke: DIAGRAM_PALETTE.annotation,
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round",
+      "stroke-width": 12,
+    }),
+  ] });
 
-  const movementPath = (d: string, tone: string): SvgNode => svgNode("path", {
-    d,
-    "data-primitive": "movement-path",
-    fill: "none",
-    stroke: tone,
-    "stroke-dasharray": "18 13",
-    "stroke-linecap": "round",
-    "stroke-width": 10,
-  });
-
+  const leftX = 30;
+  const middleX = 420;
+  const rightX = 810;
   return custom(scene, [
-    svgNode("g", { "data-panel": "white-guide-strip" }, { children: [
-      text("白色導流帶", 300, 58, { size: 38 }),
-      text("通往右轉道・先確認", 300, 105, { fill: DIAGRAM_PALETTE.success, size: 27 }),
-      roadSegment({ x: 55, y: 130, width: 500, height: 600 }),
-      laneBoundary({ start: { x: 300, y: 140 }, end: { x: 300, y: 720 }, width: 7, dashed: true }),
-      guideStripPath(0, DIAGRAM_PALETTE.roadMarking, { "data-guide-strip": "crossable-white" }),
-      vehicle({ bounds: { x: 165, y: 220, width: 58, height: 90 }, color: "yellow", heading: "north", label: "A" }),
-      vehicle({ bounds: { x: 165, y: 350, width: 58, height: 90 }, color: "red", heading: "north" }),
-      vehicle({ bounds: { x: 165, y: 485, width: 58, height: 90 }, color: "yellow", heading: "north" }),
-      svgNode("g", { "data-risk": "vehicle-in-hatching" }, { children: [
-        vehicle({ bounds: { x: 348, y: 480, width: 62, height: 96 }, color: "blue", heading: "north", label: "B" }),
-        movementPath("M 379 460 C 386 350 414 255 470 208", DIAGRAM_PALETTE.success),
-        svgNode("g", { "data-turn-lane": "right" }, { children: [
-          svgNode("line", { stroke: DIAGRAM_PALETTE.success, "stroke-linecap": "round", "stroke-width": 10, x1: 468, x2: 525, y1: 208, y2: 208 }),
-          svgNode("path", { d: "M 505 192 L 525 208 L 505 224", fill: "none", stroke: DIAGRAM_PALETTE.success, "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": 10 }),
-        ] }),
-        svgNode("circle", { cx: 318, cy: 330, fill: DIAGRAM_PALETTE.signalYellow, r: 23, stroke: DIAGRAM_PALETTE.signalHousing, "stroke-width": 3 }),
-        text("!", 318, 341, { fill: DIAGRAM_PALETTE.signalHousing, size: 34 }),
-      ] }),
+    svgNode("rect", { fill: "#f0c900", height: 76, width: 1200, x: 0, y: 0 }),
+    text("導流帶（ゼブラゾーン）", 600, 53, { fill: DIAGRAM_PALETTE.signalHousing, size: 38 }),
+    panelFrame(leftX, "white-guide-strip"),
+    roadShape(leftX),
+    rightTurnLane(leftX),
+    strip(leftX, DIAGRAM_PALETTE.roadMarking, { "data-guide-strip": "crossable-white" }),
+    ...queue(leftX),
+    svgNode("g", { "data-movement": "through-white-guide-strip" }, { children: [
+      vehicle({ bounds: { x: leftX + 183, y: 448, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
+      svgNode("path", {
+        d: `M ${leftX + 207} 430 C ${leftX + 210} 365 ${leftX + 220} 310 ${leftX + 245} 255`,
+        fill: "none",
+        stroke: DIAGRAM_PALETTE.annotation,
+        "stroke-linecap": "round",
+        "stroke-width": 10,
+      }),
     ] }),
-    svgNode("g", { "data-panel": "entry-prohibited" }, { children: [
-      text("黃色邊框", 900, 58, { size: 38 }),
-      text("禁止進入", 900, 105, { fill: DIAGRAM_PALETTE.annotation, size: 29 }),
-      roadSegment({ x: 645, y: 130, width: 500, height: 600 }),
-      laneBoundary({ start: { x: 890, y: 140 }, end: { x: 890, y: 720 }, width: 7, dashed: true }),
-      guideStripPath(590, DIAGRAM_PALETTE.signalYellow, { "data-entry-prohibited": "yellow-bordered" }),
-      vehicle({ bounds: { x: 755, y: 500, width: 62, height: 96 }, color: "blue", heading: "north", label: "C" }),
-      movementPath("M 786 480 C 790 390 785 310 775 235", DIAGRAM_PALETTE.roadMarking),
-      movementPath("M 820 500 C 870 440 920 390 965 320", DIAGRAM_PALETTE.annotation),
-      errorMark(930, 400),
-    ] }),
+    allowedCircle(leftX),
+    panelLabel(leftX, "白色導流帶｜可穿越", DIAGRAM_PALETTE.badge),
+
+    panelFrame(middleX, "entry-prohibited"),
+    roadShape(middleX),
+    rightTurnLane(middleX),
+    strip(middleX, DIAGRAM_PALETTE.signalYellow, { "data-entry-prohibited": "yellow-bordered" }),
+    ...queue(middleX),
+    vehicle({ bounds: { x: middleX + 183, y: 448, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
+    svgNode("path", {
+      d: `M ${middleX + 207} 430 C ${middleX + 210} 365 ${middleX + 220} 310 ${middleX + 245} 255`,
+      fill: "none",
+      stroke: DIAGRAM_PALETTE.annotation,
+      "stroke-linecap": "round",
+      "stroke-width": 10,
+    }),
+    errorMark(middleX + 290, 350),
+    panelLabel(middleX, "黃框區域｜禁止進入", DIAGRAM_PALETTE.annotation),
+
+    panelFrame(rightX, "vehicle-conflict"),
+    roadShape(rightX),
+    rightTurnLane(rightX),
+    strip(rightX, DIAGRAM_PALETTE.roadMarking, { "data-guide-strip": "collision-risk" }),
+    ...queue(rightX),
+    vehicle({ bounds: { x: rightX + 183, y: 270, width: 48, height: 76 }, color: "yellow", heading: "north", label: "B" }),
+    vehicle({ bounds: { x: rightX + 122, y: 245, width: 48, height: 76 }, color: "blue", heading: "north", label: "A" }),
+    conflictBurst(rightX),
+    panelLabel(rightX, "斜線區也可能有車", DIAGRAM_PALETTE.annotation),
   ]);
 }
 

@@ -2106,3 +2106,59 @@ product deployment. No feature is active.
   `data-turn-lane="right"` and `data-entry-prohibited="yellow-bordered"`; S40
   is visible in the Source catalog.
 - F036 is passing locally and live. No feature is active.
+
+## Session 2026-08-14 — F037 concrete three-panel guide-strip diagram
+
+### Session start
+
+- Active feature: F037 only.
+- Files read: project brief, feature ledger, progress handoff, F036 source audit,
+  D025 scene/renderer/manifest, focused diagram tests and build/approval scripts.
+- Scope: redraw D025 in the supplied three-panel teaching sequence: a white
+  guide strip that can be crossed, a yellow-bordered entry-prohibited area,
+  and the collision risk from vehicles using the hatching; make the right-turn
+  lane and queued traffic visually explicit.
+- Out of scope: changing the verified S29/S40 rule distinction, other lessons,
+  runtime features or dependencies.
+- Risk: copying the reference's surface styling without resolving its geometry,
+  or making the white guide strip look like a preferred overtaking lane.
+- Verification: deterministic SVG tests, review hash/approval gate, 600px/360px
+  visual inspection, focused browser test, full release gate and public smoke.
+- Rollback: revert the scoped F037 renderer/test/docs changes and restore the
+  prior approved D025 bytes. No data migration exists.
+
+### Completed locally
+
+- Replaced the abstract two-panel D025 with three repeated road panels matching
+  the supplied teaching sequence: white guide strip / allowed, yellow-bordered
+  entry-prohibited area / prohibited, and a concrete vehicle-conflict scene.
+- Each panel now contains queued vehicles, a visible hatched area and an actual
+  right-turn lane. The final panel places two vehicles at the conflict point
+  instead of representing the risk with copy alone.
+- Preserved S29/S40 Rule semantics and testable SVG markers. Approved D025 hash:
+  `62622967...661a4`.
+
+### Verification
+
+- `TEST_PORT=4368 npm run verify:f037`: PASS — zero-diagnostic lint/typecheck,
+  4 focused files / 25 tests, 40 Sources / 57 Rules, 28/28 approved diagrams,
+  43 pages and one 360px Chromium case.
+- `TEST_PORT=4370 npm run verify:release`: PASS — 28 unit files / 174 tests;
+  56 root Chromium passes plus one expected base-path skip; separate project-
+  base case, 118 PWA URLs and 1,175 base-path references pass.
+- Visual review: PASS — D025 inspected at 600px and 360px. All three labels,
+  queue vehicles, guide-strip borders, right-turn arrows and conflict marker
+  remain distinguishable.
+
+### Residual risk and rollback
+
+- The diagram intentionally follows the reference's teaching structure, not a
+  universal claim that every guide strip ends in a right-turn lane. The lesson
+  continues to require reading the actual arrows, signs and lane boundaries.
+- Rollback is the scoped F037 renderer/scene/test/docs change set and restoration
+  of D025 hash `2f15a11a...9914d`. No content migration exists.
+
+### Next
+
+F037 is passing locally. No feature is active. Push, Pages deployment and public
+HTTPS asset markers remain the release handoff for this session.

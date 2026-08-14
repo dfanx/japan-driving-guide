@@ -696,3 +696,16 @@
   and shows a white guide strip feeding a right-turn lane. The user-supplied
   field photo provides recognition context only and is recorded separately
   from generated simulations.
+
+## D051 — Guide-strip teaching uses three concrete comparison panels
+
+- Date: 2026-08-14
+- Status: accepted
+- Decision: D025 mirrors the learner sequence of the supplied reference using
+  original deterministic SVG geometry: white guide strip, yellow-bordered
+  entry-prohibited area, then vehicle-conflict risk.
+- Reason: a two-panel symbolic diagram made the right-turn lane and queue
+  interaction too abstract for a first-time visitor to decode reliably.
+- Consequence: all three panels repeat the same road and queue geometry; only
+  the border, decision and risk state change. Semantic SVG markers and hash
+  approval remain mandatory.

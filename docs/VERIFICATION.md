@@ -194,6 +194,9 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-14 | F036 | Full local release regression | PASS | `TEST_PORT=4364 npm run verify:release`: 27 unit files / 172 tests; 55 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
 | 2026-08-14 | F036 | GitHub Pages workflow | PASS | Run `31775556547` built, base-path tested and deployed product commit `aab2a8e`; build and deploy jobs completed successfully |
 | 2026-08-14 | F036 | Public HTTPS smoke | PASS | M04, D025 context WebP, D025 SVG and Sources return HTTP 200; lesson/right-turn markers, `data-turn-lane="right"`, yellow-prohibited semantics and S40 are present |
+| 2026-08-14 | F037 | D025 three-panel visual review | PASS | 600px/360px renders show the supplied sequence with queued traffic, explicit right-turn lane, white/yellow border distinction and vehicle conflict; approved hash `62622967...661a4` |
+| 2026-08-14 | F037 | `TEST_PORT=4368 npm run verify:f037` | PASS | Zero-diagnostic lint/typecheck; 4 focused files / 25 tests; 40 Sources / 57 Rules; 28/28 diagrams; 43 pages; mobile D025 case passes |
+| 2026-08-14 | F037 | `TEST_PORT=4370 npm run verify:release` | PASS | 28 unit files / 174 tests; 56 root Chromium passes plus one expected project-base skip; separate project-base, 118 PWA URLs and 1,175 base-path references pass |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

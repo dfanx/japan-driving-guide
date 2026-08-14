@@ -551,8 +551,8 @@
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "左圖車輛 B 沿白色導流帶進入右轉車道並留意直行排隊車流；右圖黃色邊框的立入禁止部分不得駛入。",
-      "en": "In the left panel, vehicle B follows a white guide strip into the right-turn lane while checking the straight-ahead queue; the yellow-bordered entry-prohibited area in the right panel must not be entered."
+      "zh-TW": "三格圖依序顯示白色導流帶可穿越、黃色邊框的立入禁止部分不可進入，以及斜線區可能有車駛向右轉車道的碰撞風險。",
+      "en": "Three panels show that a white guide strip can be crossed, a yellow-bordered entry-prohibited area cannot be entered, and vehicles in the hatching may create a conflict on the way to the right-turn lane."
     },
     "reviewStatus": "approved"
   },

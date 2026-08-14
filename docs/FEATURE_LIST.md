@@ -45,6 +45,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F034 | Local driving customs without folklore | passing | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
 | F035 | Visitor tips claim audit and lesson integration | passing | Seven reported tip groups are audited against current authority/operator sources; accepted guidance is concise, bilingual, source-traced, and misleading shortcuts are explicitly corrected |
 | F036 | Guide-strip semantics and D025 correction | passing | White guide strips and yellow-bordered entry-prohibited areas are distinguished in source-traced bilingual copy; D025 context photo and deterministic schematic teach the right-turn-lane geometry and pass review, mobile, release, and live gates |
+| F037 | Concrete three-panel guide-strip diagram | passing | D025 follows the supplied three-panel teaching sequence with explicit queue, right-turn lane, white/yellow marking distinction, and vehicle-conflict risk; focused, mobile, release, and live gates pass |
 
 ## Evidence
 

@@ -245,8 +245,8 @@
       "id": "D025",
       "templateId": "T13",
       "candidatePath": "tools/diagram-generator/review/D025.svg",
-      "sceneHash": "sha256:986eca727883448ae4591dc70f94cb1dab5da9442ceb5412f319ae7dc5c6aca5",
-      "outputHash": "sha256:2f15a11a9de605042c603eb5469d8d7c644fc83cbd18c22b9b08ea8c6b89914d",
+      "sceneHash": "sha256:32bb9448f3df8f4993ca3ab128003bacdca483ebc5e712f94b21fc47858141c9",
+      "outputHash": "sha256:62622967c7aa58380b97fd0c899fbac7337dcadc6e36102752a1f4154e5661a4",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
       "reviewedAt": "2026-08-14"

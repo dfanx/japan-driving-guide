@@ -36,11 +36,12 @@ check ahead, mirrors and blind spots, and avoid a fast queue jump.
   guide strip did not clearly terminate in a right-turn lane. The published
   1200x800 WebP is the user-supplied real-road photograph, showing the white
   hatching leading into the right-turn path. Asset SHA-256 begins `e86ee9c5`.
-- D025: rebuilt in the deterministic SVG system as a two-panel comparison.
+- D025: rebuilt in the deterministic SVG system and later clarified by F037 as
+  a concrete three-panel comparison.
   `data-guide-strip="crossable-white"` identifies the white guide strip;
   `data-entry-prohibited="yellow-bordered"` identifies the prohibited area;
   `data-risk="vehicle-in-hatching"` preserves the merge hazard. Reviewed public
-  SVG SHA-256 begins `2f15a11a`.
+  Current SVG SHA-256 begins `62622967`.
 
 ## Review boundary
 
