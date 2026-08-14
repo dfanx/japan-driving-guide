@@ -2158,7 +2158,11 @@ product deployment. No feature is active.
 - Rollback is the scoped F037 renderer/scene/test/docs change set and restoration
   of D025 hash `2f15a11a...9914d`. No content migration exists.
 
-### Next
+### Live acceptance and next
 
-F037 is passing locally. No feature is active. Push, Pages deployment and public
-HTTPS asset markers remain the release handoff for this session.
+- Product commit `e3ddb12` passed GitHub Pages run `31776889318`; build and
+  deploy completed successfully.
+- Public M04 and D025 SVG return HTTP 200. The live SVG contains exactly three
+  teaching panels, three explicit right-turn-lane markers, the white-guide,
+  yellow-prohibited and vehicle-conflict semantics.
+- F037 is passing locally and live. No feature is active.
