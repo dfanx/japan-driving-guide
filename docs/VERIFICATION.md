@@ -186,6 +186,8 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-14 | F035 | `TEST_PORT=4355 npm run verify:f035` | PASS | Zero-diagnostic lint/typecheck; 4 focused unit files / 19 tests; 39 Sources / 56 Rules; 28/28 diagram gate; 43 pages; one seven-lesson mobile Chromium case |
 | 2026-08-14 | F035 | Full local release regression | PASS | `TEST_PORT=4357 npm run verify:release`: 26 unit files / 167 tests; 54 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
 | 2026-08-14 | F035 | Learner-flow browser QA | PASS | Fresh static signals, parking, speed and fuel pages inspected at a 390px-class viewport; requested markers render, no horizontal overflow, empty links, console warnings or errors |
+| 2026-08-14 | F035 | GitHub Pages workflow | PASS | Run `31773780279` built, base-path tested and deployed product commit `6b39a3f`; both build and deploy jobs completed successfully after cancelling obsolete queued docs-only run `31561886388` |
+| 2026-08-14 | F035 | Public HTTPS smoke | PASS | Signals, stop signs, intersections, speed, parking, expressways, fuel and Sources return HTTP 200; all seven F035 teaching markers and S39 are present |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

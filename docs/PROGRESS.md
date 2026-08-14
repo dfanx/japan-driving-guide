@@ -3,12 +3,12 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: F035 — visitor tips claim audit and lesson integration
-- Last passing feature: F034 — local driving customs without folklore
+- Active feature: none
+- Last passing feature: F035 — visitor tips claim audit and lesson integration
 - Content imported: 39 Sources, 56 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
-- Deployment: F034 product head `ed4a639` is live at
-  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31561749290` passed
+- Deployment: F035 product head `6b39a3f` is live at
+  `https://dfanx.github.io/japan-driving-guide/`; Pages run `31773780279` passed
 
 ## Session 2026-08-10
 
@@ -2029,5 +2029,8 @@ No feature is active.
 
 ### Next
 
-Push the locally passing product commit, verify GitHub Pages and public HTTPS
-markers, then mark F035 passing and clear the active feature.
+F035 is passing locally and live. Product commit `6b39a3f` passed GitHub Pages
+run `31773780279`; signals, stop signs, intersections, speed, parking,
+expressways, fuel and Sources all return HTTP 200 with their F035 markers. The
+obsolete queued docs-only run `31561886388` was cancelled to unblock the latest
+product deployment. No feature is active.

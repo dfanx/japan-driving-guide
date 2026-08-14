@@ -135,7 +135,7 @@ PWA, or deployment work. Those belong to later feature gates.
       advice across M02/M03/M04/M07/M10/M11/M12 in both locales
 - [x] F035 focused, full release, source-page, bilingual and 390px mobile gates
       pass locally without changing approved diagram bytes
-- [ ] F035 GitHub Pages workflow and public HTTPS content markers pass
+- [x] F035 GitHub Pages workflow and public HTTPS content markers pass
 
 ## External release boundary
 
