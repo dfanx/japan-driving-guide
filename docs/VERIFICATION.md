@@ -202,6 +202,7 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-14 | F038 | `TEST_PORT=4372 npm run verify:f038` | PASS | Zero-diagnostic lint/typecheck; 4 focused files / 19 tests; 40 Sources / 57 Rules; 28/28 diagrams; 43 pages; mobile D025 case passes |
 | 2026-08-14 | F038 | Image-load test race correction | PASS | Two release attempts failed on different lesson pages before the audit was changed to await image load/decode; the focused audit and complete rerun pass |
 | 2026-08-14 | F038 | `TEST_PORT=4382 npm run verify:release` | PASS | 29 unit files / 176 tests; 57 root Chromium passes plus one expected project-base skip; separate project-base, 118 PWA URLs and 1,175 base-path references pass |
+| 2026-08-14 | F038 | GitHub Pages run `31778077940` and public smoke | PASS | Build 52s and deploy 9s; live M04/D025 return HTTP 200 with 3 straight/right-turn layouts, 3 right-turn-lane markers, 3 illuminated right indicators and 0 left indicators |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

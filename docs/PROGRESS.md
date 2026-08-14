@@ -2221,7 +2221,11 @@ product deployment. No feature is active.
 - Rollback is the scoped F038 renderer/scene/test/docs change set and restoration
   of D025 hash `62622967...661a4`. No migration exists.
 
-### Next
+### Live acceptance and next
 
-F038 is passing locally. No feature is active. Push, Pages deployment and public
-asset-marker verification remain the release handoff.
+- Product commit `e125064` passed GitHub Pages run `31778077940`; build took 52s
+  and deploy 9s.
+- Public M04 and D025 SVG return HTTP 200. The live SVG contains three full-road
+  layout markers, three right-turn lanes, three illuminated right indicators
+  and zero left indicators.
+- F038 is passing locally and live. No feature is active.
