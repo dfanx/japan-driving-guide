@@ -8,6 +8,7 @@ ruleIds:
   - JP-RULE-PARKING-CLEAR-ZONES-001
   - JP-RULE-PARKING-ROAD-MARKING-001
   - JP-RULE-HAZARD-PARKING-CUSTOM-001
+  - JP-RULE-PARKING-PAYMENT-001
 diagramIds:
   - D019
 quizTags:
@@ -47,6 +48,10 @@ reviewStatus: approved
 
 這不是完整清單；隧道、坡頂、陡坡、消防設施、出入口和剩餘路寬也有限制。要查完整位置，可看[警視廳官方圖解](https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/seido/jogai_kokyo.files/chushakinshi.pdf)。
 
-## 投幣停車場別急著開走
+## 先認設備，再付款
 
-擋板式先記車格號碼，繳費後確認擋板完全降下再開；閘門式把停車券帶走，有事前精算就先繳。看到「月極」代表月租專用，不要停。「最大料金」也要看適用日、時段與是否會重複計算。
+- **閘門式**：入口取券，離場前或出口繳費；停車券別留在車上曝曬或弄丟。
+- **擋板式**：記住車格號碼，精算後確認地面擋板完全降下再開。
+- **相機辨識式**：可能沒有閘門或擋板；離場前依螢幕輸入車牌或車格資料，確認付款完成。
+
+看到「月極」代表月租專用，不要停。看到「最大料金」也別只看大字：可能是入場後固定小時、指定時段，或只到當天 24:00，跨日後算法會變。拍照用翻譯或 AI 協助拆解可以，但輸入時間、假日條件和辨識文字都可能錯；最後仍要對照現場牌面與精算機金額，不要把 AI 回答當保證。

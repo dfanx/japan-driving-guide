@@ -8,6 +8,8 @@ ruleIds:
   - JP-RULE-ETC-LANE-001
   - JP-RULE-EXPRESSWAY-MISSED-EXIT-001
   - JP-RULE-MERGE-ZIPPER-001
+  - JP-RULE-ETC-PAYMENT-001
+  - JP-RULE-OKINAWA-SPEED-001
 diagramIds:
   - D018
   - D020
@@ -29,7 +31,11 @@ When traffic queues at a merge, use the merge lane to its end and alternate with
 
 ## ETC lanes
 
-Enter an ETC-only lane only after confirming the rental vehicle has working ETC equipment and a usable card. Otherwise use a general or compatible shared lane.
+Enter an ETC-only lane only after confirming the rental vehicle has working ETC equipment and a usable card. Approach an ordinary ETC gate at **20 km/h or less** with a gap ahead. Without usable ETC, use a `General` or compatible shared lane, collect a ticket where instructed and pay by an accepted cash or card method. Do not change lanes abruptly at the gate.
+
+**A Smart IC is different:** it is ETC-only and every vehicle must stop completely before the gate, then wait for confirmation. Okinawa's Kishaba facility is a Smart IC with direction and operating-hour restrictions, so recheck the official page on the travel date.
+
+In Okinawa, the road may split toward Naha or Nago soon after the toll area. Know the direction before entering and never stop at the split. Much of the expressway mainline is 80 km/h, with lower posted sections; read each sign.
 
 ## A missed exit
 

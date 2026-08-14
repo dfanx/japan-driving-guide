@@ -8,6 +8,7 @@ ruleIds:
   - JP-RULE-PARKING-CLEAR-ZONES-001
   - JP-RULE-PARKING-ROAD-MARKING-001
   - JP-RULE-HAZARD-PARKING-CUSTOM-001
+  - JP-RULE-PARKING-PAYMENT-001
 diagramIds:
   - D019
 quizTags:
@@ -44,6 +45,10 @@ The restriction follows the marked length. Do not import kerb-colour assumptions
 
 Intersections, corners and pedestrian/bicycle crossings commonly require five metres of clearance. Railway crossings and operating bus/tram stops commonly require ten metres. This is not the full list; use the [Tokyo Metropolitan Police official diagram](https://www.keishicho.metro.tokyo.lg.jp/tetsuzuki/kotsu/seido/jogai_kokyo.files/chushakinshi.pdf) for the complete set.
 
-## Do not rush a coin car park
+## Identify the equipment before paying
 
-For a lock-plate bay, remember the bay number and wait until the plate is fully down after payment. Keep a gate ticket with you and use pre-payment where available. `月極` means monthly-reserved, and `最大料金` still has day, time and repeat conditions.
+- **Barrier gate:** Take the entry ticket and pay before departure or at the exit. Keep the ticket safe.
+- **Lock plate:** Remember the bay number and wait until the ground plate is fully down after payment.
+- **Camera recognition:** There may be no gate or plate. Before leaving, use the machine to identify the registration or bay and confirm payment.
+
+`月極` means monthly-reserved. For `最大料金`, read more than the headline amount: it may cover a fixed number of hours after entry, a specified time band, or only until midnight that day. Translation or AI can help break down a photographed sign, but time input, holiday conditions and text recognition can all be wrong. Verify against the sign and payment machine; an AI answer is not a price guarantee.

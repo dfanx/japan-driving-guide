@@ -4,6 +4,7 @@ locale: zh-TW
 title: 加油
 ruleIds:
   - JP-RULE-FUEL-CONFIRM-001
+  - JP-RULE-FUEL-CASH-CHANGE-001
 diagramIds:
   - D023
 quizTags:
@@ -23,3 +24,7 @@ reviewStatus: approved
 ## 自助加油順序
 
 停好、熄火、確認油種、碰靜電消除板，再拿油槍。加完放回、鎖好油箱蓋，收據留到還車。
+
+## 用現金，拿完收據先別走
+
+部分前付款自助站不會在油槍旁直接找零。加完後會先印收據，再到旁邊的自動找零機掃描**收據條碼**取回餘額；不一定是 QR Code。各站設備不同，照螢幕與收據上的「釣銭」「精算」指示操作。離場前確認油箱蓋、收據、找零和還車需要的加油證明都拿齊。

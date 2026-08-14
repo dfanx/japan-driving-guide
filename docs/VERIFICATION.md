@@ -182,6 +182,10 @@ Playwright Chromium Headless Shell. No global package installation is required.
 | 2026-08-12 | F034 | Learner-flow browser QA | PASS | Current static intersection lesson exposes `右折入庫禁止`, the no-automatic-safety boundary and the mandatory sidewalk stop; railway and parking markers were also inspected |
 | 2026-08-12 | F034 | GitHub Pages workflow | PASS | Run `31561749290` built, base-path tested and deployed product commit `ed4a639`; build and deploy jobs completed successfully |
 | 2026-08-12 | F034 | Public HTTPS smoke | PASS | Intersections, speed, rail crossings, parking, expressways, safety basics and Sources return HTTP 200; all requested F034 markers including `右折入庫禁止`, every-vehicle rail stop and S31-S33 are present |
+| 2026-08-14 | F035 | Source and claim decomposition | PASS | S34-S39 verify serious-speeding procedure, Okinawa speed controls, Smart IC operation, parking-fee/equipment variants and a receipt-barcode change flow; fixed seconds, universal white-line rules, automatic outcomes and AI guarantees are rejected or narrowed |
+| 2026-08-14 | F035 | `TEST_PORT=4355 npm run verify:f035` | PASS | Zero-diagnostic lint/typecheck; 4 focused unit files / 19 tests; 39 Sources / 56 Rules; 28/28 diagram gate; 43 pages; one seven-lesson mobile Chromium case |
+| 2026-08-14 | F035 | Full local release regression | PASS | `TEST_PORT=4357 npm run verify:release`: 26 unit files / 167 tests; 54 root Chromium passes plus one expected project-base skip; separate project-base case, 118 PWA URLs and 1,175 base-path references pass |
+| 2026-08-14 | F035 | Learner-flow browser QA | PASS | Fresh static signals, parking, speed and fuel pages inspected at a 390px-class viewport; requested markers render, no horizontal overflow, empty links, console warnings or errors |
 
 The F002 initialization emitted one non-fatal npm cleanup warning (`EPERM` on a
 stale nested directory). `npm ci` returned 0, and the complete post-init verify

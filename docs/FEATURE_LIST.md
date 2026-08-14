@@ -43,6 +43,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F032 | Direct lesson entry and overlooked road-control scenarios | passing | Home starts Lesson 01; left-turn positioning, guide strips, roadside yellow lines, actuated signals, streetcar signals, and roadside-facility entry each have source-traced bilingual teaching and reviewed visuals |
 | F033 | D020 expressway-merge geometry correction | passing | Ramp, acceleration lane, merge taper, and mainline form a continuous reviewed road surface without a hard kink; focused, mobile, release, and live gates pass |
 | F034 | Local driving customs without folklore | passing | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
+| F035 | Visitor tips claim audit and lesson integration | active | Seven reported tip groups are audited against current authority/operator sources; accepted guidance is concise, bilingual, source-traced, and misleading shortcuts are explicitly corrected |
 
 ## Evidence
 
@@ -682,3 +683,24 @@ WIP limit: exactly zero or one feature may be `active`.
   HTTPS markers.
 - Rollback: revert only F034 Sources, Rules, lesson copy, tests, scripts and
   governance records; no diagram, image, backend or migration is involved.
+
+### F035
+
+- Date opened: 2026-08-14
+- Status: ACTIVE
+- Scope: audit the supplied right-turn, STOP, road-marking, speeding, Okinawa
+  expressway, parking-payment and self-service-fuel tips; integrate only the
+  verified operational value into M02/M03/M04/M07/M10/M11/M12 in both locales.
+- Safety boundary: statutory duties, operator instructions and practical advice
+  remain separate. The course will not teach a statutory three-second stop, a
+  timed red-light clearance entitlement, a universal double-white-line rule,
+  automatic arrest/entry refusal, weak K-car brakes, guaranteed AI fee totals,
+  or one universal self-service payment flow.
+- Out of scope: no penalty encyclopedia, enforcement-evasion tactics, new
+  runtime feature, dependency, backend, question-bank expansion or diagram
+  geometry change.
+- Verification: focused F035 content/source assertions, bilingual parity,
+  schema/traceability gates, mobile browser checks and full release regression.
+- Rollback: revert only F035 Sources, Rules, bilingual lesson copy, tests,
+  scripts and governance records. Existing diagrams and approved assets remain
+  byte-identical.

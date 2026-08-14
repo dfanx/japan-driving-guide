@@ -660,3 +660,21 @@
   guidance; parking/reversing hazards, two-flash thanks and holding a lane
   through an intersection remain practical advice; every speed statement keeps
   the posted limit as a hard upper bound.
+
+## D049 — Useful travel tips must survive claim decomposition
+
+- Date: 2026-08-14
+- Status: accepted
+- Decision: first-person travel advice is decomposed into observable condition,
+  required action and confidence boundary before entering the curriculum. A
+  memorable number or universal phrase is removed whenever the authority source
+  supports only a conditional duty or operator-specific workflow.
+- Reason: “three seconds”, “two-to-three seconds”, “double white”, “plus 30/40
+  is safe”, “AI will calculate it” and “all cash pumps use QR” are easy to
+  remember precisely because they discard the conditions that determine safe
+  action. A compact wrong heuristic is more dangerous than a slightly longer
+  decision rule.
+- Consequence: F035 retains the practical observation behind each report but
+  states the legal or official action first. Penalty thresholds are not an
+  allowance; operator workflows identify where variation exists; translations
+  and AI are aids whose output must be checked against the live sign or machine.

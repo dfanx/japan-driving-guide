@@ -3,9 +3,9 @@
 ## Current state
 
 - Phase: Verified static release and live deployment
-- Active feature: none
+- Active feature: F035 — visitor tips claim audit and lesson integration
 - Last passing feature: F034 — local driving customs without folklore
-- Content imported: 33 Sources, 50 Rules, 25 Questions, 32 lesson documents
+- Content imported: 39 Sources, 56 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
 - Deployment: F034 product head `ed4a639` is live at
   `https://dfanx.github.io/japan-driving-guide/`; Pages run `31561749290` passed
@@ -1955,3 +1955,79 @@ F034 is passing locally and live. Product commit `ed4a639` passed GitHub Pages
 run `31561749290`; intersections, speed, rail crossings, parking, expressways,
 safety basics and Sources all return HTTP 200 with the expected F034 markers.
 No feature is active.
+
+## Session 2026-08-14 — F035 visitor tips claim audit and lesson integration
+
+### Session start
+
+- Active feature: F035 only.
+- Files read: project brief, feature ledger, progress handoff, current
+  Source/Rule catalogs, seven affected bilingual lessons and current Japanese
+  police/operator references.
+- Scope: decompose and verify the supplied right-turn, STOP, road-marking,
+  speeding, Okinawa expressway, parking-payment and self-service-fuel tips;
+  integrate the useful actions in concise Taiwan-facing and English copy.
+- Out of scope: penalty encyclopedia, enforcement evasion, new diagrams,
+  generated images, questions, backend, dependencies or runtime features.
+- Risk: memorable but false shortcuts—fixed seconds, absolute priority,
+  universal line meanings, tolerance thresholds and guaranteed AI output.
+- Verification: focused content/source tests, bilingual parity, mobile browser
+  checks, full release regression, Pages workflow and public HTTPS markers.
+- Rollback: revert F035 Sources, Rules, lesson copy, tests, scripts and
+  governance records. Existing approved diagram/image bytes remain unchanged.
+
+### Completed locally
+
+- Added S34-S39 and six approved Rules covering legal right-turn clearance,
+  serious-speeding procedure, Okinawa speed controls, ETC/Smart IC operation,
+  parking equipment/fees and cash-fuel change retrieval.
+- Expanded M02/M03/M04/M07/M10/M11/M12 in both locales. Learner copy now
+  distinguishes circular green, a right arrow and lawful intersection
+  clearance; complete stop from a fictional three-second rule; yellow lane-
+  change control from white/centre/edge markings; and ETC from Smart IC.
+- Added actionable parking and fuel workflows while treating translation/AI as
+  an assistive check rather than a price guarantee.
+- Rejected or narrowed unsupported claims about automatic arrest or entry
+  refusal, weak kei-car brakes, limestone making every Okinawa road slippery,
+  a universal double-white-line rule and a QR-only change flow.
+- Recorded all accept/narrow/reject decisions in
+  `docs/F035_VISITOR_TIPS_CLAIM_AUDIT.md`; no production visual changed.
+
+### Verification
+
+- `TEST_PORT=4355 npm run verify:f035`: PASS — 4 focused unit files / 19 tests,
+  zero diagnostics, 39 Sources / 56 Rules, 28/28 diagrams, 43 pages and one
+  seven-lesson 390px Chromium case.
+- `TEST_PORT=4357 npm run verify:release`: PASS — 26 unit files / 167 tests; 54
+  root Chromium passes plus one expected project-base skip; the separate
+  project-base case passes; 118 PWA URLs and 1,175 base-path references pass.
+- Browser QA: PASS — signals, parking, speed and fuel markers render in the
+  current production layout with no horizontal overflow, empty link or console
+  warning/error.
+- Two stale exact-count/date tests exposed by the full regression were updated
+  to the reviewed 2026-08-14 release data; the complete gate was rerun from the
+  beginning and passed.
+
+### Content/source evidence
+
+- S34 Tokyo police traffic-infraction table, S35 Okinawa police speed-control
+  material, S36 NEXCO West Smart IC operation, S37-S38 Times fee/equipment
+  instructions and S39 Idemitsu prepaid self-service instructions.
+- New Rules: `JP-RULE-SIGNAL-RIGHT-CLEAR-001`,
+  `JP-RULE-SPEED-PROCEDURE-001`, `JP-RULE-OKINAWA-SPEED-001`,
+  `JP-RULE-ETC-PAYMENT-001`, `JP-RULE-PARKING-PAYMENT-001` and
+  `JP-RULE-FUEL-CASH-CHANGE-001`.
+
+### Residual risk and rollback
+
+- Smart IC operating hours/directions, parking equipment and payment methods
+  can change. The course tells the traveller to recheck the live operator page
+  and on-site machine rather than freezing one universal flow.
+- This remains a safety guide, not case-specific legal or immigration advice.
+- Rollback is the scoped F035 content/data/test/docs change set followed by a
+  static/PWA rebuild. No migration or visual-asset rollback exists.
+
+### Next
+
+Push the locally passing product commit, verify GitHub Pages and public HTTPS
+markers, then mark F035 passing and clear the active feature.

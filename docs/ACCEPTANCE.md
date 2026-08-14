@@ -127,6 +127,15 @@ PWA, or deployment work. Those belong to later feature gates.
       a right-turn entry and never equates a missing notice with a safe gap
 - [x] F034 focused, full release, bilingual and mobile gates pass locally
 - [x] F034 GitHub Pages workflow and public HTTPS content markers pass
+- [x] F035 decomposes all seven visitor-tip groups into condition, action and
+      confidence boundary before publishing them
+- [x] F035 rejects fixed STOP/red-light seconds, universal white-line rules,
+      enforcement tolerance, automatic immigration outcomes and AI guarantees
+- [x] F035 keeps S34-S39 operator/authority evidence distinct from practical
+      advice across M02/M03/M04/M07/M10/M11/M12 in both locales
+- [x] F035 focused, full release, source-page, bilingual and 390px mobile gates
+      pass locally without changing approved diagram bytes
+- [ ] F035 GitHub Pages workflow and public HTTPS content markers pass
 
 ## External release boundary
 
