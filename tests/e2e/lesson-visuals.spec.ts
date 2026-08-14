@@ -86,9 +86,7 @@ test("@f028 every diagram is taught as driver view then deterministic explanatio
         const diagramId = await pair.getAttribute("data-paired-diagram-id");
         expect(diagramId, `${locale}/${slug}`).toMatch(/^D\d{3}$/);
         await expect(
-          pair.locator(
-            '[data-visual-kind="generated-driver-simulation"] img, [data-driver-simulation] img',
-          ),
+          pair.locator('[data-simulation-id] img, [data-driver-simulation] img'),
           `${locale}/${slug}/${diagramId} simulation`,
         ).toHaveCount(1);
         await expect(

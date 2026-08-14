@@ -23,7 +23,7 @@ test("@f031 intersection lesson integrates early lane choice and guide-strip gui
   await page.setViewportSize({ width: 360, height: 800 });
   await page.goto("/zh-TW/learn/intersections/");
   await expect(page.getByRole("heading", { name: "要轉彎，提早選車道" })).toBeVisible();
-  await expect(page.getByText(/導流帶是引導車流，不是多一條車道/)).toBeVisible();
+  await expect(page.getByText(/白色導流帶可以跨，但黃框禁止區不能進/)).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
 });

@@ -678,3 +678,21 @@
   states the legal or official action first. Penalty thresholds are not an
   allowance; operator workflows identify where variation exists; translations
   and AI are aids whose output must be checked against the live sign or machine.
+
+## D050 — White guide strips and yellow-bordered prohibited areas are distinct
+
+- Date: 2026-08-14
+- Status: accepted
+- Decision: a white `導流帯` is taught as a traffic-guidance marking that does
+  not itself prohibit entry or crossing. White hatching enclosed by a yellow
+  border is taught as the separately regulated `立入り禁止部分`, which vehicles
+  must not enter. “May cross” is paired with mirror/blind-spot checks and never
+  framed as a preferred passing lane.
+- Reason: the former blanket instruction to stay outside white hatching
+  converted a guidance marking into a prohibition. Reversing that statement
+  without a safety boundary would be equally misleading. NPA standards make
+  the regulatory distinction explicit.
+- Consequence: M04 uses two Rule IDs and S29/S40; D025 compares the two markings
+  and shows a white guide strip feeding a right-turn lane. The user-supplied
+  field photo provides recognition context only and is recorded separately
+  from generated simulations.

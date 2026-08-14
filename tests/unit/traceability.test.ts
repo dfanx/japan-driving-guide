@@ -10,7 +10,7 @@ import {
 
 describe("F021 content traceability", () => {
   it("exposes every approved Rule under exactly one classification", () => {
-    expect(rulesByClassification.legal_rule).toHaveLength(31);
+    expect(rulesByClassification.legal_rule).toHaveLength(32);
     expect(rulesByClassification.official_guidance).toHaveLength(15);
     expect(rulesByClassification.practical_advice).toHaveLength(10);
     expect(
@@ -19,7 +19,7 @@ describe("F021 content traceability", () => {
   });
 
   it("resolves every Source to the Rules it supports without inventing links", () => {
-    expect(traceableSources).toHaveLength(39);
+    expect(traceableSources).toHaveLength(40);
     expect(traceableSources.map((source) => source.id)).toEqual(
       sourceCatalog.map((source) => source.id),
     );

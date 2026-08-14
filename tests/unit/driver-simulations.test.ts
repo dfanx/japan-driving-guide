@@ -30,9 +30,10 @@ describe("F028 driver-seat simulations", () => {
     for (const simulation of simulations) {
       expect(simulation.id).toBe(`SIM-${simulation.diagramId}`);
       expect(simulation.containsOfficialVisual).toBe(false);
-      expect(simulation.kind).toBe("generated_driver_simulation");
+      expect(["generated_driver_simulation", "user_supplied_context_photo"]).toContain(simulation.kind);
       expect(simulation.alt["zh-TW"]).not.toBe(simulation.alt.en);
     }
+    expect(simulations.find((item) => item.diagramId === "D025")?.kind).toBe("user_supplied_context_photo");
   });
 
   it("locks every generated WebP to its reviewed hash and dimensions", async () => {

@@ -16,7 +16,7 @@ test("@f032 affected lessons expose every new scenario pair", async ({ page }) =
     for (const id of ids) {
       const pair = page.locator(`[data-paired-diagram-id="${id}"]`);
       await expect(pair).toHaveCount(1);
-      await expect(pair.locator('[data-visual-kind="generated-driver-simulation"]')).toHaveCount(1);
+      await expect(pair.locator('[data-simulation-id]')).toHaveCount(1);
       await expect(pair.locator('[data-visual-kind="deterministic-diagram"]')).toHaveCount(1);
     }
   }

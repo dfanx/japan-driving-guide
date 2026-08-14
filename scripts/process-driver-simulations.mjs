@@ -35,13 +35,21 @@ const sourceByDiagramId = {
   D022: "exec-56cd64b2-600f-4180-b367-56a778edb9f1.png",
   D023: "exec-354ceb6e-15c9-4154-ad8c-330b440b2ae9.png",
   D024: "exec-9f34b3ad-5273-4239-b10b-8d144f49307b.png",
+  D025: "exec-e1613a9e-de54-4db2-9164-5c21b0967cfb.png",
 };
 
 await mkdir(outputDirectory, { recursive: true });
 
+const onlyDiagramId = process.env.DRIVER_SIM_ONLY;
+const sourceFileOverride = process.env.DRIVER_SIM_SOURCE_FILE;
+
 for (const [diagramId, sourceName] of Object.entries(sourceByDiagramId)) {
+  if (onlyDiagramId && diagramId !== onlyDiagramId) continue;
   const outputName = `${diagramId.toLowerCase()}-driver-view.webp`;
-  await sharp(path.join(sourceDirectory, sourceName))
+  const sourcePath = sourceFileOverride && onlyDiagramId === diagramId
+    ? sourceFileOverride
+    : path.join(sourceDirectory, sourceName);
+  await sharp(sourcePath)
     .resize(1200, 800, { fit: "cover", position: "centre" })
     .webp({ quality: 84, effort: 6 })
     .toFile(path.join(outputDirectory, outputName));

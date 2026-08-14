@@ -245,11 +245,11 @@
       "id": "D025",
       "templateId": "T13",
       "candidatePath": "tools/diagram-generator/review/D025.svg",
-      "sceneHash": "sha256:3d58d98528f8951649807362f7c26ffe630d229b59dda268771e6fee380c9572",
-      "outputHash": "sha256:cc21cef5b4248a202043518ac700e2e6cc204c85877f12fcb9aa54932170b427",
+      "sceneHash": "sha256:986eca727883448ae4591dc70f94cb1dab5da9442ceb5412f319ae7dc5c6aca5",
+      "outputHash": "sha256:2f15a11a9de605042c603eb5469d8d7c644fc83cbd18c22b9b08ea8c6b89914d",
       "generatorVersion": "1.1.0",
       "reviewStatus": "approved",
-      "reviewedAt": "2026-08-12"
+      "reviewedAt": "2026-08-14"
     },
     {
       "id": "D026",

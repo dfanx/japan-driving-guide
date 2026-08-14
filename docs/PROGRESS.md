@@ -5,7 +5,7 @@
 - Phase: Verified static release and live deployment
 - Active feature: none
 - Last passing feature: F035 — visitor tips claim audit and lesson integration
-- Content imported: 39 Sources, 56 Rules, 25 Questions, 32 lesson documents
+- Content imported: 40 Sources, 57 Rules, 25 Questions, 32 lesson documents
 - Diagrams generated/approved: 28 review candidates / 28 approved
 - Deployment: F035 product head `6b39a3f` is live at
   `https://dfanx.github.io/japan-driving-guide/`; Pages run `31773780279` passed
@@ -2034,3 +2034,70 @@ run `31773780279`; signals, stop signs, intersections, speed, parking,
 expressways, fuel and Sources all return HTTP 200 with their F035 markers. The
 obsolete queued docs-only run `31561886388` was cancelled to unblock the latest
 product deployment. No feature is active.
+
+## Session 2026-08-14 — F036 guide-strip semantics and D025 correction
+
+### Session start
+
+- Active feature: F036 only.
+- Files read: project brief, feature ledger, progress handoff, M04 bilingual
+  lessons, D025 scene/renderer/manifest, D025 driver simulation and current
+  Source/Rule records.
+- Scope: verify the legal distinction between a white guide strip and a
+  yellow-bordered entry-prohibited area; correct the bilingual teaching, the
+  driver-view scenario and deterministic D025 schematic.
+- Out of scope: copying the supplied reference artwork, unrelated lesson or
+  diagram changes, new runtime features or dependencies.
+- Risk: replacing the current false blanket avoidance rule with an equally
+  false recommendation to drive through guide strips; confusing two distinct
+  regulated markings because both use hatching.
+- Verification: official-source audit, focused Rule/scene/image tests,
+  deterministic diagram approval, mobile Chromium review, full release gate,
+  Pages workflow and public HTTPS markers.
+- Rollback: revert the scoped F036 content/data/visual/test/docs changes and
+  rebuild static/PWA output. No data migration or external service change.
+
+### Completed locally
+
+- Replaced the incorrect blanket avoidance rule with the verified distinction:
+  a white `導流帯` guides traffic and is not itself an entry ban; a separately
+  regulated yellow-bordered `立入り禁止部分` must not be entered.
+- Added S40 and `JP-RULE-ENTRY-PROHIBITED-MARKING-001`, updated the existing
+  guide-strip Rule, and kept M04 bilingual parity.
+- Rejected the first generated replacement because it did not clearly end in a
+  right-turn lane. Published the user-supplied real-road photograph as a
+  provenance-labelled context photo, normalized to 1200x800 WebP.
+- Rebuilt D025 as a reviewed two-panel comparison. The white guide strip leads
+  to a right-turn lane and carries the moving-vehicle risk; the yellow-bordered
+  prohibited area shows the forbidden crossing. Approved SVG hash:
+  `2f15a11a...9914d`.
+
+### Verification
+
+- `TEST_PORT=4360 npm run verify:f036`: PASS — zero-diagnostic lint/typecheck,
+  4 focused files / 20 tests, 40 Sources / 57 Rules, 28/28 diagrams, 43 pages
+  and one 360px D025 Chromium case.
+- `TEST_PORT=4364 npm run verify:release`: PASS — 27 unit files / 172 tests; 55
+  root Chromium passes plus one expected project-base skip; separate project-
+  base case, 118 PWA URLs and 1,175 base-path references pass.
+- Visual review: PASS — published context photo inspected at 1200x800; D025
+  inspected at 600px and 360px with legible white/yellow distinction and a
+  right-turn endpoint.
+- The first full regression exposed stale 39/56 source/rule count assertions;
+  they were updated to the reviewed 40/57 catalog and the full release gate was
+  rerun from the beginning.
+
+### Residual risk and rollback
+
+- A white guide strip does not guarantee that crossing is safe or that every
+  example leads to a right-turn lane. Additional signs, lane boundaries,
+  arrows and police direction remain controlling; M04 states that boundary.
+- The user-supplied photograph is field context, not legal evidence. S29/S40
+  support the distinction and the deterministic SVG teaches the geometry.
+- Rollback is the scoped F036 Source/Rule/lesson/photo/diagram/test/docs change
+  set followed by a static/PWA rebuild. No external data migration exists.
+
+### Next
+
+F036 is locally passing and remains active pending product commit, GitHub Pages
+workflow and public HTTPS verification.

@@ -86,7 +86,7 @@ const headingId = `${lessonId}-visuals-title`;
           <figure
             class="lesson-visual-card lesson-visual-card--simulation"
             data-lesson-visual
-            data-visual-kind="generated-driver-simulation"
+            data-visual-kind={simulation.kind === "user_supplied_context_photo" ? "user-supplied-context-photo" : "generated-driver-simulation"}
             data-simulation-id={simulation.id}
           >
             <img

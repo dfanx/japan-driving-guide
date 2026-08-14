@@ -44,6 +44,7 @@ WIP limit: exactly zero or one feature may be `active`.
 | F033 | D020 expressway-merge geometry correction | passing | Ramp, acceleration lane, merge taper, and mainline form a continuous reviewed road surface without a hard kink; focused, mobile, release, and live gates pass |
 | F034 | Local driving customs without folklore | passing | Five reported customs are classified as law, official guidance, or practical advice; misleading hazard, intersection, and ±15 claims are corrected; bilingual lesson, mobile, release, and live gates pass |
 | F035 | Visitor tips claim audit and lesson integration | passing | Seven reported tip groups are audited against current authority/operator sources; accepted guidance is concise, bilingual, source-traced, and misleading shortcuts are explicitly corrected |
+| F036 | Guide-strip semantics and D025 correction | active | White guide strips and yellow-bordered entry-prohibited areas are distinguished in source-traced bilingual copy; D025 driver view and deterministic schematic teach the correct crossing risk and pass review, mobile, release, and live gates |
 
 ## Evidence
 
@@ -707,3 +708,20 @@ WIP limit: exactly zero or one feature may be `active`.
 - Rollback: revert only F035 Sources, Rules, bilingual lesson copy, tests,
   scripts and governance records. Existing diagrams and approved assets remain
   byte-identical.
+
+### F036
+
+- Date opened: 2026-08-14
+- Status: ACTIVE — local gates pass; live verification pending.
+- Scope: correct white guide-strip semantics, distinguish the yellow-bordered
+  entry-prohibited area, replace the incorrect D025 context image, and rebuild
+  the deterministic schematic around the right-turn-lane endpoint.
+- Safety boundary: “not prohibited by this white marking” is not a
+  recommendation to queue-jump or assume a clear path. Additional traffic
+  controls and a full mirror/blind-spot check remain required.
+- Local acceptance: PASS — S29/S40 traceability, bilingual parity, user-photo
+  provenance, 1200x800 image hash, approved D025 `2f15a11a...9914d`, 600px/
+  360px review, focused verification and full release regression pass.
+- Live acceptance: pending product deployment and public HTTPS checks.
+- Rollback: revert only F036 Source/Rule/lesson/photo/diagram/tests/scripts and
+  governance records, then rebuild the static/PWA output.

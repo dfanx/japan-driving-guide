@@ -546,12 +546,13 @@
       }
     },
     "ruleIds": [
-      "JP-RULE-GUIDE-STRIP-001"
+      "JP-RULE-GUIDE-STRIP-001",
+      "JP-RULE-ENTRY-PROHIBITED-MARKING-001"
     ],
     "assetIds": [],
     "alt": {
-      "zh-TW": "車輛 A、B 沿白色斜線導流帶外側進入各自車道，不把斜線區當成車道。",
-      "en": "Vehicles A and B follow their lanes around a white hatched guide strip instead of driving through it."
+      "zh-TW": "左圖車輛 B 沿白色導流帶進入右轉車道並留意直行排隊車流；右圖黃色邊框的立入禁止部分不得駛入。",
+      "en": "In the left panel, vehicle B follows a white guide strip into the right-turn lane while checking the straight-ahead queue; the yellow-bordered entry-prohibited area in the right panel must not be entered."
     },
     "reviewStatus": "approved"
   },

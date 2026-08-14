@@ -37,5 +37,6 @@
   {"sourceId":"S36","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current NEXCO West Smart IC page states that these interchanges are ETC-only and instructs every vehicle to stop before the gate opens."},
   {"sourceId":"S37","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current Times operator page distinguishes elapsed-hours, time-band and same-calendar-day maximum-fee models and supplies calculation examples for each."},
   {"sourceId":"S38","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current Times operator instructions provide separate payment flows for camera-controlled and lock-plate car parks, confirming that lot equipment changes the identification workflow."},
-  {"sourceId":"S39","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current Idemitsu self-service guide instructs cash customers with change due to take the receipt and scan its barcode at the separate automatic change machine."}
+  {"sourceId":"S39","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current Idemitsu self-service guide instructs cash customers with change due to take the receipt and scan its barcode at the separate automatic change machine."},
+  {"sourceId":"S40","checkedAt":"2026-08-14","outcome":"verified","evidence":"The current NPA traffic-regulation standard defines white guide strips as traffic-guidance markings and explicitly requires a separate entry-prohibited-area regulation when vehicle entry must be banned."}
 ]

@@ -7,6 +7,7 @@ ruleIds:
   - JP-RULE-INTERSECTION-LEFT-CHECK-001
   - JP-RULE-LANE-CHANGE-YELLOW-001
   - JP-RULE-GUIDE-STRIP-001
+  - JP-RULE-ENTRY-PROHIBITED-MARKING-001
   - JP-RULE-INTERSECTION-LEFT-POSITION-001
   - JP-RULE-FACILITY-ENTRY-001
   - JP-RULE-FACILITY-APPROACH-001
@@ -43,9 +44,11 @@ A **yellow solid line between same-direction lanes** prohibits lane changing. Wh
 
 An intersection combines turning vehicles, pedestrians and two-wheelers. Starting a lane change inside the conflict area makes your path difficult to predict. As a practical default, choose the lane before entry, hold it through the intersection, and make any permitted change after leaving. This is not a claim that every intersection lane change is universally illegal; yellow boundaries, lane arrows, dedicated lanes and police directions still control.
 
-## A guide strip directs traffic; it is not another lane
+## You may cross a white guide strip; never enter a yellow-bordered prohibited area
 
-White hatching or arrows may channel traffic into the correct path. Follow the lane around the marked area; do not use the hatching to pass, queue-jump or stop. Posted signs and markings still control.
+Distinguish two markings. A guide strip with **white hatching and a white border** channels traffic toward a safer, smoother path; that marking alone does not prohibit a vehicle from entering or crossing it. Hatching enclosed by a **yellow border** is a separate entry-prohibited area and vehicles must not enter it.
+
+“May cross” does not mean “safe to rush through.” In congestion, another driver may travel along the white hatching into a right-turn lane or reposition nearby. Before crossing or entering the turn lane, signal early and check ahead, mirrors and blind spots. Read any additional signs, yellow lane boundaries and lane arrows. Never assume the hatched area is empty or use it for a high-speed queue jump.
 
 ## Stop before crossing a sidewalk into a car park or shop
 

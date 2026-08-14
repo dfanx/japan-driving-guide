@@ -136,6 +136,14 @@ PWA, or deployment work. Those belong to later feature gates.
 - [x] F035 focused, full release, source-page, bilingual and 390px mobile gates
       pass locally without changing approved diagram bytes
 - [x] F035 GitHub Pages workflow and public HTTPS content markers pass
+- [x] F036 distinguishes a white guide strip from a yellow-bordered
+      entry-prohibited area with current NPA source traceability
+- [x] F036 uses the supplied real-road context photo and labels its provenance
+      without treating the photograph as legal evidence
+- [x] D025 shows the white guide strip feeding a right-turn lane, the
+      moving-vehicle conflict, and the prohibited yellow-bordered comparison
+- [x] F036 focused, full release, bilingual, hash and 360px gates pass locally
+- [ ] F036 GitHub Pages workflow and public HTTPS content/asset markers pass
 
 ## External release boundary
 
